@@ -11,7 +11,7 @@ public class Cliente extends Actor implements Serializable {
 
     public Cliente(){
         super();
-        coord = new Coordenada(0,0);
+        coord = new Coordenada();
     }
 
     public Cliente(String nome, int NIF, String email, int password, String morada, LocalDate datanasc, Coordenada coord){
