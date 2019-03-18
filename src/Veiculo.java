@@ -1,4 +1,3 @@
-import java.io.DataOutput;
 import java.io.Serializable;
 
 public abstract class Veiculo implements Serializable {
