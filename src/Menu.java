@@ -24,4 +24,20 @@ public class Menu {
                "0 - Voltar"
         );
     }
+
+    public static void menuOpcoesCliente(){
+        System.out.println(
+                "1 - Carro\n" +
+                "2 - \n" +
+                "0 - Voltar\n"
+
+        );
+    }
+
+    public static void menuOpcoesProprietario(){
+        System.out.println(
+                "1 - \n" +
+                "0 - Voltar\n"
+        );
+    }
 }

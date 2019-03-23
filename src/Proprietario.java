@@ -1,7 +1,7 @@
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Proprietario extends Actor implements Serializable {
+public class Proprietario extends Utilizador implements Serializable {
 
     //TODO  Fazer hash com os carros
     //TODO  Fazer hash com o historico
@@ -13,7 +13,7 @@ public class Proprietario extends Actor implements Serializable {
         this.classificacao = 0;
     }
 
-    public Proprietario (String nome, int NIF, String email, int password, String morada, LocalDate datanasc, int classificacao){
+    public Proprietario (String nome, int NIF, String email, String password, String morada, LocalDate datanasc, int classificacao){
         super(nome, NIF, email, password, morada, datanasc);
         this.classificacao = classificacao;
     }

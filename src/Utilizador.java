@@ -1,25 +1,25 @@
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Actor implements Serializable {
+public abstract class Utilizador implements Serializable {
 
     private String nome;
     private int NIF;
     private String email;
-    private int password;
+    private String password;
     private String morada;
     private LocalDate datanasc;
 
-    public Actor (){
+    public Utilizador(){
         this.nome = "";
         this.NIF = 0;
         this.email = "";
-        this.password = 0;
+        this.password = "";
         this.morada = "";
         this.datanasc = LocalDate.now();
     }
 
-    public Actor (String nome, int NIF, String email, int password, String morada, LocalDate datanasc){
+    public Utilizador(String nome, int NIF, String email, String password, String morada, LocalDate datanasc){
         this.nome = nome;
         this.NIF = NIF;
         this.email = email;
@@ -28,7 +28,7 @@ public abstract class Actor implements Serializable {
         this.datanasc = datanasc;
     }
 
-    public Actor (Actor a){
+    public Utilizador(Utilizador a){
         this.nome = a.getNome();
         this.NIF = a.getNIF();
         this.email = a.getEmail();
@@ -49,7 +49,7 @@ public abstract class Actor implements Serializable {
         return email;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -65,7 +65,7 @@ public abstract class Actor implements Serializable {
     public boolean equals(Object o) {
         if (o==this) {return true;}
         if (o==null || o.getClass() != this.getClass()) {return false;}
-        Actor a = (Actor) o;
+        Utilizador a = (Utilizador) o;
         return a.getNome().equals(nome) &&
                 a.getNIF() == NIF &&
                 a.getEmail().equals(email) &&
@@ -74,7 +74,7 @@ public abstract class Actor implements Serializable {
                 a.getDatanasc().equals(datanasc);
     }
 
-    public abstract Actor clone();
+    public abstract Utilizador clone();
 
     public String toString(){
         StringBuilder sb = new StringBuilder("Nome: ");

@@ -1,7 +1,7 @@
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Cliente extends Actor implements Serializable {
+public class Cliente extends Utilizador implements Serializable {
 
     private Coordenada coord;
 
@@ -13,7 +13,7 @@ public class Cliente extends Actor implements Serializable {
         coord = new Coordenada();
     }
 
-    public Cliente(String nome, int NIF, String email, int password, String morada, LocalDate datanasc, Coordenada coord){
+    public Cliente(String nome, int NIF, String email, String password, String morada, LocalDate datanasc, Coordenada coord){
         super(nome, NIF, email, password, morada, datanasc);
         this.coord = coord;
     }
