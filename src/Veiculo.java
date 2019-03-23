@@ -87,7 +87,7 @@ public abstract class Veiculo implements Serializable {
         sb.append("\nClassificacao: ");
         sb.append(this.getClassificacao());
         sb.append(this.getCoord());
-        sb.append("Autonomia: ");
+        sb.append("\nAutonomia: ");
         sb.append(this.getAutonomia());
         return sb.toString();
     }
