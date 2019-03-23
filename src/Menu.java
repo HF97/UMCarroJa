@@ -27,16 +27,19 @@ public class Menu {
 
     public static void menuOpcoesCliente(){
         System.out.println(
-                "1 - Carro\n" +
-                "2 - \n" +
+                "1 - Veiculo mais proximo\n" +
+                "2 - Veiculo mais barato\n" +
+                "3 - Veiculo mais barato a distancia a pe\n" +
+                "4 - Veiculo especifico\n" +
+                "5 - Veiculo com autonomia desejada\n" +
                 "0 - Voltar\n"
-
         );
     }
 
     public static void menuOpcoesProprietario(){
         System.out.println(
-                "1 - \n" +
+                "1 - Veiculo disponivel\n" +
+                "2- Abastecer veiculo\n" +
                 "0 - Voltar\n"
         );
     }

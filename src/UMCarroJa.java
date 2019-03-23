@@ -114,15 +114,30 @@ public class UMCarroJa {
         Scanner input = new Scanner(System.in);
         limparEcra();
         int x = -1;
+        System.out.println("Indique as coordenadas do lugar que se encontra: ");
+        System.out.println("X: ");
+        int coordX = input.nextInt();
+        System.out.println("Y: ");
+        int coordY = input.nextInt();
+        Coordenada coordCliente = new Coordenada(coordX, coordY);
         Menu.menuOpcoesCliente();
-        while(x!=0 && ){
+        x = input.nextInt();
+        while(x!=0 && x!=1 && x!=2 && x!=3 && x!=4 && x!=5){
+            System.out.println("Opcao incorreta");
             x = input.nextInt();
         }
-        limparEcra();
-        switch(x) {
-            case (1):
+        switch(x){
+            case(1):
 
-            case (0):
+            case(2):
+
+            case(3):
+
+            case(4):
+
+            case(5):
+
+            case(0):
                 executa(p);
                 break;
         }
@@ -134,14 +149,17 @@ public class UMCarroJa {
         limparEcra();
         int x = -1;
         Menu.menuOpcoesProprietario();
-        while(x!=0 && ){
+        x = input.nextInt();
+        while(x!=0 && x!=1 && x!=2){
+            System.out.println("Opcao incorreta");
             x = input.nextInt();
         }
-        limparEcra();
-        switch(x) {
-            case (1):
+        switch(x){
+            case(1):
 
-            case (0):
+            case(2):
+
+            case(0):
                 executa(p);
                 break;
         }
@@ -159,7 +177,6 @@ public class UMCarroJa {
         limparEcra();
         opcoesAdmin(p);
     }
-
 
     //TODO  acabar funcao opcoesAdmin
     private void opcoesAdmin (Programa p) throws Exception {
