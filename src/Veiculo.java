@@ -2,6 +2,7 @@ import java.io.Serializable;
 
 public abstract class Veiculo implements Serializable {
 
+    private int id;
     private double velmediakm;
     private double precokm;
     private double consumo;
@@ -13,6 +14,7 @@ public abstract class Veiculo implements Serializable {
     private int autonomia;
 
     public Veiculo(){
+        this.id = 0;
         this.velmediakm = 0.0;
         this.precokm = 0.0;
         this.consumo = 0.0;
@@ -21,7 +23,8 @@ public abstract class Veiculo implements Serializable {
         this.autonomia = 0;
     }
 
-    public Veiculo(double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia){
+    public Veiculo(int id, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia){
+        this.id = id;
         this.velmediakm = velmediakm;
         this.precokm = precokm;
         this.consumo = consumo;
@@ -31,12 +34,17 @@ public abstract class Veiculo implements Serializable {
     }
 
     public Veiculo(Veiculo v){
+        this.id = v.getId();
         this.velmediakm = v.getVelmediakm();
         this.precokm = v.getPrecokm();
         this.consumo = v.getConsumo();
         this.classificacao = v.getClassificacao();
         this.coord = v.getCoord();
         this.autonomia = v.getAutonomia();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public double getVelmediakm() {
@@ -67,7 +75,8 @@ public abstract class Veiculo implements Serializable {
         if (o==this) {return true;}
         if (o==null || o.getClass() != this.getClass()) {return false;}
         Veiculo v = (Veiculo) o;
-        return v.getVelmediakm() == velmediakm &&
+        return v.getId() == id &&
+                v.getVelmediakm() == velmediakm &&
                 v.getPrecokm() == precokm &&
                 v.getConsumo() == consumo &&
                 v.getClassificacao() == classificacao &&
@@ -78,7 +87,9 @@ public abstract class Veiculo implements Serializable {
     public abstract Veiculo clone();
 
     public String toString(){
-        StringBuilder sb = new StringBuilder("Velocidade media por km: ");
+        StringBuilder sb = new StringBuilder("Id: ");
+        sb.append(this.getId());
+        sb.append("Velocidade media por km: ");
         sb.append(this.getVelmediakm());
         sb.append("\nPreco por km: ");
         sb.append(this.getPrecokm());
