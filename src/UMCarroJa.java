@@ -63,11 +63,11 @@ public class UMCarroJa {
                 break;
             case(2):
                 try{
-                    entrarProprietario(p);
+                    entrarUtilizador(p);
                 }
                 catch (Exception e){
                     System.out.println("NIF ou Password errado(a).");
-                    entrarProprietario(p);
+                    entrarUtilizador(p);
                 }
                 break;
             case(3):
@@ -224,8 +224,8 @@ public class UMCarroJa {
                     break;
                 case(2):
                     int classificacao = 0;
-                    Proprietario c = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao);
-                    p.adicionaUtilizador(c);
+                    Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao);
+                    p.adicionaUtilizador(prop);
                     break;
             }
         }
