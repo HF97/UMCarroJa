@@ -15,14 +15,16 @@ public class Programa implements Serializable {
     int numeroCarro;
     private Map<String, Utilizador> utilizadores;
     private Map<Integer, Veiculo> veiculos;
+    private Map<Integer, Aluguer> alugueres;
 
     public Programa(){
         numeroCarro = 0;
         this.utilizadores = new HashMap<String, Utilizador>();
         this.veiculos = new HashMap<Integer, Veiculo>();
+        this.alugueres ) new HashMap<Integer, Aluguer>();
     }
 
-    public Programa(int numeroCarro, Collection<Utilizador> u, Collection<Veiculo> v){
+    public Programa(int numeroCarro, Collection<Utilizador> u, Collection<Veiculo> v, Collection<Aluguer> al){
         this.numeroCarro = numeroCarro;
         this.utilizadores = new HashMap<String, Utilizador>(u.size());
         for(Utilizador a : u){
@@ -32,12 +34,17 @@ public class Programa implements Serializable {
         for(Veiculo a : v){
             this.veiculos.put(a.getId(), a.clone());
         }
+        this.alugueres = new HashMap<Integer, Aluguer>();
+        for(Aluguer a : al){
+            this.alugueres.put(a.getId(), a.clone());
+        }
     }
 
     public Programa(Programa p){
         this.numeroCarro = p.getNumeroCarro();
         this.utilizadores = p.getUtilizadores();
         this.veiculos = p.getVeiculos();
+        this.alugueres = p.getAlugueres();
     }
 
     public int getNumeroCarro() {
@@ -52,6 +59,10 @@ public class Programa implements Serializable {
         return this.veiculos;
     }
 
+    public Map<Integer, Aluguer> getAlugueres() {
+        return this.alugueres;
+    }
+
     public void setNumeroCarro(int numeroCarro) {
         this.numeroCarro = numeroCarro;
     }
@@ -62,6 +73,10 @@ public class Programa implements Serializable {
 
     public void adicionaVeiculo (Veiculo v){
         this.veiculos.put(v.getId(), v.clone());
+    }
+
+    public void adicionaAluguer (Aluguer al){
+        this.alugueres.put(al.getId(), al.clone());
     }
 
     public Utilizador getUtilizador(String email){
