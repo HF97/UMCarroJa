@@ -21,7 +21,7 @@ public class Programa implements Serializable {
         numeroCarro = 0;
         this.utilizadores = new HashMap<String, Utilizador>();
         this.veiculos = new HashMap<String, Veiculo>();
-        this.alugueres ) new HashMap<Integer, Aluguer>();
+        this.alugueres = new HashMap<Integer, Aluguer>();
     }
 
     public Programa(int numeroCarro, Collection<Utilizador> u, Collection<Veiculo> v, Collection<Aluguer> al){
@@ -149,10 +149,19 @@ public class Programa implements Serializable {
 
     }
 
+    //TODO  meter uma exception
     public Veiculo veiculoEspecifico(){
-
+        Scanner input = new Scanner(System.in);
+        System.out.println("Matricula do veiculo especifico: ");
+        String matricula = input.next();
+        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
+        while(it.hasNext()){
+            if(it.next().getValue().getMatricula().equals(matricula)){
+                return it.next().getValue();
+            }
+        }
+        return null;
     }
-
 
     //RETORNA SET COM TODOS OS CARROS COM A AUTONOMIA
     public Set<Veiculo> veiculoAutonomiaDesejada(){
@@ -160,8 +169,8 @@ public class Programa implements Serializable {
         System.out.println("Autonomia desejada: ");
         int autonomia = input.nextInt();
         Set<Veiculo> veic = new HashSet<Veiculo>();
-        Iterator<Map.Entry<Integer, Veiculo>> it = this.veiculos.entrySet().iterator();
-        for(it.hasNext()){
+        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
+        while(it.hasNext()){
             if(it.next().getValue().getAutonomia() == autonomia){
                 veic.add(it.next().getValue());
             }
@@ -177,6 +186,33 @@ public class Programa implements Serializable {
     //OPCOES PROPRIETARIO
     //-------------------
 
+
+
+
+
+
+    public void adicionarVeiculo(Proprietario u){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Matricula: ");
+        String matricula = input.next();
+        System.out.println("Velocidade media por km: ");
+        double velmedkm = input.nextDouble();
+        System.out.println("Preco por km: ");
+        double precokm = input.nextDouble();
+        System.out.println("Consumo: ");
+        double consumo = input.nextDouble();
+        int classificacao = 0;
+        System.out.println("Indique as coordenadas do lugar que se encontra: ");
+        System.out.println("X: ");
+        int coordX = input.nextInt();
+        System.out.println("Y: ");
+        int coordY = input.nextInt();
+        Coordenada coord = new Coordenada(coordX, coordY);
+        System.out.println("Autonomia: ");
+        int autonomia = input.nextInt();
+        Veiculo v = new Veiculo(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia);
+        adicionaVeiculo(v.clone());
+    }
 
 
 

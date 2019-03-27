@@ -144,15 +144,17 @@ public class UMCarroJa {
         int x = -1;
         Menu.menuOpcoesProprietario();
         x = input.nextInt();
-        while(x!=0 && x!=1 && x!=2){
+        while(x!=0 && x!=1 && x!=2 && x!=3){
             System.out.println("Opcao incorreta");
             x = input.nextInt();
         }
         switch(x){
             case(1):
-
+                veiculoDisponivel();
             case(2):
-
+                abastecerVeiculo();
+            case(3):
+                adicionarVeiculo(Proprietario u);
             case(0):
                 executa(p);
                 break;
@@ -214,12 +216,12 @@ public class UMCarroJa {
                 case(1):
                     Coordenada coord = new Coordenada();
                     Cliente c = new Cliente(nome, NIF, email, password, morada, datanasc, coord);
-                    p.adicionaUtilizador(c);
+                    p.adicionaUtilizador(c.clone());
                     break;
                 case(2):
                     int classificacao = 0;
                     Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao);
-                    p.adicionaUtilizador(prop);
+                    p.adicionaUtilizador(prop.clone());
                     break;
             }
         }

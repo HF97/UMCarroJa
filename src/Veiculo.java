@@ -1,5 +1,6 @@
 import java.io.Serializable;
 
+//TODO  resolver problema de classe abstracta
 public abstract class Veiculo implements Serializable {
 
     private String matricula;

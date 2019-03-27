@@ -39,7 +39,8 @@ public class Menu {
     public static void menuOpcoesProprietario(){
         System.out.println(
                 "1 - Veiculo disponivel\n" +
-                "2- Abastecer veiculo\n" +
+                "2 - Abastecer veiculo\n" +
+                "3 - Adicionar veiculo\n" +
                 "0 - Voltar\n"
         );
     }
