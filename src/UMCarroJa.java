@@ -17,7 +17,6 @@ public class UMCarroJa {
             p.gravaObjetoInformacao();
         }catch(Exception e){
             System.out.println("Erro a guardar");
-            return;
         }
     }
 
@@ -114,12 +113,6 @@ public class UMCarroJa {
         Scanner input = new Scanner(System.in);
         limparEcra();
         int x = -1;
-        System.out.println("Indique as coordenadas do lugar que se encontra: ");
-        System.out.println("X: ");
-        int coordX = input.nextInt();
-        System.out.println("Y: ");
-        int coordY = input.nextInt();
-        Coordenada coordCliente = new Coordenada(coordX, coordY);
         Menu.menuOpcoesCliente();
         x = input.nextInt();
         while(x!=0 && x!=1 && x!=2 && x!=3 && x!=4 && x!=5){
@@ -128,15 +121,15 @@ public class UMCarroJa {
         }
         switch(x){
             case(1):
-
+                veiculoMaisProximo();
             case(2):
-
+                veiculoMaisBarato();
             case(3):
-
+                veiculoMiasBaratoPe();
             case(4):
-
+                veiculoEspecifico();
             case(5):
-
+                veiculoAutonomiaDesejada();
             case(0):
                 executa(p);
                 break;

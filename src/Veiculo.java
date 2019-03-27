@@ -2,7 +2,7 @@ import java.io.Serializable;
 
 public abstract class Veiculo implements Serializable {
 
-    private int id;
+    private String matricula;
     private double velmediakm;
     private double precokm;
     private double consumo;
@@ -14,7 +14,7 @@ public abstract class Veiculo implements Serializable {
     private int autonomia;
 
     public Veiculo(){
-        this.id = 0;
+        this.matricula = "";
         this.velmediakm = 0.0;
         this.precokm = 0.0;
         this.consumo = 0.0;
@@ -23,8 +23,8 @@ public abstract class Veiculo implements Serializable {
         this.autonomia = 0;
     }
 
-    public Veiculo(int id, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia){
-        this.id = id;
+    public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia){
+        this.matricula = matricula;
         this.velmediakm = velmediakm;
         this.precokm = precokm;
         this.consumo = consumo;
@@ -34,7 +34,7 @@ public abstract class Veiculo implements Serializable {
     }
 
     public Veiculo(Veiculo v){
-        this.id = v.getId();
+        this.matricula = v.getMatricula();
         this.velmediakm = v.getVelmediakm();
         this.precokm = v.getPrecokm();
         this.consumo = v.getConsumo();
@@ -43,8 +43,8 @@ public abstract class Veiculo implements Serializable {
         this.autonomia = v.getAutonomia();
     }
 
-    public int getId() {
-        return id;
+    public String getMatricula() {
+        return matricula;
     }
 
     public double getVelmediakm() {
@@ -75,7 +75,7 @@ public abstract class Veiculo implements Serializable {
         if (o==this) {return true;}
         if (o==null || o.getClass() != this.getClass()) {return false;}
         Veiculo v = (Veiculo) o;
-        return v.getId() == id &&
+        return v.getMatricula().equals(matricula) &&
                 v.getVelmediakm() == velmediakm &&
                 v.getPrecokm() == precokm &&
                 v.getConsumo() == consumo &&
@@ -87,8 +87,8 @@ public abstract class Veiculo implements Serializable {
     public abstract Veiculo clone();
 
     public String toString(){
-        StringBuilder sb = new StringBuilder("Id: ");
-        sb.append(this.getId());
+        StringBuilder sb = new StringBuilder("Matricula: ");
+        sb.append(this.getMatricula());
         sb.append("Velocidade media por km: ");
         sb.append(this.getVelmediakm());
         sb.append("\nPreco por km: ");

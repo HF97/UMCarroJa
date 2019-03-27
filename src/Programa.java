@@ -1,3 +1,5 @@
+import jdk.jshell.execution.Util;
+
 import java.io.Serializable;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
@@ -5,22 +7,20 @@ import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.io.FileNotFoundException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 public class Programa implements Serializable {
 
     int numeroCarro;
     private Map<String, Utilizador> utilizadores;
-    private Map<Integer, Veiculo> veiculos;
+    private Map<String, Veiculo> veiculos;
     private Map<Integer, Aluguer> alugueres;
 
     public Programa(){
         numeroCarro = 0;
         this.utilizadores = new HashMap<String, Utilizador>();
-        this.veiculos = new HashMap<Integer, Veiculo>();
+        this.veiculos = new HashMap<String, Veiculo>();
         this.alugueres ) new HashMap<Integer, Aluguer>();
     }
 
@@ -30,9 +30,9 @@ public class Programa implements Serializable {
         for(Utilizador a : u){
             this.utilizadores.put(a.getEmail(), a.clone());
         }
-        this.veiculos = new HashMap<Integer, Veiculo>(v.size());
+        this.veiculos = new HashMap<String, Veiculo>(v.size());
         for(Veiculo a : v){
-            this.veiculos.put(a.getId(), a.clone());
+            this.veiculos.put(a.getMatricula(), a.clone());
         }
         this.alugueres = new HashMap<Integer, Aluguer>();
         for(Aluguer a : al){
@@ -55,7 +55,7 @@ public class Programa implements Serializable {
         return this.utilizadores;
     }
 
-    public Map<Integer, Veiculo> getVeiculos() {
+    public Map<String, Veiculo> getVeiculos() {
         return this.veiculos;
     }
 
@@ -72,7 +72,7 @@ public class Programa implements Serializable {
     }
 
     public void adicionaVeiculo (Veiculo v){
-        this.veiculos.put(v.getId(), v.clone());
+        this.veiculos.put(v.getMatricula(), v.clone());
     }
 
     public void adicionaAluguer (Aluguer al){
@@ -130,12 +130,52 @@ public class Programa implements Serializable {
     //--------------
     //OPCOES Cliente
     //--------------
+    public Veiculo veiculoMaisProximo(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Indique as coordenadas do lugar que se encontra: ");
+        System.out.println("X: ");
+        int coordX = input.nextInt();
+        System.out.println("Y: ");
+        int coordY = input.nextInt();
+        Coordenada coordCliente = new Coordenada(coordX, coordY);
+
+    }
+
+    public Veiculo veiculoMaisBarato(){
+
+    }
+
+    public Veiculo veiculoMaisBaratoPe(){
+
+    }
+
+    public Veiculo veiculoEspecifico(){
+
+    }
+
+
+    //RETORNA SET COM TODOS OS CARROS COM A AUTONOMIA
+    public Set<Veiculo> veiculoAutonomiaDesejada(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Autonomia desejada: ");
+        int autonomia = input.nextInt();
+        Set<Veiculo> veic = new HashSet<Veiculo>();
+        Iterator<Map.Entry<Integer, Veiculo>> it = this.veiculos.entrySet().iterator();
+        for(it.hasNext()){
+            if(it.next().getValue().getAutonomia() == autonomia){
+                veic.add(it.next().getValue());
+            }
+        }
+        return veic;
+    }
 
 
 
 
 
-
+    //-------------------
+    //OPCOES PROPRIETARIO
+    //-------------------
 
 
 
