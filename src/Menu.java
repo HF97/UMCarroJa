@@ -44,4 +44,12 @@ public class Menu {
                 "0 - Voltar\n"
         );
     }
+
+    public static void tipoVeiculo(){
+        System.out.println(
+                "1 - Gasolina\n" +
+                "2 - Hibrido\n" +
+                "3 - Eletrico\n"
+        );
+    }
 }

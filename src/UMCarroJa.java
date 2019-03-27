@@ -154,7 +154,7 @@ public class UMCarroJa {
             case(2):
                 abastecerVeiculo();
             case(3):
-                adicionarVeiculo(Proprietario u);
+                adicionarVeiculo(u);
             case(0):
                 executa(p);
                 break;

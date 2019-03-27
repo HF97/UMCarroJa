@@ -189,8 +189,28 @@ public class Programa implements Serializable {
 
 
 
+    //TODO  caso a soma da percentagem com o que tem no deposito ser maior que 100 tem de ser corrigido
+    public void abastecerVeiculo(Proprietario u){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Matricula do veiculo: ");
+        String matricula = input.next();
+        System.out.println("Ate que percentagem de deposito deseja encher: ");
+        int percentagem = input.nextInt();
+        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
+        while(it.hasNext()){
+            if(it.next().getValue().getMatricula().equals(matricula)){
+                if(it.next().getValue().getAutonomia() < 100){
+                    it.next().getValue().setAutonomia(it.next().getValue().getAutonomia() + percentagem);
+                    if(it.next().getValue().getAutonomia() > 100){
+                        it.next().getValue().setAutonomia(100);
+                    }
+                }
+            }
+        }
+    }
 
 
+    //TODO  veiculo info do proprietario
     public void adicionarVeiculo(Proprietario u){
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula: ");
@@ -210,8 +230,24 @@ public class Programa implements Serializable {
         Coordenada coord = new Coordenada(coordX, coordY);
         System.out.println("Autonomia: ");
         int autonomia = input.nextInt();
-        Veiculo v = new Veiculo(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia);
-        adicionaVeiculo(v.clone());
+        System.out.println("Tipo de veiculo: ");
+        Menu.tipoVeiculo();
+        int x = input.nextInt();
+        while(x!=1 && x!=2 && x!=3){
+            System.out.println("Tipo incorreto");
+        }
+        switch (x){
+            case(1):
+                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia);
+                adicionaVeiculo(gas.clone());
+
+            case(2):
+                Hibrido hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia);
+                adicionaVeiculo(hib.clone());
+            case(3):
+                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia);
+                adicionaVeiculo(ele.clone());
+        }
     }
 
 

@@ -8,6 +8,7 @@ public abstract class Veiculo implements Serializable {
     private double consumo;
 
     //TODO  Hash com historico
+    //TODO  metodos set
 
     private int classificacao;
     private Coordenada coord;
