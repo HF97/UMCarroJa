@@ -18,7 +18,7 @@ public class Aluguer implements Serializable {
     public Aluguer() {
         this.id = 0;
         this.coord = new Coordenada();
-        this.veiculo = new Veiculo();
+        this.veiculo = new Gasolina();
         this.data = LocalDate.now();
         this.duracao = 0;
         this.emailCliente = "";
@@ -158,5 +158,6 @@ public class Aluguer implements Serializable {
         sb.append(this.getCustoTotal());
         sb.append("Classificacao: ");
         sb.append(this.getClassificacao());
+        return sb.toString();
     }
 }
