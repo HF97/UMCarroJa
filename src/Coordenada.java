@@ -28,6 +28,10 @@ public class Coordenada implements Serializable
         return this.y;
     }
 
+    public double distancia(Coordenada p){
+        return Math.sqrt((this.x-p.getX())*(this.x-p.getX())+(this.y-p.getY())*(this.y-p.getY()));
+    }
+
     public Coordenada clone(){
         return new Coordenada(this);
     }
