@@ -130,7 +130,7 @@ public class Programa implements Serializable {
     //--------------
     //OPCOES Cliente
     //--------------
-    public Veiculo veiculoMaisProximo(){
+    public Veiculo veiculoMaisProximo(Proprietario u){
         Scanner input = new Scanner(System.in);
         System.out.println("Indique as coordenadas do lugar que se encontra: ");
         System.out.println("X: ");
@@ -141,16 +141,16 @@ public class Programa implements Serializable {
 
     }
 
-    public Veiculo veiculoMaisBarato(){
+    public Veiculo veiculoMaisBarato(Proprietario u){
 
     }
 
-    public Veiculo veiculoMaisBaratoPe(){
+    public Veiculo veiculoMaisBaratoPe(Proprietario u){
 
     }
 
     //TODO  meter uma exception
-    public Veiculo veiculoEspecifico(){
+    public Veiculo veiculoEspecifico(Proprietario u){
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula do veiculo especifico: ");
         String matricula = input.next();
@@ -164,7 +164,7 @@ public class Programa implements Serializable {
     }
 
     //RETORNA SET COM TODOS OS CARROS COM A AUTONOMIA
-    public Set<Veiculo> veiculoAutonomiaDesejada(){
+    public Set<Veiculo> veiculoAutonomiaDesejada(Proprietario u){
         Scanner input = new Scanner(System.in);
         System.out.println("Autonomia desejada: ");
         int autonomia = input.nextInt();
@@ -187,6 +187,20 @@ public class Programa implements Serializable {
     //-------------------
 
 
+    public void listaCarros(Proprietario u){
+
+    }
+
+
+
+    public void veiculoDisponivel(Proprietario u){
+
+    }
+
+
+    public void verClassificacao(Proprietario u){
+
+    }
 
 
     //TODO  caso a soma da percentagem com o que tem no deposito ser maior que 100 tem de ser corrigido

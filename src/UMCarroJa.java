@@ -121,15 +121,15 @@ public class UMCarroJa {
         }
         switch(x){
             case(1):
-                veiculoMaisProximo();
+                p.veiculoMaisProximo(u);
             case(2):
-                veiculoMaisBarato();
+                p.veiculoMaisBarato(u);
             case(3):
-                veiculoMiasBaratoPe();
+                p.veiculoMaisBaratoPe(u);
             case(4):
-                veiculoEspecifico();
+                p.veiculoEspecifico(u);
             case(5):
-                veiculoAutonomiaDesejada();
+                p.veiculoAutonomiaDesejada(u);
             case(0):
                 executa(p);
                 break;
@@ -150,11 +150,15 @@ public class UMCarroJa {
         }
         switch(x){
             case(1):
-                veiculoDisponivel();
+                p.veiculoDisponivel(u);
             case(2):
-                abastecerVeiculo();
+                p.abastecerVeiculo(u);
             case(3):
-                adicionarVeiculo(u);
+                p.adicionarVeiculo(u);
+            case(4):
+                p.listaCarros(u);
+            case(5):
+                p.verClassificacao(u);
             case(0):
                 executa(p);
                 break;
@@ -224,6 +228,9 @@ public class UMCarroJa {
                     p.adicionaUtilizador(prop.clone());
                     break;
             }
+        }
+        else(while(x!=1 || x!=2){
+            System.out.println("Opcao errada!\nNova opcao: ");
         }
         executa(p);
     }
