@@ -72,6 +72,10 @@ public abstract class Veiculo implements Serializable {
         return autonomia;
     }
 
+    public void setAutonomia(int autonomia) {
+        this.autonomia = autonomia;
+    }
+
     public boolean equals(Object o) {
         if (o==this) {return true;}
         if (o==null || o.getClass() != this.getClass()) {return false;}

@@ -2,7 +2,17 @@ import java.io.Serializable;
 
 public class Gasolina extends Veiculo implements Serializable {
 
-    //TODO  acabar classes dos veiculos
+    public Gasolina(){
+        super();
+    }
+
+    public Gasolina(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia) {
+        super(matricula, velmediakm, precokm, consumo, classificacao, coord, autonomia);
+    }
+
+    public Gasolina(Gasolina g){
+        super(g);
+    }
 
     public Gasolina clone(){
         return new Gasolina(this);
