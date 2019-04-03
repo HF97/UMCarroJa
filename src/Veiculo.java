@@ -23,7 +23,7 @@ public abstract class Veiculo implements Serializable {
         this.classificacao = 0;
         this.coord = new Coordenada();
         this.autonomia = 0;
-        this.proprietario
+        this.proprietario = "";
     }
 
     public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario){
@@ -34,7 +34,7 @@ public abstract class Veiculo implements Serializable {
         this.classificacao = classificacao;
         this.coord = coord;
         this.autonomia = autonomia;
-        this.proprietario = proprietario
+        this.proprietario = proprietario;
     }
 
     public Veiculo(Veiculo v){
