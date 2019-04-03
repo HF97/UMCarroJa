@@ -6,8 +6,8 @@ public class Gasolina extends Veiculo implements Serializable {
         super();
     }
 
-    public Gasolina(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia) {
-        super(matricula, velmediakm, precokm, consumo, classificacao, coord, autonomia);
+    public Gasolina(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario) {
+        super(matricula, velmediakm, precokm, consumo, classificacao, coord, autonomia, proprietario);
     }
 
     public Gasolina(Gasolina g){

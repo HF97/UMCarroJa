@@ -1,13 +1,19 @@
-import jdk.jshell.execution.Util;
-
 import java.io.Serializable;
+import java.util.Scanner;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.HashSet;
 
 
 public class Programa implements Serializable {
@@ -16,15 +22,19 @@ public class Programa implements Serializable {
     private Map<String, Utilizador> utilizadores;
     private Map<String, Veiculo> veiculos;
     private Map<Integer, Aluguer> alugueres;
+    private List<String> livres;
+    private List<String> ocupados
 
     public Programa(){
         numeroCarro = 0;
         this.utilizadores = new HashMap<String, Utilizador>();
         this.veiculos = new HashMap<String, Veiculo>();
         this.alugueres = new HashMap<Integer, Aluguer>();
+        this.livres = new ArrayList<String>();
+        this.ocupados = new ArrayList<String>();
     }
 
-    public Programa(int numeroCarro, Collection<Utilizador> u, Collection<Veiculo> v, Collection<Aluguer> al){
+    public Programa(int numeroCarro, Collection<Utilizador> u, Collection<Veiculo> v, Collection<Aluguer> al, Collection<String> liv, Collection<String> ocu){
         this.numeroCarro = numeroCarro;
         this.utilizadores = new HashMap<String, Utilizador>(u.size());
         for(Utilizador a : u){
@@ -38,6 +48,14 @@ public class Programa implements Serializable {
         for(Aluguer a : al){
             this.alugueres.put(a.getId(), a.clone());
         }
+        this.livres = new ArrayList<String>();
+        for(String a : liv){
+            this.livres.add(a);
+        }
+        this.ocupados = new ArrayList<String>();
+        for(String a : ocu){
+            this.ocupados.add(a);
+        }
     }
 
     public Programa(Programa p){
@@ -45,6 +63,8 @@ public class Programa implements Serializable {
         this.utilizadores = p.getUtilizadores();
         this.veiculos = p.getVeiculos();
         this.alugueres = p.getAlugueres();
+        this.livres = p.getLivres();
+        this.ocupados = p.getOcupados();
     }
 
     public int getNumeroCarro() {
@@ -61,6 +81,14 @@ public class Programa implements Serializable {
 
     public Map<Integer, Aluguer> getAlugueres() {
         return this.alugueres;
+    }
+
+    public List<String> getLivres(){
+        return this.livres;
+    }
+
+    public List<String> getOcupados() {
+        return ocupados;
     }
 
     public void setNumeroCarro(int numeroCarro) {
@@ -130,7 +158,7 @@ public class Programa implements Serializable {
     //--------------
     //OPCOES Cliente
     //--------------
-    public Veiculo veiculoMaisProximo(Proprietario u){
+    public Veiculo veiculoMaisProximo(Utilizador u){
         Scanner input = new Scanner(System.in);
         System.out.println("Indique as coordenadas do lugar que se encontra: ");
         System.out.println("X: ");
@@ -138,19 +166,36 @@ public class Programa implements Serializable {
         System.out.println("Y: ");
         int coordY = input.nextInt();
         Coordenada coordCliente = new Coordenada(coordX, coordY);
-
+        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
+        Veiculo v = it.next().getValue().clone();
+        while(it.hasNext()){
+            if(it.next().getValue().getCoord().distancia(coordCliente) < v.getCoord().distancia(coordCliente)){
+                v = it.next().getValue().clone();
+            }
+        }
+        return v;
     }
 
-    public Veiculo veiculoMaisBarato(Proprietario u){
-
+    //TODO  nao e preciso dar utilizador
+    public Veiculo veiculoMaisBarato(Utilizador u){
+        Scanner input = new Scanner(System.in);
+        Veiculo v = this.veiculos.get(this.livres.get(0)).clone();
+        for(String s : this.livres){
+            if(this.veiculos.get(s).getPrecokm() < v.getPrecokm()){
+                v = this.veiculos.get(s);
+            }
+        }
+        return v;
     }
 
-    public Veiculo veiculoMaisBaratoPe(Proprietario u){
+    //TODO  nao e preciso dar utilizador
+    //TODO  fica o mais barato mais perto (compare ???)
+    public Veiculo veiculoMaisBaratoPe(Utilizador u){
 
     }
 
     //TODO  meter uma exception
-    public Veiculo veiculoEspecifico(Proprietario u){
+    public Veiculo veiculoEspecifico(Utilizador u){
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula do veiculo especifico: ");
         String matricula = input.next();
@@ -164,7 +209,7 @@ public class Programa implements Serializable {
     }
 
     //RETORNA SET COM TODOS OS CARROS COM A AUTONOMIA
-    public Set<Veiculo> veiculoAutonomiaDesejada(Proprietario u){
+    public Set<Veiculo> veiculoAutonomiaDesejada(Utilizador u){
         Scanner input = new Scanner(System.in);
         System.out.println("Autonomia desejada: ");
         int autonomia = input.nextInt();
@@ -187,8 +232,12 @@ public class Programa implements Serializable {
     //-------------------
 
 
-    public void listaCarros(Proprietario u){
-
+    public List<Veiculo> listaCarros(Proprietario u){
+        List<Veiculo> veicProp = new ArrayList<Veiculo>();
+        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
+        while(it.hasNext()){
+            if(it.next().getValue().)
+        }
     }
 
 

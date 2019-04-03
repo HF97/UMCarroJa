@@ -1,3 +1,4 @@
+import java.lang.ref.Cleaner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -109,7 +110,7 @@ public class UMCarroJa {
     }
 
     //TODO  acabar funcaoCliente
-    private void opcoesCliente (Cliente u, Programa p) throws Exception {
+    private void opcoesCliente (Utilizador u, Programa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
         int x = -1;
@@ -229,8 +230,10 @@ public class UMCarroJa {
                     break;
             }
         }
-        else(while(x!=1 || x!=2){
-            System.out.println("Opcao errada!\nNova opcao: ");
+        else{
+            while(x!=1 || x!=2){
+                System.out.println("Opcao errada!\nNova opcao: ");
+            }
         }
         executa(p);
     }
