@@ -57,9 +57,11 @@ public class Menu {
     public static void menuOpcoesAdmin(){
         System.out.println(
                 "1 - Lista de utilizadores\n"+
-                "2 - Lista de veiculos\n"+
-                "3 - Lista de veiculos livres\n"+
-                "4 - Lista de veiculos ocupados\n"
+                "2 - Lista de clientes\n"+
+                "3 - Lista de proprietarios\n"+
+                "4 - Lista de veiculos\n"+
+                "5 - Lista de veiculos livres\n"+
+                "6 - Lista de veiculos ocupados\n"
         );
     }
 }

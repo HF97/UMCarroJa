@@ -186,7 +186,7 @@ public class UMCarroJa {
         int x = -1;
         Menu.menuOpcoesAdmin();
         x = input.nextInt();
-        while(x!=0 && x!=1 && x!=2 && x!=3){
+        while(x!=0 && x!=1 && x!=2 && x!=3 && x!=4 && x!=5 && x!=6){
             System.out.println("Opcao incorreta");
             x = input.nextInt();
         }
@@ -194,10 +194,14 @@ public class UMCarroJa {
             case(1):
                 p.listaUtilizadores();
             case(2):
-                p.listaVeiculos();
+                p.listaClientes();
             case(3):
-                p.listaLivres();
+                p.listaProprietarios();
             case(4):
+                p.listaVeiculos();
+            case(5):
+                p.listaLivres();
+            case(6):
                 p.listaOcupados();
         }
     }

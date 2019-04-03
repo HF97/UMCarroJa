@@ -334,6 +334,28 @@ public class Programa implements Serializable {
         return uti;
     }
 
+    public List<Utilizador> listaClientes(){
+        List<Utilizador> uti = new ArrayList<Utilizador>();
+        Iterator<Map.Entry<String, Utilizador>> it = this.utilizadores.entrySet().iterator();
+        while(it.hasNext()){
+            if(it.next().getClass().getSimpleName().equals("Cliente")){
+                uti.add(it.next().getValue());
+            }
+        }
+        return uti;
+    }
+
+    public List<Utilizador> listaProprietarios(){
+        List<Utilizador> uti = new ArrayList<Utilizador>();
+        Iterator<Map.Entry<String, Utilizador>> it = this.utilizadores.entrySet().iterator();
+        while(it.hasNext()){
+            if(it.next().getClass().getSimpleName().equals("Proprietario")){
+                uti.add(it.next().getValue());
+            }
+        }
+        return uti;
+    }
+
     public List<Veiculo> listaVeiculos(){
         List<Veiculo> vei = new ArrayList<Veiculo>();
         Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
