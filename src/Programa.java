@@ -295,6 +295,7 @@ public class Programa implements Serializable {
         Coordenada coord = new Coordenada(coordX, coordY);
         System.out.println("Autonomia: ");
         int autonomia = input.nextInt();
+        String prop = u.getEmail();
         System.out.println("Tipo de veiculo: ");
         Menu.tipoVeiculo();
         int x = input.nextInt();
@@ -303,14 +304,14 @@ public class Programa implements Serializable {
         }
         switch (x){
             case(1):
-                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia);
+                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop);
                 adicionaVeiculo(gas.clone());
 
             case(2):
-                Hibrido hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia);
+                Hibrido hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop);
                 adicionaVeiculo(hib.clone());
             case(3):
-                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia);
+                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop);
                 adicionaVeiculo(ele.clone());
         }
     }
