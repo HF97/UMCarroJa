@@ -231,13 +231,15 @@ public class Programa implements Serializable {
     //OPCOES PROPRIETARIO
     //-------------------
 
-
     public List<Veiculo> listaCarros(Proprietario u){
         List<Veiculo> veicProp = new ArrayList<Veiculo>();
         Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
         while(it.hasNext()){
-            if(it.next().getValue().)
+            if(it.next().getValue().getProprietario().equals(u.getEmail())){
+                veicProp.add(it.next().getValue());
+            }
         }
+        return veicProp;
     }
 
 
