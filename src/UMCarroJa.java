@@ -181,7 +181,25 @@ public class UMCarroJa {
 
     //TODO  acabar funcao opcoesAdmin
     private void opcoesAdmin (Programa p) throws Exception {
-
+        Scanner input = new Scanner(System.in);
+        limparEcra();
+        int x = -1;
+        Menu.menuOpcoesAdmin();
+        x = input.nextInt();
+        while(x!=0 && x!=1 && x!=2 && x!=3){
+            System.out.println("Opcao incorreta");
+            x = input.nextInt();
+        }
+        switch(x){
+            case(1):
+                p.listaUtilizadores();
+            case(2):
+                p.listaVeiculos();
+            case(3):
+                p.listaLivres();
+            case(4):
+                p.listaOcupados();
+        }
     }
 
 

@@ -251,8 +251,9 @@ public class Programa implements Serializable {
     }
 
 
-    public void verClassificacao(Proprietario u){
-
+    //TODO  problema, nao aparece o getClassificacao
+    public int verClassificacao(Proprietario u){
+        return this.utilizadores.get(u.getEmail()).;
     }
 
 
@@ -318,6 +319,44 @@ public class Programa implements Serializable {
         }
     }
 
+
+
+
+    //------------
+    //OPCOES ADMIN
+    //------------
+    public List<Utilizador> listaUtilizadores(){
+        List<Utilizador> uti = new ArrayList<Utilizador>();
+        Iterator<Map.Entry<String, Utilizador>> it = this.utilizadores.entrySet().iterator();
+        while(it.hasNext()){
+            uti.add(it.next().getValue());
+        }
+        return uti;
+    }
+
+    public List<Veiculo> listaVeiculos(){
+        List<Veiculo> vei = new ArrayList<Veiculo>();
+        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
+        while(it.hasNext()){
+            vei.add(it.next().getValue());
+        }
+        return vei;
+    }
+
+    public List<Veiculo> listaLivres(){
+        List<Veiculo> liv = new ArrayList<Veiculo>();
+        for(String s : this.livres){
+            liv.add(this.veiculos.get(s));
+        }
+    }
+
+    public List<Veiculo> listaOcupados(){
+        List<Veiculo> ocu = new ArrayList<Veiculo>();
+        for(String s : this.ocupados){
+            ocu.add(this.veiculos.get(s));
+        }
+        return ocu;
+    }
 
 
 

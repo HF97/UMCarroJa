@@ -53,4 +53,13 @@ public class Menu {
                 "3 - Eletrico\n"
         );
     }
+
+    public static void menuOpcoesAdmin(){
+        System.out.println(
+                "1 - Lista de utilizadores\n"+
+                "2 - Lista de veiculos\n"+
+                "3 - Lista de veiculos livres\n"+
+                "4 - Lista de veiculos ocupados\n"
+        );
+    }
 }
