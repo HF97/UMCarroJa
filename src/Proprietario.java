@@ -27,6 +27,10 @@ public class Proprietario extends Utilizador implements Serializable {
         return this.classificacao;
     }
 
+    public void setClassificacao(int c){
+        this.classificacao = c;
+    }
+
     public boolean equals(Object o) {
         if (o==this) {return true;}
         if(o==null || o.getClass() != this.getClass()) {return false;}

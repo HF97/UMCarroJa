@@ -243,9 +243,11 @@ public class Programa implements Serializable {
     }
 
 
-
     public void veiculoDisponivel(Proprietario u){
-
+        Scanner input = new Scanner(System.in);
+        System.out.println("Matricula do veiculo: ");
+        String matricula = input.next();
+        this.livres.add(this.veiculos.get(matricula).getMatricula());
     }
 
 
