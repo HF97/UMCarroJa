@@ -194,17 +194,29 @@ public class Main {
         }
         switch(x){
             case(1):
-                p.listaUtilizadores();
+                for(Utilizador u : p.listaUtilizadores()){
+                    u.toString();
+                }
             case(2):
-                p.listaClientes();
+                for(Utilizador u : p.listaClientes()){
+                    u.toString();
+                }
             case(3):
-                p.listaProprietarios();
+                for(Utilizador u : p.listaProprietarios()){
+                    u.toString();
+                }
             case(4):
-                p.listaVeiculos();
+                for(Veiculo v : p.listaVeiculos()){
+                    v.toString();
+                }
             case(5):
-                p.listaLivres();
+                for(Veiculo v : p.listaLivres()){
+                    v.toString();
+                }
             case(6):
-                p.listaOcupados();
+                for(Veiculo v : p.listaOcupados()){
+                    v.toString();
+                }
         }
     }
 

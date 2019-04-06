@@ -6,6 +6,7 @@ public class Menu {
                "2 - Registar\n\n"+
                "0 - Sair"
         );
+        System.out.print("Opção: ");
     }
 
     public static void menuEntrar(){
