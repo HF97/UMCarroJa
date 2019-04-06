@@ -182,6 +182,7 @@ public class Main {
     }
 
     //TODO  acabar funcao opcoesAdmin
+    //TODO  a funcao da o utilizador mas sai imediatamente
     private void opcoesAdmin (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
@@ -190,6 +191,7 @@ public class Main {
         x = input.nextInt();
         while(x!=0 && x!=1 && x!=2 && x!=3 && x!=4 && x!=5 && x!=6){
             System.out.println("Opcao incorreta");
+            System.out.print("Opcão: ");
             x = input.nextInt();
         }
         switch(x){
@@ -220,7 +222,8 @@ public class Main {
         }
     }
 
-
+    //TODO  data invalida se meter muitas letras na morada ou noutro atributo, nao tenho certeza
+    //TODO  se meter um /n antes da data imprime dois e da duas vezes data errada
     private void registarUtilizador (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
