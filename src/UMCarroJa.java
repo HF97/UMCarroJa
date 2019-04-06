@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.HashSet;
 
-public class UMCarroJa {
+public class UMCarroJa implements Serializable{
     int numeroCarro;
     private Map<String, Utilizador> utilizadores;
     private Map<String, Veiculo> veiculos;
