@@ -21,7 +21,7 @@ public class UMCarroJa {
     private Map<String, Veiculo> veiculos;
     private Map<Integer, Aluguer> alugueres;
     private List<String> livres;
-    private List<String> ocupados
+    private List<String> ocupados;
 
     public UMCarroJa(){
         numeroCarro = 0;
@@ -188,9 +188,9 @@ public class UMCarroJa {
 
     //TODO  nao e preciso dar utilizador
     //TODO  fica o mais barato mais perto (compare ???)
-    public Veiculo veiculoMaisBaratoPe(Utilizador u){
-
-    }
+//    public Veiculo veiculoMaisBaratoPe(Utilizador u){
+//
+//    }
 
     //TODO  meter uma exception
     public Veiculo veiculoEspecifico(Utilizador u){
@@ -249,10 +249,10 @@ public class UMCarroJa {
     }
 
 
-    //TODO  problema, nao aparece o getClassificacao
-    public int verClassificacao(Proprietario u){
-        return this.utilizadores.get(u.getEmail()).;
-    }
+//    //TODO  problema, nao aparece o getClassificacao
+//    public int verClassificacao(Proprietario u){
+//        return this.utilizadores.get(u.getEmail());
+//    }
 
 
     //TODO  caso a soma da percentagem com o que tem no deposito ser maior que 100 tem de ser corrigido
@@ -368,6 +368,7 @@ public class UMCarroJa {
         for(String s : this.livres){
             liv.add(this.veiculos.get(s));
         }
+        return liv;
     }
 
     public List<Veiculo> listaOcupados(){

@@ -125,7 +125,7 @@ public class Main {
             case(2):
                 p.veiculoMaisBarato(u);
             case(3):
-                p.veiculoMaisBaratoPe(u);
+//                p.veiculoMaisBaratoPe(u);
             case(4):
                 p.veiculoEspecifico(u);
             case(5):
@@ -158,7 +158,7 @@ public class Main {
             case(4):
                 p.listaCarros(u);
             case(5):
-                p.verClassificacao(u);
+//                p.verClassificacao(u);
             case(0):
                 executa(p);
                 break;
