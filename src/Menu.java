@@ -15,6 +15,7 @@ public class Menu {
                 "3 - Entrar Administrador\n\n" +
                 "0 - Voltar"
         );
+        System.out.print("Opção: ");
     }
 
     public  static void menuRegistar(){
@@ -23,6 +24,7 @@ public class Menu {
                "2 - Registar proprietario\n\n" +
                "0 - Voltar"
         );
+        System.out.print("Opção: ");
     }
 
     public static void menuOpcoesCliente(){
@@ -34,6 +36,7 @@ public class Menu {
                 "5 - Veiculo com autonomia desejada\n" +
                 "0 - Voltar\n"
         );
+        System.out.print("Opção: ");
     }
 
     public static void menuOpcoesProprietario(){
@@ -44,6 +47,7 @@ public class Menu {
                 "4 - Lista de carros\n" +
                 "0 - Voltar\n"
         );
+        System.out.print("Opção: ");
     }
 
     public static void tipoVeiculo(){
@@ -52,6 +56,7 @@ public class Menu {
                 "2 - Hibrido\n" +
                 "3 - Eletrico\n"
         );
+        System.out.print("Opão: ");
     }
 
     public static void menuOpcoesAdmin(){
@@ -61,7 +66,9 @@ public class Menu {
                 "3 - Lista de proprietarios\n"+
                 "4 - Lista de veiculos\n"+
                 "5 - Lista de veiculos livres\n"+
-                "6 - Lista de veiculos ocupados\n"
+                "6 - Lista de veiculos ocupados\n"+
+                "0 - Voltar\n"
         );
+        System.out.print("Opção: ");
     }
 }

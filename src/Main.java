@@ -169,10 +169,13 @@ public class Main {
         Scanner input = new Scanner(System.in);
         int x = 0;
         limparEcra();
-        System.out.println("Password: ");
-        while(x != 12345){
-            System.out.println("Password Incorreta\nPassword:");
-            x = input.nextInt();
+        System.out.print("Password: ");
+        x = input.nextInt();
+        if(x !=12345){
+            while(x != 12345){
+                System.out.print("Password Incorreta\nPassword:");
+                x = input.nextInt();
+            }
         }
         limparEcra();
         opcoesAdmin(p);
