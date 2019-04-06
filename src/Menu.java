@@ -6,7 +6,7 @@ public class Menu {
                "2 - Registar\n\n"+
                "0 - Sair"
         );
-        System.out.print("Opção: ");
+        System.out.print("\nOpção: ");
     }
 
     public static void menuEntrar(){
@@ -16,7 +16,7 @@ public class Menu {
                 "3 - Entrar Administrador\n\n" +
                 "0 - Voltar"
         );
-        System.out.print("Opção: ");
+        System.out.print("\nOpção: ");
     }
 
     public  static void menuRegistar(){
@@ -25,7 +25,7 @@ public class Menu {
                "2 - Registar proprietario\n\n" +
                "0 - Voltar"
         );
-        System.out.print("Opção: ");
+        System.out.print("\nOpção: ");
     }
 
     public static void menuOpcoesCliente(){
@@ -34,10 +34,10 @@ public class Menu {
                 "2 - Veiculo mais barato\n" +
                 "3 - Veiculo mais barato a distancia a pe\n" +
                 "4 - Veiculo especifico\n" +
-                "5 - Veiculo com autonomia desejada\n" +
+                "5 - Veiculo com autonomia desejada\n\n" +
                 "0 - Voltar\n"
         );
-        System.out.print("Opção: ");
+        System.out.print("\nOpção: ");
     }
 
     public static void menuOpcoesProprietario(){
@@ -45,10 +45,10 @@ public class Menu {
                 "1 - Veiculo disponivel\n" +
                 "2 - Abastecer veiculo\n" +
                 "3 - Adicionar veiculo\n" +
-                "4 - Lista de carros\n" +
+                "4 - Lista de carros\n\n" +
                 "0 - Voltar\n"
         );
-        System.out.print("Opção: ");
+        System.out.print("\nOpção: ");
     }
 
     public static void tipoVeiculo(){
@@ -57,7 +57,7 @@ public class Menu {
                 "2 - Hibrido\n" +
                 "3 - Eletrico\n"
         );
-        System.out.print("Opão: ");
+        System.out.print("\nOpção: ");
     }
 
     public static void menuOpcoesAdmin(){
@@ -70,6 +70,6 @@ public class Menu {
                 "6 - Lista de veiculos ocupados\n"+
                 "0 - Voltar\n"
         );
-        System.out.print("Opção: ");
+        System.out.print("\nOpção: ");
     }
 }
