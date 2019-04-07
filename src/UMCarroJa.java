@@ -267,9 +267,10 @@ public class UMCarroJa implements Serializable{
         while(it.hasNext()){
             if(it.next().getValue().getMatricula().equals(matricula)){
                 it.next().getValue().setAutonomia(it.next().getValue().getAutonomia() + percentagem);
+                int auto = it.next().getValue().getAutonomia();
             }
         }
-        System.out.println("Veiculo de matricula " + matricula + " agora tem " + );
+        System.out.println("Veiculo de matricula " + matricula + " agora tem " + auto + " de autonomia");
     }
 
 

@@ -3,6 +3,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+//TODO  excepcoes, ver se deixar ou remover break
+//TODO  funcao para retroceder
 public class Main {
     public void main() throws Exception {
         UMCarroJa p = new UMCarroJa();
@@ -113,6 +115,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         limparEcra();
         int x = -1;
+        int y = -1;
         Menu.menuOpcoesCliente();
         x = input.nextInt();
         while(x!=0 && x!=1 && x!=2 && x!=3 && x!=4 && x!=5){
@@ -121,15 +124,35 @@ public class Main {
         }
         switch(x){
             case(1):
-                p.veiculoMaisProximo(u);
+                p.veiculoMaisProximo(u).toString();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
             case(2):
-                p.veiculoMaisBarato(u);
+                p.veiculoMaisBarato(u).toString();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
             case(3):
-//                p.veiculoMaisBaratoPe(u);
+//                p.veiculoMaisBaratoPe(u).toString();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
             case(4):
-                p.veiculoEspecifico(u);
+                p.veiculoEspecifico(u).toString();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
             case(5):
-                p.veiculoAutonomiaDesejada(u);
+                p.veiculoAutonomiaDesejada(u).toString();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
             case(0):
                 executa(p);
                 break;
@@ -142,6 +165,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         limparEcra();
         int x = -1;
+        int y = -1;
         Menu.menuOpcoesProprietario();
         x = input.nextInt();
         while(x!=0 && x!=1 && x!=2 && x!=3){
@@ -151,14 +175,36 @@ public class Main {
         switch(x){
             case(1):
                 p.veiculoDisponivel(u);
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
             case(2):
                 p.abastecerVeiculo(u);
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
             case(3):
                 p.adicionarVeiculo(u);
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
             case(4):
-                p.listaCarros(u);
+                for(Veiculo v : p.listaCarros(u)){
+                    v.toString();
+                }
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
             case(5):
 //                p.verClassificacao(u);
+//                System.out.println("0 - retroceder");
+//                while(y != 0){
+//                    x = input.nextInt();
+//                }
             case(0):
                 executa(p);
                 break;
@@ -187,6 +233,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         limparEcra();
         int x = -1;
+        int y = -1;
         Menu.menuOpcoesAdmin();
         x = input.nextInt();
         while(x!=0 && x!=1 && x!=2 && x!=3 && x!=4 && x!=5 && x!=6){
@@ -199,26 +246,53 @@ public class Main {
                 for(Utilizador u : p.listaUtilizadores()){
                     u.toString();
                 }
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
             case(2):
                 for(Utilizador u : p.listaClientes()){
                     u.toString();
+                }
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
                 }
             case(3):
                 for(Utilizador u : p.listaProprietarios()){
                     u.toString();
                 }
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
             case(4):
                 for(Veiculo v : p.listaVeiculos()){
                     v.toString();
+                }
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
                 }
             case(5):
                 for(Veiculo v : p.listaLivres()){
                     v.toString();
                 }
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
             case(6):
                 for(Veiculo v : p.listaOcupados()){
                     v.toString();
                 }
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    x = input.nextInt();
+                }
+            case(0):
+                executa(p);
+                break;
         }
     }
 
