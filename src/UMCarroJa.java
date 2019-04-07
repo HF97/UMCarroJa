@@ -246,6 +246,7 @@ public class UMCarroJa implements Serializable{
         System.out.println("Matricula do veiculo: ");
         String matricula = input.next();
         this.livres.add(this.veiculos.get(matricula).getMatricula());
+        System.out.println("Veiculo com matricula " + matricula + " está livre");
     }
 
 
@@ -265,14 +266,10 @@ public class UMCarroJa implements Serializable{
         Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
         while(it.hasNext()){
             if(it.next().getValue().getMatricula().equals(matricula)){
-                if(it.next().getValue().getAutonomia() < 100){
-                    it.next().getValue().setAutonomia(it.next().getValue().getAutonomia() + percentagem);
-                    if(it.next().getValue().getAutonomia() > 100){
-                        it.next().getValue().setAutonomia(100);
-                    }
-                }
+                it.next().getValue().setAutonomia(it.next().getValue().getAutonomia() + percentagem);
             }
         }
+        System.out.println("Veiculo de matricula " + matricula + " agora tem " + );
     }
 
 
