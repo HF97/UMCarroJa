@@ -5,8 +5,10 @@ import java.util.Scanner;
 
 //TODO  excepcoes, ver se deixar ou remover break
 //TODO  funcao para retroceder
+
 public class Main {
-    public void main() throws Exception {
+
+    public static void main(String[] args) {
         UMCarroJa p = new UMCarroJa();
         try{
             p = p.carregaObjetoInformacao();
