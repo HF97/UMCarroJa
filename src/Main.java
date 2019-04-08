@@ -89,9 +89,11 @@ public class Main {
         }
     }
 
+    //TODO  retroceder
     public static void entrarUtilizador (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
+        System.out.println("0 - Retroceder");
         System.out.println("Email: ");
         String email = "";
         Utilizador u = null;
