@@ -12,8 +12,7 @@ public class Menu {
     public static void menuEntrar(){
         System.out.println(
                 "1 - Entrar Utilizador\n" +
-                "2 - Entrar Proprietario\n" +
-                "3 - Entrar Administrador\n\n" +
+                "2 - Entrar Administrador\n\n" +
                 "0 - Voltar"
         );
         System.out.print("\nOpção: ");

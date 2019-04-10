@@ -32,6 +32,9 @@ public class Main {
         Menu.menuPrincipal();
         while(x!=0 && x!=1 && x!=2){
             x = input.nextInt();
+            if(x!=0 && x!=1 && x!=2){
+                System.out.print("Opção Invalida\nOpção: ");
+            }
         }
         limparEcra();
         switch(x){
@@ -61,20 +64,12 @@ public class Main {
                     entrarUtilizador(p);
                 }
                 catch (Exception e){
+                    //TODO  a funcao pode falhar e nao ser problema do nif ou pass
                     System.out.println("NIF ou Password errado(a).");
                     entrarUtilizador(p);
                 }
                 break;
             case(2):
-                try{
-                    entrarUtilizador(p);
-                }
-                catch (Exception e){
-                    System.out.println("NIF ou Password errado(a).");
-                    entrarUtilizador(p);
-                }
-                break;
-            case(3):
                 try{
                     entrarAdmin(p);
                 }
@@ -132,31 +127,31 @@ public class Main {
                 p.veiculoMaisProximo(u).toString();
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(2):
                 p.veiculoMaisBarato(u).toString();
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(3):
 //                p.veiculoMaisBaratoPe(u).toString();
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(4):
                 p.veiculoEspecifico(u).toString();
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(5):
                 p.veiculoAutonomiaDesejada(u).toString();
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(0):
                 executa(p);
@@ -182,19 +177,19 @@ public class Main {
                 p.veiculoDisponivel(u);
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(2):
                 p.abastecerVeiculo(u);
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(3):
                 p.adicionarVeiculo(u);
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(4):
                 for(Veiculo v : p.listaCarros(u)){
@@ -202,13 +197,13 @@ public class Main {
                 }
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(5):
 //                p.verClassificacao(u);
 //                System.out.println("0 - retroceder");
 //                while(y != 0){
-//                    x = input.nextInt();
+//                    y = input.nextInt();
 //                }
             case(0):
                 executa(p);
@@ -250,18 +245,19 @@ public class Main {
             case(1):
                 for(Utilizador u : p.listaUtilizadores()){
                     u.toString();
+                while(y != 0){
+                    y = input.nextInt();
+                }
+
                 }
                 System.out.println("0 - retroceder");
-                while(y != 0){
-                    x = input.nextInt();
-                }
             case(2):
                 for(Utilizador u : p.listaClientes()){
                     u.toString();
                 }
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(3):
                 for(Utilizador u : p.listaProprietarios()){
@@ -269,7 +265,7 @@ public class Main {
                 }
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(4):
                 for(Veiculo v : p.listaVeiculos()){
@@ -277,7 +273,7 @@ public class Main {
                 }
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(5):
                 for(Veiculo v : p.listaLivres()){
@@ -285,7 +281,7 @@ public class Main {
                 }
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(6):
                 for(Veiculo v : p.listaOcupados()){
@@ -293,7 +289,7 @@ public class Main {
                 }
                 System.out.println("0 - retroceder");
                 while(y != 0){
-                    x = input.nextInt();
+                    y = input.nextInt();
                 }
             case(0):
                 executa(p);
@@ -311,47 +307,44 @@ public class Main {
         if(x == 0){
             executa(p);
         }
-        if(x==1 || x==2){
-            limparEcra();
-            System.out.println("Nome: ");
-            String nome = input.next();
-            System.out.println("NIF: ");
-            int NIF = input.nextInt();
-            System.out.println("Email: ");
-            String email = input.next();
-            System.out.println("Password: ");
-            String password = input.next();
-            System.out.println("Morada:" );
-            String morada = input.next();
-            System.out.println("Data de nascimento (dd-mm-yyyy: ");
-            LocalDate datanasc = null;
-            boolean f = true;
-            do{
-                try{
-                    String dataDespesaInput = input.next();
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                    datanasc = LocalDate.parse(dataDespesaInput, formatter);
-                    f=false;
-                }
-                catch(Exception e){System.out.println("Data invalida.");}
-            }while(f);
-            switch (x){
-                case(1):
-                    Coordenada coord = new Coordenada();
-                    Cliente c = new Cliente(nome, NIF, email, password, morada, datanasc, coord);
-                    p.adicionaUtilizador(c.clone());
-                    break;
-                case(2):
-                    int classificacao = 0;
-                    Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao);
-                    p.adicionaUtilizador(prop.clone());
-                    break;
-            }
+        while(x!=1 && x!=2){
+            System.out.print("Opção errada!\nOpção: ");
+            x = input.nextInt();
         }
-        else{
-            while(x!=1 || x!=2){
-                System.out.println("Opcao errada!\nNova opcao: ");
+        limparEcra();
+        System.out.println("Nome: ");
+        String nome = input.next();
+        System.out.println("NIF: ");
+        int NIF = input.nextInt();
+        System.out.println("Email: ");
+        String email = input.next();
+        System.out.println("Password: ");
+        String password = input.next();
+        System.out.println("Morada:" );
+        String morada = input.next();
+        System.out.println("Data de nascimento (dd-mm-yyyy: ");
+        LocalDate datanasc = null;
+        boolean f = true;
+        do{
+            try{
+                String dataDespesaInput = input.next();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                datanasc = LocalDate.parse(dataDespesaInput, formatter);
+                f=false;
             }
+            catch(Exception e){System.out.println("Data invalida.");}
+        }while(f);
+        switch (x){
+            case(1):
+                Coordenada coord = new Coordenada();
+                Cliente c = new Cliente(nome, NIF, email, password, morada, datanasc, coord);
+                p.adicionaUtilizador(c.clone());
+                break;
+            case(2):
+                int classificacao = 0;
+                Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao);
+                p.adicionaUtilizador(prop.clone());
+                break;
         }
         executa(p);
     }
