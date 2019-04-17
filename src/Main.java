@@ -94,6 +94,7 @@ public class Main {
         Utilizador u = null;
         email = input.next();
         u = p.getUtilizador(email);
+        System.out.println(u);
         System.out.println("Password: ");
         String pass = "";
         pass = input.next();
@@ -229,6 +230,7 @@ public class Main {
 
     //TODO  acabar funcao opcoesAdmin
     //TODO  a funcao da o utilizador mas sai imediatamente
+    //TODO  esta a imprimir todos os printds de retroceder
     private static void opcoesAdmin (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
@@ -245,17 +247,16 @@ public class Main {
             case(1):
                 for(Utilizador u : p.listaUtilizadores()){
                     u.toString();
+                }
+                System.out.println("0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
-
-                }
-                System.out.println("0 - retroceder");
             case(2):
                 for(Utilizador u : p.listaClientes()){
                     u.toString();
                 }
-                System.out.println("0 - retroceder");
+//                System.out.println("0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -263,7 +264,7 @@ public class Main {
                 for(Utilizador u : p.listaProprietarios()){
                     u.toString();
                 }
-                System.out.println("0 - retroceder");
+//                System.out.println("0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -271,7 +272,7 @@ public class Main {
                 for(Veiculo v : p.listaVeiculos()){
                     v.toString();
                 }
-                System.out.println("0 - retroceder");
+//                System.out.println("0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -279,7 +280,7 @@ public class Main {
                 for(Veiculo v : p.listaLivres()){
                     v.toString();
                 }
-                System.out.println("0 - retroceder");
+//                System.out.println("0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -287,7 +288,7 @@ public class Main {
                 for(Veiculo v : p.listaOcupados()){
                     v.toString();
                 }
-                System.out.println("0 - retroceder");
+//                System.out.println("0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }

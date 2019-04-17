@@ -44,7 +44,7 @@ public class Coordenada implements Serializable
     }
 
     public String toString(){
-        StringBuilder sb = new StringBuilder("Coordenada{x:");
+        StringBuilder sb = new StringBuilder("\nCoordenada {x:");
         sb.append(this.getX());
         sb.append(", y:");
         sb.append(this.getY());

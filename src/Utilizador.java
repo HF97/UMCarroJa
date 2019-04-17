@@ -87,7 +87,7 @@ public abstract class Utilizador implements Serializable {
         sb.append(this.getPassword());
         sb.append("\nMorada: ");
         sb.append(this.getMorada());
-        sb.append("Data de nascimento: ");
+        sb.append("\nData de nascimento: ");
         sb.append(this.getDatanasc());
         return sb.toString();
     }
