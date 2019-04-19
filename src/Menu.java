@@ -15,7 +15,6 @@ public class Menu {
                 "2 - Entrar Administrador\n\n" +
                 "0 - Voltar"
         );
-        System.out.print("\nOpção: ");
     }
 
     public  static void menuRegistar(){
@@ -67,6 +66,11 @@ public class Menu {
                 "4 - Lista de veiculos\n"+
                 "5 - Lista de veiculos livres\n"+
                 "6 - Lista de veiculos ocupados\n"+
+                "7 - Remover utilizador\n"+
+                "8 - Remover todos utilizadores\n"+
+                "9 - Remover veiculo\n"+
+                "10 - Remover todos veiculos\n"+
+                "11 - Apagar base dados\n\n"+
                 "0 - Voltar\n"
         );
         System.out.print("\nOpção: ");

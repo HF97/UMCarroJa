@@ -109,6 +109,36 @@ public class UMCarroJa implements Serializable{
         return this.utilizadores.get(email);
     }
 
+    public void removeUtilizador(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Email do utilizador: ");
+        String email = input.next();
+        this.utilizadores.remove(email);
+    }
+
+    public void removeTodosUtilizadores(){
+        this.utilizadores.clear();
+    }
+
+    public void removeVeiculo(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Matricula do veiculo: ");
+        String matricula = input.next();
+        this.utilizadores.remove(matricula);
+    }
+
+    public void removeTodosVeiculos(){
+        this.veiculos.clear();
+    }
+
+    public void apagarTudo(){
+        this.utilizadores.clear();
+        this.veiculos.clear();
+        this.alugueres.clear();
+        this.livres.clear();
+        this.ocupados.clear();
+    }
+
     //    -----------------
 //    Guardar basedados
 //    -----------------
