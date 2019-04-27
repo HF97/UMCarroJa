@@ -6,7 +6,6 @@ public class Cliente extends Utilizador implements Serializable {
 
     private Coordenada coord;
 
-    //TODO    Fazer hash com o historial do cliente
     //TODO    Depois mudar o toString e equals
 
     public Cliente(){
