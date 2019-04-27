@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
 
 public class Cliente extends Utilizador implements Serializable {
 
@@ -13,8 +14,8 @@ public class Cliente extends Utilizador implements Serializable {
         coord = new Coordenada();
     }
 
-    public Cliente(String nome, int NIF, String email, String password, String morada, LocalDate datanasc, Coordenada coord){
-        super(nome, NIF, email, password, morada, datanasc);
+    public Cliente(String nome, int NIF, String email, String password, String morada, LocalDate datanasc, Coordenada coord, Collection<Aluguer> histAlugUti){
+        super(nome, NIF, email, password, morada, datanasc, histAlugUti);
         this.coord = coord;
     }
 

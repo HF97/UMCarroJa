@@ -1,5 +1,8 @@
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public abstract class Utilizador implements Serializable {
 
@@ -9,6 +12,7 @@ public abstract class Utilizador implements Serializable {
     private String password;
     private String morada;
     private LocalDate datanasc;
+    private List<Aluguer> histAlugUti;
 
     public Utilizador(){
         this.nome = "";
@@ -17,15 +21,20 @@ public abstract class Utilizador implements Serializable {
         this.password = "";
         this.morada = "";
         this.datanasc = LocalDate.now();
+        this.histAlugUti = new ArrayList<Aluguer>();
     }
 
-    public Utilizador(String nome, int NIF, String email, String password, String morada, LocalDate datanasc){
+    public Utilizador(String nome, int NIF, String email, String password, String morada, LocalDate datanasc, Collection<Aluguer> histAlugUti){
         this.nome = nome;
         this.NIF = NIF;
         this.email = email;
         this.password = password;
         this.morada = morada;
         this.datanasc = datanasc;
+        this.histAlugUti = new ArrayList<Aluguer>();
+        for(Aluguer a : histAlugUti){
+            histAlugUti.add(a);
+        }
     }
 
     public Utilizador(Utilizador a){
@@ -35,6 +44,7 @@ public abstract class Utilizador implements Serializable {
         this.password = a.getPassword();
         this.morada = a.getMorada();
         this.datanasc = a.getDatanasc();
+        this.histAlugUti = a.getHistAlugUti();
     }
 
     public String getNome(){
@@ -46,19 +56,23 @@ public abstract class Utilizador implements Serializable {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public String getMorada() {
-        return morada;
+        return this.morada;
     }
 
     public LocalDate getDatanasc() {
-        return datanasc;
+        return this.datanasc;
+    }
+
+    public List<Aluguer> getHistAlugUti(){
+        return this.histAlugUti;
     }
 
     @Override
@@ -71,7 +85,8 @@ public abstract class Utilizador implements Serializable {
                 a.getEmail().equals(email) &&
                 a.getPassword() == password &&
                 a.getMorada().equals(morada) &&
-                a.getDatanasc().equals(datanasc);
+                a.getDatanasc().equals(datanasc) &&
+                a.getHistAlugUti().equals(histAlugUti);
     }
 
     public abstract Utilizador clone();
@@ -89,6 +104,10 @@ public abstract class Utilizador implements Serializable {
         sb.append(this.getMorada());
         sb.append("\nData de nascimento: ");
         sb.append(this.getDatanasc());
+        sb.append("\nHistorico: ");
+        for(Aluguer a : histAlugUti){
+            sb.append(a.toString());
+        }
         return sb.toString();
     }
 }

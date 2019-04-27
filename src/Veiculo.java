@@ -16,7 +16,7 @@ public abstract class Veiculo implements Serializable {
     private Coordenada coord;
     private int autonomia;
     private String proprietario;
-    private List<Aluguer> histAlug;
+    private List<Aluguer> histAlugVeic;
 
     public Veiculo(){
         this.matricula = "";
@@ -27,10 +27,10 @@ public abstract class Veiculo implements Serializable {
         this.coord = new Coordenada();
         this.autonomia = 0;
         this.proprietario = "";
-        this.histAlug = new ArrayList<Aluguer>();
+        this.histAlugVeic = new ArrayList<Aluguer>();
     }
 
-    public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario, Collection<Aluguer> histAlug){
+    public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario, Collection<Aluguer> histAlugVeic){
         this.matricula = matricula;
         this.velmediakm = velmediakm;
         this.precokm = precokm;
@@ -39,6 +39,9 @@ public abstract class Veiculo implements Serializable {
         this.coord = coord;
         this.autonomia = autonomia;
         this.proprietario = proprietario;
+        for(Aluguer a : histAlugVeic){
+            histAlugVeic.add(a);
+        }
     }
 
     public Veiculo(Veiculo v){
@@ -50,7 +53,7 @@ public abstract class Veiculo implements Serializable {
         this.coord = v.getCoord();
         this.autonomia = v.getAutonomia();
         this.proprietario = v.getProprietario();
-        this.histAlug = v.getHistAlug();
+        this.histAlugVeic = v.getHistAlugVeic();
     }
 
     public String getMatricula() {
@@ -85,8 +88,8 @@ public abstract class Veiculo implements Serializable {
         return proprietario;
     }
 
-    public List<Aluguer> getHistAlug(){
-        return this.histAlug;
+    public List<Aluguer> getHistAlugVeic(){
+        return this.histAlugVeic;
     }
 
     public void setAutonomia(int autonomia) {
@@ -104,7 +107,8 @@ public abstract class Veiculo implements Serializable {
                 v.getClassificacao() == classificacao &&
                 v.getCoord().equals(coord) &&
                 v.getAutonomia() == (autonomia) &&
-                v.getProprietario().equals(proprietario);
+                v.getProprietario().equals(proprietario) &&
+                v.getHistAlugVeic().equals(histAlugVeic);
     }
 
     public abstract Veiculo clone();
@@ -125,6 +129,10 @@ public abstract class Veiculo implements Serializable {
         sb.append(this.getAutonomia());
         sb.append("\nProprietario: ");
         sb.append(this.getProprietario());
+        sb.append("\nHistorico:");
+        for(Aluguer a : this.getHistAlugVeic()){
+            sb.append(sb.toString());
+        }
         return sb.toString();
     }
 }
