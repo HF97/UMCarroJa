@@ -6,8 +6,6 @@ public class Cliente extends Utilizador implements Serializable {
 
     private Coordenada coord;
 
-    //TODO    Depois mudar o toString e equals
-
     public Cliente(){
         super();
         coord = new Coordenada();

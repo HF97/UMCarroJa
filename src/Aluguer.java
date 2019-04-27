@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Duration;
 
 public class Aluguer implements Serializable {
 
@@ -8,26 +9,25 @@ public class Aluguer implements Serializable {
     private Coordenada coord;
     private Veiculo veiculo;
     private LocalDate data;
-    private int duracao;
+    private Duration duracao;
     private String emailCliente;
     private String emailProprietario;
     private double custoTotal;
     private int classificacao;
 
-    //TODO  resolver new veiculo
     public Aluguer() {
         this.id = 0;
         this.coord = new Coordenada();
         this.veiculo = new Gasolina();
         this.data = LocalDate.now();
-        this.duracao = 0;
+        this.duracao = Duration.ZERO;
         this.emailCliente = "";
         this.emailProprietario = "";
         this.custoTotal = 0.0;
         this.classificacao = 0;
     }
 
-    public Aluguer(int id, Coordenada coord, Veiculo veiculo, LocalDate data, int duracao, String emailCliente, String emailProprietario, double custoTotal, int classificacao){
+    public Aluguer(int id, Coordenada coord, Veiculo veiculo, LocalDate data, Duration duracao, String emailCliente, String emailProprietario, double custoTotal, int classificacao){
         this.id = id;
         this.coord = coord;
         this.veiculo = veiculo;
@@ -67,7 +67,7 @@ public class Aluguer implements Serializable {
         return data;
     }
 
-    public int getDuracao() {
+    public Duration getDuracao() {
         return duracao;
     }
 
@@ -103,7 +103,7 @@ public class Aluguer implements Serializable {
         this.data = data;
     }
 
-    public void setDuracao(int duracao) {
+    public void setDuracao(Duration duracao) {
         this.duracao = duracao;
     }
 
