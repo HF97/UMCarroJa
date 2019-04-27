@@ -1,4 +1,7 @@
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Veiculo implements Serializable {
 
@@ -7,13 +10,13 @@ public abstract class Veiculo implements Serializable {
     private double precokm;
     private double consumo;
 
-    //TODO  Hash com historico
     //TODO  metodos set
 
     private int classificacao;
     private Coordenada coord;
     private int autonomia;
     private String proprietario;
+    private List<Aluguer> histAlug;
 
     public Veiculo(){
         this.matricula = "";
@@ -24,9 +27,10 @@ public abstract class Veiculo implements Serializable {
         this.coord = new Coordenada();
         this.autonomia = 0;
         this.proprietario = "";
+        this.histAlug = new ArrayList<Aluguer>();
     }
 
-    public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario){
+    public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario, Collection<Aluguer> histAlug){
         this.matricula = matricula;
         this.velmediakm = velmediakm;
         this.precokm = precokm;
@@ -46,6 +50,7 @@ public abstract class Veiculo implements Serializable {
         this.coord = v.getCoord();
         this.autonomia = v.getAutonomia();
         this.proprietario = v.getProprietario();
+        this.histAlug = v.getHistAlug();
     }
 
     public String getMatricula() {
@@ -78,6 +83,10 @@ public abstract class Veiculo implements Serializable {
 
     public String getProprietario() {
         return proprietario;
+    }
+
+    public List<Aluguer> getHistAlug(){
+        return this.histAlug;
     }
 
     public void setAutonomia(int autonomia) {
