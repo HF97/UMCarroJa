@@ -10,8 +10,6 @@ public abstract class Veiculo implements Serializable {
     private double precokm;
     private double consumo;
 
-    //TODO  metodos set
-
     private int classificacao;
     private Coordenada coord;
     private int autonomia;
@@ -94,6 +92,18 @@ public abstract class Veiculo implements Serializable {
 
     public void setAutonomia(int autonomia) {
         this.autonomia = autonomia;
+    }
+
+    public void setClassificacao(int classificacao) {
+        this.classificacao = classificacao;
+    }
+
+    public void setCoord(Coordenada coord) {
+        this.coord = coord;
+    }
+
+    public void setHistAlugVeic(List<Aluguer> histAlugVeic) {
+        this.histAlugVeic = histAlugVeic;
     }
 
     public boolean equals(Object o) {
