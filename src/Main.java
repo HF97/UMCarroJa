@@ -1,6 +1,8 @@
 import java.lang.ref.Cleaner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.lang.Exception;
 
@@ -363,6 +365,7 @@ public class Main {
         String morada = input.next();
         System.out.println("Data de nascimento (dd-mm-yyyy: ");
         LocalDate datanasc = null;
+        List<Aluguer> histAlugUti = new ArrayList<Aluguer>();
         boolean f = true;
         do{
             try{
@@ -376,12 +379,12 @@ public class Main {
         switch (x){
             case(1):
                 Coordenada coord = new Coordenada();
-                Cliente c = new Cliente(nome, NIF, email, password, morada, datanasc, coord);
+                Cliente c = new Cliente(nome, NIF, email, password, morada, datanasc, coord, histAlugUti);
                 p.adicionaUtilizador(c.clone());
                 break;
             case(2):
                 int classificacao = 0;
-                Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao);
+                Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao, histAlugUti);
                 p.adicionaUtilizador(prop.clone());
                 break;
         }
