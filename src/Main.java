@@ -248,8 +248,8 @@ public class Main {
 
     //TODO  acabar funcao opcoesAdmin
     //TODO  a funcao da o utilizador mas sai imediatamente
-    //TODO  esta a imprimir todos os printds de retroceder
     //TODO  esta em loop com opcoesadmin e executa
+    //TODO  resolver problema por ser static e nao static
     private static void opcoesAdmin (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
@@ -331,6 +331,12 @@ public class Main {
                 opcoesAdmin(p);
             case(11):
                 p.apagarTudo();
+                opcoesAdmin(p);
+            case(12):
+                UMCarroJa.setUtilizadores(PovoarBD.povoarClientes());
+                opcoesAdmin(p);
+            case(13):
+                UMCarroJa.setVeiculos(PovoarBD.povoarVeiculos());
                 opcoesAdmin(p);
             case(0):
                 executa(p);

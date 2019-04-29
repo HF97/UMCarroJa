@@ -139,6 +139,26 @@ public class UMCarroJa implements Serializable{
         this.ocupados.clear();
     }
 
+    public void setUtilizadores(Map<String, Utilizador> utilizadores) {
+        this.utilizadores = utilizadores;
+    }
+
+    public void setVeiculos(Map<String, Veiculo> veiculos) {
+        this.veiculos = veiculos;
+    }
+
+    public void setAlugueres(Map<Integer, Aluguer> alugueres) {
+        this.alugueres = alugueres;
+    }
+
+    public void setLivres(List<String> livres) {
+        this.livres = livres;
+    }
+
+    public void setOcupados(List<String> ocupados) {
+        this.ocupados = ocupados;
+    }
+
     //    -----------------
 //    Guardar basedados
 //    -----------------
@@ -326,6 +346,7 @@ public class UMCarroJa implements Serializable{
         System.out.println("Autonomia: ");
         int autonomia = input.nextInt();
         String prop = u.getEmail();
+        List<Aluguer> histAlugVeic = new ArrayList<Aluguer>();
         System.out.println("Tipo de veiculo: ");
         Menu.tipoVeiculo();
         int x = input.nextInt();
@@ -334,14 +355,14 @@ public class UMCarroJa implements Serializable{
         }
         switch (x){
             case(1):
-                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop);
+                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, histAlugVeic);
                 adicionaVeiculo(gas.clone());
 
             case(2):
-                Hibrido hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop);
+                Hibrido hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, histAlugVeic);
                 adicionaVeiculo(hib.clone());
             case(3):
-                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop);
+                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, histAlugVeic);
                 adicionaVeiculo(ele.clone());
         }
     }

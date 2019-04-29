@@ -70,7 +70,9 @@ public class Menu {
                 "8 - Remover todos utilizadores\n"+
                 "9 - Remover veiculo\n"+
                 "10 - Remover todos veiculos\n"+
-                "11 - Apagar base dados\n\n"+
+                "11 - Apagar base dados\n"+
+                "12 - Povoar BD utilizadores\n"+
+                "13 - Povoar BD veiculos\n"+
                 "0 - Voltar\n"
         );
         System.out.print("\nOpção: ");
