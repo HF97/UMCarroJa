@@ -32,19 +32,23 @@ public class PovoarBD {
         Proprietario c3 = new Proprietario("Andre Almeida", 345345345, "andrealmeida@gmail.com", "andrealmeida", "Rua do Almeida", LocalDate.parse("15-09-1986"), 0, histAlugUti);
         Proprietario c4 = new Proprietario("Renato Rodrigues", 456456456, "renatorodrigues@gmail.com", "renatorodrigues", "Rua do Renato", LocalDate.parse("12-02-1965"), 0, histAlugUti);
         Proprietario c5 = new Proprietario("Francisco Cervi", 567567567, "franciscocervi@gmail.com", "franciscocervi", "Rua do Francisco", LocalDate.parse("19-08-1995"), 0, histAlugUti);
-        Proprietario c6 = new Proprietario("Lionel Messi", 678678678, "lionelmessi@gmail.com", "lionelmessi", "Rua do Messi", LocalDate.parse("12-04-1977"), 0, histAlugUti);
-        Proprietario c7 = new Proprietario("Andre Ferro", 789789789, "andreferro@gmail.com", "andreferro", "Rua do Ferro", LocalDate.parse("14-02-1979"), 0, histAlugUti);
-        Proprietario c8 = new Proprietario("Bruno Alves", 890890890, "brunoalves@gmail.com", "brunoalves", "Rua do Bruno", LocalDate.parse("21-10-1992"), 0, histAlugUti);
-        Proprietario c9 = new Proprietario("Rui Patricio", 123456789, "ruipatricio@gmail.com", "ruipatricio", "Rua do Patricio", LocalDate.parse("22-05-1986"), 0, histAlugUti);
+//        Proprietario c6 = new Proprietario("Lionel Messi", 678678678, "lionelmessi@gmail.com", "lionelmessi", "Rua do Messi", LocalDate.parse("12-04-1977"), 0, histAlugUti);
+//        Proprietario c7 = new Proprietario("Andre Ferro", 789789789, "andreferro@gmail.com", "andreferro", "Rua do Ferro", LocalDate.parse("14-02-1979"), 0, histAlugUti);
+//        Proprietario c8 = new Proprietario("Bruno Alves", 890890890, "brunoalves@gmail.com", "brunoalves", "Rua do Bruno", LocalDate.parse("21-10-1992"), 0, histAlugUti);
+//        Proprietario c9 = new Proprietario("Rui Patricio", 123456789, "ruipatricio@gmail.com", "ruipatricio", "Rua do Patricio", LocalDate.parse("22-05-1986"), 0, histAlugUti);
     }
 
     public static void povoarVeiculos(){
         List<Aluguer> histAlugUti = new ArrayList<Aluguer>();
         Coordenada coord1 = new Coordenada(0,0);
         Gasolina g1 = new Gasolina("11-aa-11", 50.0, 5.0, 5.7, 0, coord1, 800, "joaofelix@gmail.com", histAlugUti);
-
-
-        public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario, Collection<Aluguer> histAlugVeic)
-
+        Gasolina g2 = new Gasolina("22-bb-22", 70.0, 8.0, 8.7, 0, coord1, 700, "rubendias@gmail.com", histAlugUti);
+        Gasolina g3 = new Gasolina("33-cc-33", 85.0, 8.0, 6.7, 0, coord1, 1100, "andrealmeida@gmail.com", histAlugUti);
+        Eletrico e1 = new Eletrico("44-dd-44", 55.0, 2.0, 3.0, 0, coord1, 550, "renatorodrigues@gmail.com", histAlugUti);
+        Eletrico e2 = new Eletrico("55-ee-55", 40.0, 3.0, 2.5, 0, coord1, 600, "franciscocervi@gmail.com", histAlugUti);
+        Eletrico e3 = new Eletrico("66-ff-66", 45.0, 4.0, 4.0, 0, coord1, 660, "joaofelix@gmail.com", histAlugUti);
+        Hibrido h1 = new Hibrido("77-gg-77", 30.0, 3.5, 2.1, 0, coord1, 450, "andrealmeida@gmail.com", histAlugUti);
+        Hibrido h2 = new Hibrido("88-hh-88", 45.0, 4.0, 3.7, 0, coord1, 600, "renatorodrigues@gmail.com", histAlugUti);
+        Hibrido h3 = new Hibrido("99-ii-99", 25.0, 2.0, 1.7, 0, coord1, 500, "joaofelix@gmail.com", histAlugUti);
     }
 }

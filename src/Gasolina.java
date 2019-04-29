@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.Collection;
 
 public class Gasolina extends Veiculo implements Serializable {
 
@@ -6,8 +7,8 @@ public class Gasolina extends Veiculo implements Serializable {
         super();
     }
 
-    public Gasolina(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario) {
-        super(matricula, velmediakm, precokm, consumo, classificacao, coord, autonomia, proprietario);
+    public Gasolina(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario, Collection<Aluguer> histAlugVeic) {
+        super(matricula, velmediakm, precokm, consumo, classificacao, coord, autonomia, proprietario, histAlugVeic);
     }
 
     public Gasolina(Gasolina g){
