@@ -12,7 +12,7 @@ public abstract class Utilizador implements Serializable {
     private String password;
     private String morada;
     private LocalDate datanasc;
-    private List<Aluguer> histAlugUti;
+    private List<Integer> histAlugUti;
 
     public Utilizador(){
         this.nome = "";
@@ -21,18 +21,18 @@ public abstract class Utilizador implements Serializable {
         this.password = "";
         this.morada = "";
         this.datanasc = LocalDate.now();
-        this.histAlugUti = new ArrayList<Aluguer>();
+        this.histAlugUti = new ArrayList<Integer>();
     }
 
-    public Utilizador(String nome, int NIF, String email, String password, String morada, LocalDate datanasc, Collection<Aluguer> histAlugUti){
+    public Utilizador(String nome, int NIF, String email, String password, String morada, LocalDate datanasc, Collection<Integer> histAlugUti){
         this.nome = nome;
         this.NIF = NIF;
         this.email = email;
         this.password = password;
         this.morada = morada;
         this.datanasc = datanasc;
-        this.histAlugUti = new ArrayList<Aluguer>();
-        for(Aluguer a : histAlugUti){
+        this.histAlugUti = new ArrayList<Integer>();
+        for(Integer a : histAlugUti){
             histAlugUti.add(a);
         }
     }
@@ -71,7 +71,7 @@ public abstract class Utilizador implements Serializable {
         return this.datanasc;
     }
 
-    public List<Aluguer> getHistAlugUti(){
+    public List<Integer> getHistAlugUti(){
         return this.histAlugUti;
     }
 
@@ -105,7 +105,7 @@ public abstract class Utilizador implements Serializable {
         sb.append("\nData de nascimento: ");
         sb.append(this.getDatanasc());
         sb.append("\nHistorico: ");
-        for(Aluguer a : histAlugUti){
+        for(Integer a : histAlugUti){
             sb.append(a.toString());
         }
         return sb.toString();

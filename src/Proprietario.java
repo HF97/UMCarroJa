@@ -13,7 +13,7 @@ public class Proprietario extends Utilizador implements Serializable {
         this.classificacao = 0;
     }
 
-    public Proprietario (String nome, int NIF, String email, String password, String morada, LocalDate datanasc, int classificacao, Collection<Aluguer> histAlugUti){
+    public Proprietario (String nome, int NIF, String email, String password, String morada, LocalDate datanasc, int classificacao, Collection<Integer> histAlugUti){
         super(nome, NIF, email, password, morada, datanasc, histAlugUti);
         this.classificacao = classificacao;
     }
