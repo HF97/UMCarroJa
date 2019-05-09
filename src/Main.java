@@ -371,7 +371,7 @@ public class Main {
         String morada = input.next();
         System.out.println("Data de nascimento (dd-mm-yyyy: ");
         LocalDate datanasc = null;
-        List<Aluguer> histAlugUti = new ArrayList<Aluguer>();
+        List<Integer> histAlugUti = new ArrayList<Integer>();
         boolean f = true;
         do{
             try{
@@ -390,7 +390,8 @@ public class Main {
                 break;
             case(2):
                 int classificacao = 0;
-                Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao, histAlugUti);
+                List<String> carros = new ArrayList<String>();
+                Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao, histAlugUti, carros);
                 p.adicionaUtilizador(prop.clone());
                 break;
         }
