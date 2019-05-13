@@ -277,7 +277,7 @@ public class UMCarroJa implements Serializable{
         int autonomia = input.nextInt();
         Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
         while(it.hasNext()){
-            if(it.next().getValue().getAutonomia() == autonomia && it.next().getValue().getEstado().equals("livre"){
+            if(it.next().getValue().getAutonomia() == autonomia && it.next().getValue().getEstado().equals("livre")){
                 return it.next().getValue();
             }
         }
@@ -359,19 +359,20 @@ public class UMCarroJa implements Serializable{
         System.out.println("Tipo de veiculo: ");
         Menu.tipoVeiculo();
         int x = input.nextInt();
+        String estado = "livre";
         while(x!=1 && x!=2 && x!=3){
             System.out.println("Tipo incorreto");
         }
         switch (x){
             case(1):
-                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, histAlugVeic);
+                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado, histAlugVeic);
                 adicionaVeiculo(gas.clone());
 
             case(2):
-                Hibrido hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, histAlugVeic);
+                Hibrido hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado, histAlugVeic);
                 adicionaVeiculo(hib.clone());
             case(3):
-                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, histAlugVeic);
+                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado, histAlugVeic);
                 adicionaVeiculo(ele.clone());
         }
     }

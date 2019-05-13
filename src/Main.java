@@ -125,20 +125,20 @@ public class Main {
         limparEcra();
         int x = -1;
         int y = -1;
-        Menu.menuOpcoesCliente();
         x = input.nextInt();
         Coordenada coordInicio = u.getCoord();
         System.out.println("Coordenadas de destino:");
         System.out.print("X: ");
-        int x = input.nextInt();
-        System.out.print(" Y: ");
-        int y = input.nextInt();
-        Coordenada coordFim = new Coordenada(x,y);
+        int coordX = input.nextInt();
+        System.out.print("Y: ");
+        int coordY = input.nextInt();
+        Coordenada coordFim = new Coordenada(coordX, coordY);
         Menu.menuOpcoesCliente();
         int opcao = -1;
-        while(opcao!=1 && opcao!=2 && opcao!=3 && opcao!=4 && opcao!=5){
+        while(opcao!=1 && opcao!=2 && opcao!=3 && opcao!=4 && opcao!=5) {
             System.out.println("Opcao incorreta");
             opcao = input.nextInt();
+        }
         Veiculo v = new Gasolina();
         switch (opcao){
             case(1):
@@ -321,10 +321,10 @@ public class Main {
                 p.apagarTudo();
                 opcoesAdmin(p);
             case(12):
-                UMCarroJa.setUtilizadores(PovoarBD.povoarClientes());
+//                UMCarroJa.setUtilizadores(PovoarBD.povoarClientes());
                 opcoesAdmin(p);
             case(13):
-                UMCarroJa.setVeiculos(PovoarBD.povoarVeiculos());
+//                UMCarroJa.setVeiculos(PovoarBD.povoarVeiculos());
                 opcoesAdmin(p);
             case(0):
                 executa(p);
@@ -334,6 +334,7 @@ public class Main {
 
     //TODO  data invalida se meter muitas letras na morada ou noutro atributo, nao tenho certeza
     //TODO  se meter um /n antes da data imprime dois e da duas vezes data errada
+    //TODO  a rua so aparece a primeira palavra
     private static void registarUtilizador (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
