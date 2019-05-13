@@ -120,57 +120,45 @@ public class Main {
     }
 
     //TODO  acabar funcaoCliente
-    private static void opcoesCliente (Utilizador u, UMCarroJa p) throws Exception {
+    private static void opcoesCliente (Cliente u, UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
         int x = -1;
         int y = -1;
         Menu.menuOpcoesCliente();
         x = input.nextInt();
-        while(x!=0 && x!=1 && x!=2 && x!=3 && x!=4 && x!=5){
+        Coordenada coordInicio = u.getCoord();
+        System.out.println("Coordenadas de destino:");
+        System.out.print("X: ");
+        int x = input.nextInt();
+        System.out.print(" Y: ");
+        int y = input.nextInt();
+        Coordenada coordFim = new Coordenada(x,y);
+        Menu.menuOpcoesCliente();
+        int opcao = -1;
+        while(opcao!=1 && opcao!=2 && opcao!=3 && opcao!=4 && opcao!=5){
             System.out.println("Opcao incorreta");
-            x = input.nextInt();
-        }
-        switch(x){
+            opcao = input.nextInt();
+        Veiculo v = new Gasolina();
+        switch (opcao){
             case(1):
-                p.veiculoMaisProximo(u).toString();
-                System.out.println("0 - retroceder");
-                while(y != 0){
-                    y = input.nextInt();
-                }
-                break;
+                v = p.veiculoMaisProximo(coordInicio);
             case(2):
-                p.veiculoMaisBarato(u).toString();
-                System.out.println("0 - retroceder");
-                while(y != 0){
-                    y = input.nextInt();
-                }
-                break;
+                v = p.veiculoMaisBarato();
             case(3):
-//                p.veiculoMaisBaratoPe(u).toString();
-                System.out.println("0 - retroceder");
-                while(y != 0){
-                    y = input.nextInt();
-                }
-                break;
+                v = p.veiculoMaisBaratoPe(u);
             case(4):
-                p.veiculoEspecifico(u).toString();
-                System.out.println("0 - retroceder");
-                while(y != 0){
-                    y = input.nextInt();
-                }
-                break;
+                v = p.veiculoEspecifico();
             case(5):
-                p.veiculoAutonomiaDesejada(u).toString();
-                System.out.println("0 - retroceder");
-                while(y != 0){
-                    y = input.nextInt();
-                }
-                break;
-            case(0):
-                executa(p);
-                break;
+                v = p.veiculoAutonomiaDesejada();
         }
+
+
+
+        int id = p.getIdAluguer();
+        p.setIdAluguer(id+1);
+
+//        Aluguer al = new Aluguer(id, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classificacao);
     }
 
     //TODO  acabar funcao opcoesProprietario

@@ -220,6 +220,7 @@ public class UMCarroJa implements Serializable{
     //--------------
     //OPCOES Cliente
     //--------------
+
     public Veiculo veiculoMaisProximo(Coordenada coord){
         Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
         Veiculo v = it.next().getValue().clone();
@@ -231,7 +232,6 @@ public class UMCarroJa implements Serializable{
         return v;
     }
 
-    //TODO  nao e preciso dar utilizador
     public Veiculo veiculoMaisBarato(){
         Scanner input = new Scanner(System.in);
         Veiculo v = this.veiculos.get(this.livres.get(0)).clone();
@@ -243,11 +243,16 @@ public class UMCarroJa implements Serializable{
         return v;
     }
 
-    //TODO  nao e preciso dar utilizador
-    //TODO  fica o mais barato mais perto (compare ???)
-//    public Veiculo veiculoMaisBaratoPe(Utilizador u){
-//
-//    }
+    //a pe fica a ser distancia menor que 2
+    public Veiculo veiculoMaisBaratoPe(Cliente u){
+        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
+        while(it.hasNext()){
+            if(it.next().getValue().getCoord().distancia(u.getCoord()) < 2){
+                return it.next().getValue();
+            }
+        }
+        return null;
+    }
 
     //TODO  meter uma exception
     public Veiculo veiculoEspecifico(){
@@ -278,38 +283,6 @@ public class UMCarroJa implements Serializable{
         }
         return null;
     }
-
-    public void alugarVeiculo (Cliente u){
-        Scanner input = new Scanner(System.in);
-        Coordenada coordInicio = u.getCoord();
-        System.out.println("Coordenadas de destino:");
-        System.out.print("X: ");
-        int x = input.nextInt();
-        System.out.print(" Y: ");
-        int y = input.nextInt();
-        Coordenada coordFim = new Coordenada(x,y);
-        Menu.menuOpcoesCliente();
-        int opcao = input.nextInt();
-        Veiculo v = new Gasolina();
-        switch (opcao){
-            case(1):
-                veiculoMaisProximo(coordInicio);
-            case(2):
-                veiculoMaisBarato();
-            case(3):
-                veiculoMaisBaratoPe();
-            case(4):
-                veiculoEspecifico();
-            case(5):
-                v = veiculoAutonomiaDesejada();
-        }
-        int id = getIdAluguer();
-        setIdAluguer(id+1);
-
-        Aluguer al = new Aluguer(idAluguer, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classificacao);
-    }
-
-
 
     //-------------------
     //OPCOES PROPRIETARIO
