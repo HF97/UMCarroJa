@@ -1,4 +1,6 @@
 import java.io.Serializable;
+import java.time.Duration;
+import java.time.LocalDate;
 import java.util.Scanner;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
@@ -22,6 +24,7 @@ public class UMCarroJa implements Serializable{
     private Map<Integer, Aluguer> alugueres;
     private List<String> livres;
     private List<String> ocupados;
+    private int idAluguer;
 
     public UMCarroJa(){
         numeroCarro = 0;
@@ -30,9 +33,10 @@ public class UMCarroJa implements Serializable{
         this.alugueres = new HashMap<Integer, Aluguer>();
         this.livres = new ArrayList<String>();
         this.ocupados = new ArrayList<String>();
+        this.idAluguer = 1;
     }
 
-    public UMCarroJa(int numeroCarro, Collection<Utilizador> u, Collection<Veiculo> v, Collection<Aluguer> al, Collection<String> liv, Collection<String> ocu){
+    public UMCarroJa(int numeroCarro, Collection<Utilizador> u, Collection<Veiculo> v, Collection<Aluguer> al, Collection<String> liv, Collection<String> ocu, Integer idAluguer){
         this.numeroCarro = numeroCarro;
         this.utilizadores = new HashMap<String, Utilizador>(u.size());
         for(Utilizador a : u){
@@ -54,6 +58,7 @@ public class UMCarroJa implements Serializable{
         for(String a : ocu){
             this.ocupados.add(a);
         }
+        this.idAluguer = idAluguer;
     }
 
     public UMCarroJa(UMCarroJa p){
@@ -63,6 +68,7 @@ public class UMCarroJa implements Serializable{
         this.alugueres = p.getAlugueres();
         this.livres = p.getLivres();
         this.ocupados = p.getOcupados();
+        this.idAluguer = p.getIdAluguer();
     }
 
     public int getNumeroCarro() {
@@ -87,6 +93,14 @@ public class UMCarroJa implements Serializable{
 
     public List<String> getOcupados() {
         return ocupados;
+    }
+
+    public int getIdAluguer() {
+        return idAluguer;
+    }
+
+    public void setIdAluguer(int idAluguer) {
+        this.idAluguer = idAluguer;
     }
 
     public void setNumeroCarro(int numeroCarro) {
@@ -206,18 +220,11 @@ public class UMCarroJa implements Serializable{
     //--------------
     //OPCOES Cliente
     //--------------
-    public Veiculo veiculoMaisProximo(Utilizador u){
-        Scanner input = new Scanner(System.in);
-        System.out.println("Indique as coordenadas do lugar que se encontra: ");
-        System.out.println("X: ");
-        int coordX = input.nextInt();
-        System.out.println("Y: ");
-        int coordY = input.nextInt();
-        Coordenada coordCliente = new Coordenada(coordX, coordY);
+    public Veiculo veiculoMaisProximo(Coordenada coord){
         Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
         Veiculo v = it.next().getValue().clone();
         while(it.hasNext()){
-            if(it.next().getValue().getCoord().distancia(coordCliente) < v.getCoord().distancia(coordCliente)){
+            if(it.next().getValue().getCoord().distancia(coord) < v.getCoord().distancia(coord)){
                 v = it.next().getValue().clone();
             }
         }
@@ -225,7 +232,7 @@ public class UMCarroJa implements Serializable{
     }
 
     //TODO  nao e preciso dar utilizador
-    public Veiculo veiculoMaisBarato(Utilizador u){
+    public Veiculo veiculoMaisBarato(){
         Scanner input = new Scanner(System.in);
         Veiculo v = this.veiculos.get(this.livres.get(0)).clone();
         for(String s : this.livres){
@@ -243,7 +250,7 @@ public class UMCarroJa implements Serializable{
 //    }
 
     //TODO  meter uma exception
-    public Veiculo veiculoEspecifico(Utilizador u){
+    public Veiculo veiculoEspecifico(){
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula do veiculo especifico: ");
         String matricula = input.next();
@@ -257,21 +264,50 @@ public class UMCarroJa implements Serializable{
     }
 
     //RETORNA SET COM TODOS OS CARROS COM A AUTONOMIA
-    public Set<Veiculo> veiculoAutonomiaDesejada(Utilizador u){
+    //PASSA A RETORNAR O PRIMEIRO CARRO ENCONTRADO COM A AUTONOMIA DESEJADA
+    //TODO  pode haver problemas com o null
+    public Veiculo veiculoAutonomiaDesejada(){
         Scanner input = new Scanner(System.in);
         System.out.println("Autonomia desejada: ");
         int autonomia = input.nextInt();
-        Set<Veiculo> veic = new HashSet<Veiculo>();
         Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
         while(it.hasNext()){
-            if(it.next().getValue().getAutonomia() == autonomia){
-                veic.add(it.next().getValue());
+            if(it.next().getValue().getAutonomia() == autonomia && it.next().getValue().getEstado().equals("livre"){
+                return it.next().getValue();
             }
         }
-        return veic;
+        return null;
     }
 
+    public void alugarVeiculo (Cliente u){
+        Scanner input = new Scanner(System.in);
+        Coordenada coordInicio = u.getCoord();
+        System.out.println("Coordenadas de destino:");
+        System.out.print("X: ");
+        int x = input.nextInt();
+        System.out.print(" Y: ");
+        int y = input.nextInt();
+        Coordenada coordFim = new Coordenada(x,y);
+        Menu.menuOpcoesCliente();
+        int opcao = input.nextInt();
+        Veiculo v = new Gasolina();
+        switch (opcao){
+            case(1):
+                veiculoMaisProximo(coordInicio);
+            case(2):
+                veiculoMaisBarato();
+            case(3):
+                veiculoMaisBaratoPe();
+            case(4):
+                veiculoEspecifico();
+            case(5):
+                v = veiculoAutonomiaDesejada();
+        }
+        int id = getIdAluguer();
+        setIdAluguer(id+1);
 
+        Aluguer al = new Aluguer(idAluguer, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classificacao);
+    }
 
 
 

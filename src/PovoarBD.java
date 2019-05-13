@@ -7,7 +7,8 @@ import java.util.Map;
 public class PovoarBD {
     public static Map<String,Utilizador> povoarClientes(){
         Map<String,Utilizador> utilizadores = new HashMap<String, Utilizador>();
-        List<Aluguer> histAlugUti = new ArrayList<Aluguer>();
+        List<Integer> histAlugUti = new ArrayList<Integer>();
+        List<String> carros = new ArrayList<String>();
         Coordenada coord1 = new Coordenada(0,0);
         Cliente c1 = new Cliente("Hugo Silva", 111111111, "hugosilva@gmail.com", "hugosilva", "Rua do Hugo", LocalDate.parse("11-11-1990"), coord1, histAlugUti);
         utilizadores.put("hugosilva@gmail.com", c1.clone());
@@ -35,15 +36,15 @@ public class PovoarBD {
         Coordenada coord9 = new Coordenada(9,2);
         Cliente c9 = new Cliente("Bernardo Ronaldo", 999999999, "bernardoronaldo@gmail.com", "bernardoronaldo", "Rua do Bernardo", LocalDate.parse("28-02-1988"), coord9, histAlugUti);
         utilizadores.put("bernardoronaldo@gmail.com", c9.clone());
-        Proprietario p1 = new Proprietario("Joao Felix", 123123123, "joaofelix@gmail.com", "joaofelix", "Rua do Felix", LocalDate.parse("18-10-1970"), 0, histAlugUti);
+        Proprietario p1 = new Proprietario("Joao Felix", 123123123, "joaofelix@gmail.com", "joaofelix", "Rua do Felix", LocalDate.parse("18-10-1970"), 0, histAlugUti, carros);
         utilizadores.put("joaofelix@gmail.com", p1.clone());
-        Proprietario p2 = new Proprietario("Ruben Dias", 234234234, "rubendias@gmail.com", "rubendias", "Rua do Ruben", LocalDate.parse("21-06-1982"), 0, histAlugUti);
+        Proprietario p2 = new Proprietario("Ruben Dias", 234234234, "rubendias@gmail.com", "rubendias", "Rua do Ruben", LocalDate.parse("21-06-1982"), 0, histAlugUti, carros);
         utilizadores.put("rebundias@gmail.com", p2.clone());
-        Proprietario p3 = new Proprietario("Andre Almeida", 345345345, "andrealmeida@gmail.com", "andrealmeida", "Rua do Almeida", LocalDate.parse("15-09-1986"), 0, histAlugUti);
+        Proprietario p3 = new Proprietario("Andre Almeida", 345345345, "andrealmeida@gmail.com", "andrealmeida", "Rua do Almeida", LocalDate.parse("15-09-1986"), 0, histAlugUti, carros);
         utilizadores.put("andrealmeida@gmail.com", p3.clone());
-        Proprietario p4 = new Proprietario("Renato Rodrigues", 456456456, "renatorodrigues@gmail.com", "renatorodrigues", "Rua do Renato", LocalDate.parse("12-02-1965"), 0, histAlugUti);        utilizadores.put("hugosilva@gmail.com", c1.clone());
+        Proprietario p4 = new Proprietario("Renato Rodrigues", 456456456, "renatorodrigues@gmail.com", "renatorodrigues", "Rua do Renato", LocalDate.parse("12-02-1965"), 0, histAlugUti, carros);
         utilizadores.put("renatorodrigues@gmail.com", p4.clone());
-        Proprietario p5 = new Proprietario("Francisco Cervi", 567567567, "franciscocervi@gmail.com", "franciscocervi", "Rua do Francisco", LocalDate.parse("19-08-1995"), 0, histAlugUti);
+        Proprietario p5 = new Proprietario("Francisco Cervi", 567567567, "franciscocervi@gmail.com", "franciscocervi", "Rua do Francisco", LocalDate.parse("19-08-1995"), 0, histAlugUti, carros);
         utilizadores.put("franciscocervi@gmail.com", p5.clone());
 //        Proprietario c6 = new Proprietario("Lionel Messi", 678678678, "lionelmessi@gmail.com", "lionelmessi", "Rua do Messi", LocalDate.parse("12-04-1977"), 0, histAlugUti);
 //        Proprietario c7 = new Proprietario("Andre Ferro", 789789789, "andreferro@gmail.com", "andreferro", "Rua do Ferro", LocalDate.parse("14-02-1979"), 0, histAlugUti);

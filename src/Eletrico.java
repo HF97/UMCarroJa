@@ -7,8 +7,8 @@ public class Eletrico extends Veiculo implements Serializable {
         super();
     }
 
-    public Eletrico(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario, Collection<Aluguer> histAlugVeic) {
-        super(matricula, velmediakm, precokm, consumo, classificacao, coord, autonomia, proprietario, histAlugVeic);
+    public Eletrico(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario, String estado, Collection<Aluguer> histAlugVeic) {
+        super(matricula, velmediakm, precokm, consumo, classificacao, coord, autonomia, proprietario, estado, histAlugVeic);
     }
 
     public Eletrico(Eletrico e){
