@@ -158,6 +158,7 @@ public class Main {
     //TODO  acabar funcaoCliente
     //TODO  aluguer
     //TODO  atencao ao idaluguer quando comecar de novo
+
     /**
      * Permite ao cliente escolher o que quer fazer na app
      * @param u cliente
