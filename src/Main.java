@@ -6,9 +6,12 @@ import java.util.List;
 import java.util.Scanner;
 import java.lang.Exception;
 
+//TODO  Regista bem proprietarios, mas se registar cliente apaga base dados toda ???
+//TODO  Insere proprietarios no inicio da lista em vez de no fim
 //TODO  excepcoes, ver se deixar ou remover break
 //TODO  funcao para retroceder
 //TODO  EXCEPTIONS
+//TODO  depois de selecionar registar ou login, ser possivel voltar a tras
 
 public class Main {
 
@@ -484,6 +487,7 @@ public class Main {
     }
 
     //TODO  data invalida se meter muitas letras na morada ou noutro atributo, nao tenho certeza
+    //TODO  morada so guarda primeira palavra (rua do hugo, fica so rua)1
     //TODO  se meter um /n antes da data imprime dois e da duas vezes data errada
     //TODO  a rua so aparece a primeira palavra
 
