@@ -4,7 +4,6 @@ import java.time.Duration;
 
 public class Aluguer implements Serializable {
 
-    //TODO  mudar duracao para horas
     private int id;
     private Coordenada coord;
     private Veiculo veiculo;

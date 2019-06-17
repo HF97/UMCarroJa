@@ -8,18 +8,29 @@ import java.lang.Exception;
 
 //TODO  excepcoes, ver se deixar ou remover break
 //TODO  funcao para retroceder
+//TODO  EXCEPTIONS
 
 public class Main {
 
+    /**
+     * Carrega a base da dados, executa o programa e quando saimos do programa guarda na base de dados
+     * A base de dados para ja e um ficheiro
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception{
         UMCarroJa p = new UMCarroJa();
+        //Carrega base de dados
         try{
             p = p.carregaObjetoInformacao();
         }
         catch (Exception e){
             System.out.println("Erro a carregar");
         }
+        //Executa programa
         executa(p);
+
         try{
             p.gravaObjetoInformacao();
         }catch(Exception e){
@@ -28,6 +39,12 @@ public class Main {
     }
 
     //TODO  passar as duas para uma funcao so
+    /**
+     * Funcao que permite fazer o login, registo ou sair do programa
+     *
+     * @param p
+     * @throws Exception
+     */
     private static void executa (UMCarroJa p) throws Exception{
         Scanner input = new Scanner(System.in);
         int x = -1;
@@ -53,6 +70,13 @@ public class Main {
     }
 
     //TODO  passar as duas para uma funcao so
+    /**
+     * Funcao para login
+     * Permite diferenciar o login de um utilizador ou do administrador
+     *
+     * @param p
+     * @throws Exception
+     */
     public static void menuEntrar (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         int x = -1;
@@ -93,16 +117,23 @@ public class Main {
     }
 
     //TODO  retroceder
+    //TODO  passar o while de pass errada para exception
+    /**
+     * Funcao de login de utilizadores
+     * Diferencia clientes de proprietarios e chama a respetiva funcao de login
+     * @param p
+     * @throws Exception
+     */
     public static void entrarUtilizador (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
-        System.out.println("0 - Retroceder");
+
+        Utilizador u = null;
+
         System.out.println("Email: ");
         String email = "";
-        Utilizador u = null;
         email = input.next();
-        u = p.getUtilizador(email);
-        System.out.println(u);
+
         System.out.println("Password: ");
         String pass = "";
         pass = input.next();
@@ -111,21 +142,32 @@ public class Main {
             pass = input.next();
         }
         limparEcra();
+
         if (u.getClass().getSimpleName().equals("Cliente")) {
             opcoesCliente((Cliente) u, p);
         }
+
         if (u.getClass().getSimpleName().equals("Proprietario")) {
             opcoesProprietario((Proprietario) u, p);
         }
     }
 
     //TODO  acabar funcaoCliente
+    //TODO  aluguer
+    //TODO  atencao ao idaluguer quando comecar de novo
+    /**
+     * Permite ao cliente escolher o que quer fazer na app
+     * @param u cliente
+     * @param p
+     * @throws Exception
+     */
     private static void opcoesCliente (Cliente u, UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
         int x = -1;
         int y = -1;
         x = input.nextInt();
+
         Coordenada coordInicio = u.getCoord();
         System.out.println("Coordenadas de destino:");
         System.out.print("X: ");
@@ -133,27 +175,61 @@ public class Main {
         System.out.print("Y: ");
         int coordY = input.nextInt();
         Coordenada coordFim = new Coordenada(coordX, coordY);
+
         Menu.menuOpcoesCliente();
         int opcao = -1;
         while(opcao!=1 && opcao!=2 && opcao!=3 && opcao!=4 && opcao!=5) {
             System.out.println("Opcao incorreta");
             opcao = input.nextInt();
         }
+
         Veiculo v = new Gasolina();
         switch (opcao){
             case(1):
                 v = p.veiculoMaisProximo(coordInicio);
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
+                opcoesCliente(u,p);
+                break;
+
             case(2):
                 v = p.veiculoMaisBarato();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
+                opcoesCliente(u,p);
+                break;
+
             case(3):
                 v = p.veiculoMaisBaratoPe(u);
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
+                opcoesCliente(u,p);
+                break;
+
             case(4):
                 v = p.veiculoEspecifico();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
+                opcoesCliente(u,p);
+                break;
+
             case(5):
                 v = p.veiculoAutonomiaDesejada();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
+                opcoesCliente(u,p);
+                break;
         }
-
-
 
         int id = p.getIdAluguer();
         p.setIdAluguer(id+1);
@@ -163,6 +239,14 @@ public class Main {
 
     //TODO  acabar funcao opcoesProprietario
     //TODO  Adicionar veiculo
+
+    /**
+     * Permite ao proprietario escolher o que fazer na app
+     *
+     * @param u
+     * @param p proprietario
+     * @throws Exception
+     */
     private static void opcoesProprietario (Proprietario u, UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
@@ -174,6 +258,7 @@ public class Main {
             System.out.println("Opcao incorreta");
             x = input.nextInt();
         }
+
         switch(x){
             case(1):
                 p.veiculoDisponivel(u);
@@ -182,6 +267,7 @@ public class Main {
                     y = input.nextInt();
                 }
                 break;
+
             case(2):
                 p.abastecerVeiculo(u);
                 System.out.println("0 - retroceder");
@@ -189,6 +275,7 @@ public class Main {
                     y = input.nextInt();
                 }
                 break;
+
             case(3):
                 p.adicionarVeiculo(u);
                 System.out.println("0 - retroceder");
@@ -196,6 +283,7 @@ public class Main {
                     y = input.nextInt();
                 }
                 break;
+
             case(4):
                 for(Veiculo v : p.listaCarros(u)){
                     v.toString();
@@ -205,6 +293,7 @@ public class Main {
                     y = input.nextInt();
                 }
                 break;
+
             case(5):
 //                p.verClassificacao(u);
 //                System.out.println("0 - retroceder");
@@ -212,12 +301,19 @@ public class Main {
 //                    y = input.nextInt();
 //                }
 //                break;
+
             case(0):
                 executa(p);
                 break;
         }
     }
 
+    /**
+     * Funcao de login do administrador
+     * A password esta predefinida sendo 12345
+     * @param p
+     * @throws Exception
+     */
     private static void entrarAdmin (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         int x = 0;
@@ -238,6 +334,13 @@ public class Main {
     //TODO  a funcao da o utilizador mas sai imediatamente
     //TODO  esta em loop com opcoesadmin e executa
     //TODO  resolver problema por ser static e nao static
+
+    /**
+     * Permite ao administrador escolher o que quer fazer na app
+     *
+     * @param p
+     * @throws Exception
+     */
     private static void opcoesAdmin (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
@@ -250,6 +353,7 @@ public class Main {
             System.out.print("Opcão: ");
             x = input.nextInt();
         }
+
         switch(x){
             case(1):
                 for(Utilizador u : p.listaUtilizadores()){
@@ -260,6 +364,8 @@ public class Main {
                     y = input.nextInt();
                 }
                 opcoesAdmin(p);
+                break;
+
             case(2):
                 for(Utilizador u : p.listaClientes()){
                     System.out.println(u.toString());
@@ -269,6 +375,8 @@ public class Main {
                     y = input.nextInt();
                 }
                 opcoesAdmin(p);
+                break;
+
             case(3):
                 for(Utilizador u : p.listaProprietarios()){
                     System.out.println(u.toString());
@@ -278,6 +386,7 @@ public class Main {
                     y = input.nextInt();
                 }
                 opcoesAdmin(p);
+                break;
             case(4):
                 for(Veiculo v : p.listaVeiculos()){
                     System.out.println(v.toString());
@@ -287,6 +396,8 @@ public class Main {
                     y = input.nextInt();
                 }
                 opcoesAdmin(p);
+                break;
+
             case(5):
                 for(Veiculo v : p.listaLivres()){
                     System.out.println(v.toString());
@@ -296,6 +407,8 @@ public class Main {
                     y = input.nextInt();
                 }
                 opcoesAdmin(p);
+                break;
+
             case(6):
                 for(Veiculo v : p.listaOcupados()){
                     System.out.println(v.toString());
@@ -305,27 +418,65 @@ public class Main {
                     y = input.nextInt();
                 }
                 opcoesAdmin(p);
+                break;
+
             case(7):
                 p.removeUtilizador();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
                 opcoesAdmin(p);
+                break;
+
             case(8):
                 p.removeTodosUtilizadores();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
                 opcoesAdmin(p);
+                break;
+
             case(9):
                 p.removeVeiculo();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
                 opcoesAdmin(p);
+                break;
+
             case(10):
                 p.removeTodosVeiculos();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
                 opcoesAdmin(p);
+                break;
+
             case(11):
                 p.apagarTudo();
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
                 opcoesAdmin(p);
+                break;
+
             case(12):
 //                UMCarroJa.setUtilizadores(PovoarBD.povoarClientes());
                 opcoesAdmin(p);
             case(13):
 //                UMCarroJa.setVeiculos(PovoarBD.povoarVeiculos());
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
                 opcoesAdmin(p);
+                break;
+
             case(0):
                 executa(p);
                 break;
@@ -335,6 +486,13 @@ public class Main {
     //TODO  data invalida se meter muitas letras na morada ou noutro atributo, nao tenho certeza
     //TODO  se meter um /n antes da data imprime dois e da duas vezes data errada
     //TODO  a rua so aparece a primeira palavra
+
+    /**
+     * Permite registar utilizadores, sejam clientes ou proprietarios
+     *
+     * @param p
+     * @throws Exception
+     */
     private static void registarUtilizador (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
@@ -350,14 +508,19 @@ public class Main {
         limparEcra();
         System.out.println("Nome: ");
         String nome = input.next();
+
         System.out.println("NIF: ");
         int NIF = input.nextInt();
+
         System.out.println("Email: ");
         String email = input.next();
+
         System.out.println("Password: ");
         String password = input.next();
+
         System.out.println("Morada:" );
         String morada = input.next();
+
         System.out.println("Data de nascimento (dd-mm-yyyy: ");
         LocalDate datanasc = null;
         List<Integer> histAlugUti = new ArrayList<Integer>();
@@ -371,6 +534,7 @@ public class Main {
             }
             catch(Exception e){System.out.println("Data invalida.");}
         }while(f);
+
         switch (x){
             case(1):
                 Coordenada coord = new Coordenada();
@@ -387,6 +551,9 @@ public class Main {
         executa(p);
     }
 
+    /**
+     * Limpa o ecra
+     */
     private static void limparEcra(){
         System.out.print('\f');
     }

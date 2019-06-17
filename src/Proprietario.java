@@ -6,8 +6,6 @@ import java.util.List;
 
 public class Proprietario extends Utilizador implements Serializable {
 
-    //TODO  Fazer hash com os carros
-
     private int classificacao;
     private List<String> carros;
 
