@@ -73,6 +73,7 @@ public class Menu {
                 "11 - Apagar base dados\n"+
                 "12 - Povoar BD utilizadores\n"+
                 "13 - Povoar BD veiculos\n"+
+                "14 - Imprimir para ficheiro\n"+
                 "0 - Voltar\n"
         );
         System.out.print("\nOpção: ");

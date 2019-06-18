@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.lang.Exception;
 
-//TODO  Regista bem proprietarios, mas se registar cliente apaga base dados toda ???
 //TODO  Insere proprietarios no inicio da lista em vez de no fim
 //TODO  excepcoes, ver se deixar ou remover break
 //TODO  funcao para retroceder
@@ -352,7 +351,7 @@ public class Main {
         int y = -1;
         Menu.menuOpcoesAdmin();
         x = input.nextInt();
-        while(x!=0 && x!=1 && x!=2 && x!=3 && x!=4 && x!=5 && x!=6 && x!=7 && x!=8 && x!=9 && x!=10 && x!=11){
+        while(!(x>=0 && x<=14)){
             System.out.println("Opcao incorreta");
             System.out.print("Opcão: ");
             x = input.nextInt();
@@ -481,6 +480,17 @@ public class Main {
                 opcoesAdmin(p);
                 break;
 
+                //TODO  meter funcao a funcionar, apenas imprime titulo
+            case(14):
+                System.out.print("1 - Clientes\n2 - Proprietarios\n3 - Veiculos\n\nOpcao: ");
+                int opcao = input.nextInt();
+                p.escreveEmFicheiroTxt("bd" ,opcao);
+                System.out.println("0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
+                opcoesAdmin(p);
+                break;
             case(0):
                 executa(p);
                 break;
