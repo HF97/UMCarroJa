@@ -40,6 +40,7 @@ public class Cliente extends Utilizador implements Serializable {
     public String toString(){
         StringBuilder sb = new StringBuilder(super.toString());
         sb.append(this.getCoord());
+        sb.append("\n");
         return sb.toString();
     }
 }

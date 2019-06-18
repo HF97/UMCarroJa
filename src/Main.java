@@ -487,11 +487,6 @@ public class Main {
         }
     }
 
-    //TODO  data invalida se meter muitas letras na morada ou noutro atributo, nao tenho certeza
-    //TODO  morada so guarda primeira palavra (rua do hugo, fica so rua)1
-    //TODO  se meter um /n antes da data imprime dois e da duas vezes data errada
-    //TODO  a rua so aparece a primeira palavra
-
     /**
      * Permite registar utilizadores, sejam clientes ou proprietarios
      *
@@ -522,9 +517,10 @@ public class Main {
 
         System.out.println("Password: ");
         String password = input.next();
+        input.nextLine(); //para receber o \n
 
         System.out.println("Morada:" );
-        String morada = input.next();
+        String morada = input.nextLine();
 
         System.out.println("Data de nascimento (dd-mm-yyyy: ");
         LocalDate datanasc = null;

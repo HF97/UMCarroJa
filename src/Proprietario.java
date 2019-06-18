@@ -62,6 +62,7 @@ public class Proprietario extends Utilizador implements Serializable {
         StringBuilder sb = new StringBuilder(super.toString());
         sb.append("\nClassificacao: ");
         sb.append(this.getClassificacao());
+        sb.append("\n");
         return sb.toString();
     }
 }
