@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.lang.Exception;
 
-//TODO  Insere proprietarios no inicio da lista em vez de no fim
 //TODO  excepcoes, ver se deixar ou remover break
 //TODO  funcao para retroceder
 //TODO  EXCEPTIONS
@@ -52,9 +51,9 @@ public class Main {
         int x = -1;
         limparEcra();
         Menu.menuPrincipal();
-        while(x!=0 && x!=1 && x!=2){
+        while(x<0 || x>2){
             x = input.nextInt();
-            if(x!=0 && x!=1 && x!=2){
+            if(x<0 || x>2){
                 System.out.print("Opção Invalida\nOpção: ");
             }
         }
@@ -71,7 +70,6 @@ public class Main {
         }
     }
 
-    //TODO  passar as duas para uma funcao so
     /**
      * Funcao para login
      * Permite diferenciar o login de um utilizador ou do administrador
@@ -84,9 +82,9 @@ public class Main {
         int x = -1;
         limparEcra();
         Menu.menuEntrar();
-        while(x!=0 && x!=1 && x!=2){
+        while(x<0 || x>2){
             x = input.nextInt();
-            if(x!=0 && x!=1 && x!=2){
+            if(x<0 || x>2){
                 System.out.print("Opção Invalida\nOpção: ");
             }
         }
@@ -97,7 +95,7 @@ public class Main {
                     entrarUtilizador(p);
                 }
                 catch (Exception e){
-                    //TODO  a funcao pode falhar e nao ser problema do nif ou pass
+                    //TODO  meter ciclo de entrar enquanto for errado (apenas da 2 vezes)
                     System.out.println("NIF ou Password errado(a).");
                     entrarUtilizador(p);
                 }
@@ -132,7 +130,7 @@ public class Main {
 
         Utilizador u = null;
 
-        System.out.println("Email: ");
+        System.out.println("Email (sair para retroceder): ");
         String email = "";
         email = input.next();
 
@@ -516,23 +514,23 @@ public class Main {
             x = input.nextInt();
         }
         limparEcra();
-        System.out.println("Nome: ");
+        System.out.print("Nome: ");
         String nome = input.next();
 
-        System.out.println("NIF: ");
+        System.out.print("NIF: ");
         int NIF = input.nextInt();
 
-        System.out.println("Email: ");
+        System.out.print("Email: ");
         String email = input.next();
 
-        System.out.println("Password: ");
+        System.out.print("Password: ");
         String password = input.next();
         input.nextLine(); //para receber o \n
 
-        System.out.println("Morada:" );
+        System.out.print("Morada:" );
         String morada = input.nextLine();
 
-        System.out.println("Data de nascimento (dd-mm-yyyy: ");
+        System.out.print("Data de nascimento (dd-mm-yyyy: ");
         LocalDate datanasc = null;
         List<Integer> histAlugUti = new ArrayList<Integer>();
         boolean f = true;

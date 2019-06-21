@@ -1,7 +1,7 @@
 public class Menu {
 
     public static void menuPrincipal(){
-        System.out.println(
+        System.out.println("\n"+
                "1 - Entrar\n" +
                "2 - Registar\n\n"+
                "0 - Sair"
@@ -10,7 +10,7 @@ public class Menu {
     }
 
     public static void menuEntrar(){
-        System.out.println(
+        System.out.println("\n"+
                 "1 - Entrar Utilizador\n" +
                 "2 - Entrar Administrador\n\n" +
                 "0 - Voltar"
@@ -18,7 +18,7 @@ public class Menu {
     }
 
     public  static void menuRegistar(){
-        System.out.println(
+        System.out.println("\n"+
                "1 - Registar utilizador\n" +
                "2 - Registar proprietario\n\n" +
                "0 - Voltar"
@@ -27,7 +27,7 @@ public class Menu {
     }
 
     public static void menuOpcoesCliente(){
-        System.out.println(
+        System.out.println("\n"+
                 "1 - Veiculo mais proximo\n" +
                 "2 - Veiculo mais barato\n" +
                 "3 - Veiculo mais barato a distancia a pe\n" +
@@ -39,7 +39,7 @@ public class Menu {
     }
 
     public static void menuOpcoesProprietario(){
-        System.out.println(
+        System.out.println("\n"+
                 "1 - Veiculo disponivel\n" +
                 "2 - Abastecer veiculo\n" +
                 "3 - Adicionar veiculo\n" +
@@ -50,7 +50,7 @@ public class Menu {
     }
 
     public static void tipoVeiculo(){
-        System.out.println(
+        System.out.println("\n"+
                 "1 - Gasolina\n" +
                 "2 - Hibrido\n" +
                 "3 - Eletrico\n"
@@ -59,7 +59,7 @@ public class Menu {
     }
 
     public static void menuOpcoesAdmin(){
-        System.out.println(
+        System.out.println("\n"+
                 "1 - Lista de utilizadores\n"+
                 "2 - Lista de clientes\n"+
                 "3 - Lista de proprietarios\n"+
