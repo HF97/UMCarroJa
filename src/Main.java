@@ -95,14 +95,14 @@ public class Main {
 
         switch(x){
             case(1):
-//                while(entrar) {
-//                    try {
+                while(entrar) {
+                    try {
                         entrarUtilizador(p);
-//                        entrar = false;
-//                    } catch (Exception e) {
-//                        System.out.println("NIF ou Password errado(a).");
-//                    }
-//                }
+                        entrar = false;
+                    } catch (Exception e) {
+                        System.out.println("NIF ou Password errado(a).");
+                    }
+                }
                 break;
             case(2):
                 while(entrar) {
@@ -134,10 +134,18 @@ public class Main {
         System.out.println("Email: ");
         String email = "";
         email = input.next();
+        if(email.equals("sair")){
+            menuEntrar(p);
+            return;
+        }
 
         System.out.println("Password: ");
         String pass = "";
         pass = input.next();
+        if(pass.equals("sair")){
+            menuEntrar(p);
+            return;
+        }
 
         Utilizador u = null;
         u = p.getUtilizador(email);
@@ -275,13 +283,13 @@ public class Main {
                 }
                 break;
 
-            case(2):
-                p.abastecerVeiculo(u);
-                System.out.println("0 - retroceder");
-                while(y != 0){
-                    y = input.nextInt();
-                }
-                break;
+//            case(2):
+//                p.abastecerVeiculo(u);
+//                System.out.println("0 - retroceder");
+//                while(y != 0){
+//                    y = input.nextInt();
+//                }
+//                break;
 
             case(3):
                 p.adicionarVeiculo(u);
@@ -325,22 +333,23 @@ public class Main {
         Scanner input = new Scanner(System.in);
         int x = 0;
         limparEcra();
-        System.out.print("Password: ");
-        x = input.nextInt();
+
         if(x !=12345){
+            System.out.print("Password: ");
+            x = input.nextInt();
             while(x != 12345){
-                System.out.print("Password Incorreta\nPassword:");
+                System.out.print("Password Incorreta (0 para sair)\nPassword:");
                 x = input.nextInt();
+                if(x == 0){
+                    menuEntrar(p);
+                    return;
+                }
             }
         }
+
         limparEcra();
         opcoesAdmin(p);
     }
-
-    //TODO  acabar funcao opcoesAdmin
-    //TODO  a funcao da o utilizador mas sai imediatamente
-    //TODO  esta em loop com opcoesadmin e executa
-    //TODO  resolver problema por ser static e nao static
 
     /**
      * Permite ao administrador escolher o que quer fazer na app
@@ -564,6 +573,26 @@ public class Main {
                 break;
         }
         executa(p);
+    }
+
+    /**
+     * Funcao de leitura de password
+     */
+    private static String lerPassword(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Password: ");
+        String password = input.next();
+        return password;
+    }
+
+    /**
+     * Funcao de leitura de password
+     */
+    private static String lerPasswordErrada(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Password Errada\nPassword: ");
+        String password = input.next();
+        return password;
     }
 
     /**

@@ -311,7 +311,6 @@ public class UMCarroJa implements Serializable{
 
     //RETORNA SET COM TODOS OS CARROS COM A AUTONOMIA
     //PASSA A RETORNAR O PRIMEIRO CARRO ENCONTRADO COM A AUTONOMIA DESEJADA
-    //TODO  pode haver problemas com o null
     public Veiculo veiculoAutonomiaDesejada(){
         Scanner input = new Scanner(System.in);
         System.out.println("Autonomia desejada: ");
@@ -356,23 +355,28 @@ public class UMCarroJa implements Serializable{
 //    }
 
 
-    //TODO  caso a soma da percentagem com o que tem no deposito ser maior que 100 tem de ser corrigido
-    public void abastecerVeiculo(Proprietario u){
-        Scanner input = new Scanner(System.in);
-        System.out.println("Matricula do veiculo: ");
-        String matricula = input.next();
-        System.out.println("Ate que percentagem de deposito deseja encher: ");
-        int percentagem = input.nextInt();
-        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
-        int auto = 0;
-        while(it.hasNext()){
-            if(it.next().getValue().getMatricula().equals(matricula)){
-                it.next().getValue().setAutonomia(it.next().getValue().getAutonomia() + percentagem);
-                auto = it.next().getValue().getAutonomia();
-            }
-        }
-        System.out.println("Veiculo de matricula " + matricula + " agora tem " + auto + " de autonomia");
-    }
+//    //TODO  apenas avisar se está abaixo de 10%
+//    public void abastecerVeiculo(Proprietario u){
+//        Scanner input = new Scanner(System.in);
+//        System.out.println("Matricula do veiculo: ");
+//        String matricula = input.next();
+//
+//        System.out.println("Ate que percentagem de deposito deseja encher: ");
+//        int percentagem = input.nextInt();
+//
+//        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
+//        int auto = 0;
+//        while(it.hasNext()){
+//            if(it.next().getValue().getMatricula().equals(matricula)){
+//
+//                if(it.next().getValue().getAutonomia())
+//
+//                it.next().getValue().setAutonomia(it.next().getValue().getAutonomia() + percentagem);
+//                auto = it.next().getValue().getAutonomia();
+//            }
+//        }
+//        System.out.println("Veiculo de matricula " + matricula + " agora tem " + auto + " de autonomia");
+//    }
 
 
     //TODO  veiculo info do proprietario
