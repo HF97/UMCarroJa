@@ -95,14 +95,14 @@ public class Main {
 
         switch(x){
             case(1):
-                while(entrar) {
-                    try {
+//                while(entrar) {
+//                    try {
                         entrarUtilizador(p);
-                        entrar = false;
-                    } catch (Exception e) {
-                        System.out.println("NIF ou Password errado(a).");
-                    }
-                }
+//                        entrar = false;
+//                    } catch (Exception e) {
+//                        System.out.println("NIF ou Password errado(a).");
+//                    }
+//                }
                 break;
             case(2):
                 while(entrar) {
@@ -131,8 +131,6 @@ public class Main {
         Scanner input = new Scanner(System.in);
         limparEcra();
 
-        Utilizador u = null;
-
         System.out.println("Email: ");
         String email = "";
         email = input.next();
@@ -140,6 +138,10 @@ public class Main {
         System.out.println("Password: ");
         String pass = "";
         pass = input.next();
+
+        Utilizador u = null;
+        u = p.getUtilizador(email);
+
         boolean f = true;
         while (!(u.getPassword().equals(pass))) {
             System.out.println("Password Incorreta\nPassword:");
