@@ -81,6 +81,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         int x = -1;
         limparEcra();
+
         Menu.menuEntrar();
         while(x<0 || x>2){
             x = input.nextInt();
@@ -89,24 +90,28 @@ public class Main {
             }
         }
         limparEcra();
+
+        boolean entrar = true;
+
         switch(x){
             case(1):
-                try{
-                    entrarUtilizador(p);
-                }
-                catch (Exception e){
-                    //TODO  meter ciclo de entrar enquanto for errado (apenas da 2 vezes)
-                    System.out.println("NIF ou Password errado(a).");
-                    entrarUtilizador(p);
+                while(entrar) {
+                    try {
+                        entrarUtilizador(p);
+                        entrar = false;
+                    } catch (Exception e) {
+                        System.out.println("NIF ou Password errado(a).");
+                    }
                 }
                 break;
             case(2):
-                try{
-                    entrarAdmin(p);
-                }
-                catch (Exception e){
-                    System.out.println("Password errada.");
-                    entrarAdmin(p);
+                while(entrar) {
+                    try {
+                        entrarAdmin(p);
+                    } catch (Exception e) {
+                        System.out.println("Password errada.");
+                        entrarAdmin(p);
+                    }
                 }
                 break;
             case(0):
@@ -116,8 +121,6 @@ public class Main {
         }
     }
 
-    //TODO  retroceder
-    //TODO  passar o while de pass errada para exception
     /**
      * Funcao de login de utilizadores
      * Diferencia clientes de proprietarios e chama a respetiva funcao de login
@@ -130,13 +133,14 @@ public class Main {
 
         Utilizador u = null;
 
-        System.out.println("Email (sair para retroceder): ");
+        System.out.println("Email: ");
         String email = "";
         email = input.next();
 
         System.out.println("Password: ");
         String pass = "";
         pass = input.next();
+        boolean f = true;
         while (!(u.getPassword().equals(pass))) {
             System.out.println("Password Incorreta\nPassword:");
             pass = input.next();
@@ -541,7 +545,7 @@ public class Main {
                 datanasc = LocalDate.parse(dataDespesaInput, formatter);
                 f=false;
             }
-            catch(Exception e){System.out.println("Data invalida.");}
+            catch(Exception e){System.out.print("Data invalida. (dd-mm-yyyy)");}
         }while(f);
 
         switch (x){
