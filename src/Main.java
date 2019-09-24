@@ -6,10 +6,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.lang.Exception;
 
-//TODO  excepcoes, ver se deixar ou remover break
-//TODO  funcao para retroceder
+//TODO  excepcoes
 //TODO  EXCEPTIONS
-//TODO  depois de selecionar registar ou login, ser possivel voltar a tras
+//TODO  remover password...
 
 public class Main {
 
@@ -39,7 +38,6 @@ public class Main {
         }
     }
 
-    //TODO  passar as duas para uma funcao so
     /**
      * Funcao que permite fazer o login, registo ou sair do programa
      *
@@ -54,7 +52,7 @@ public class Main {
         while(x<0 || x>2){
             x = input.nextInt();
             if(x<0 || x>2){
-                System.out.print("Opção Invalida\nOpção: ");
+                System.out.print("(executa)     Opção Invalida\nOpção: ");
             }
         }
         limparEcra();
@@ -86,7 +84,7 @@ public class Main {
         while(x<0 || x>2){
             x = input.nextInt();
             if(x<0 || x>2){
-                System.out.print("Opção Invalida\nOpção: ");
+                System.out.print("(menuEntrar)     Opção Invalida\nOpção: ");
             }
         }
         limparEcra();
@@ -99,8 +97,11 @@ public class Main {
                     try {
                         entrarUtilizador(p);
                         entrar = false;
+                        return;
                     } catch (Exception e) {
-                        System.out.println("NIF ou Password errado(a).");
+                        System.out.println("(menuEntrar)    NIF ou Password errado(a).");
+                        entrarUtilizador(p);
+                        return;
                     }
                 }
                 break;
@@ -108,9 +109,11 @@ public class Main {
                 while(entrar) {
                     try {
                         entrarAdmin(p);
+                        return;
                     } catch (Exception e) {
-                        System.out.println("Password errada.");
+                        System.out.println("(menuEntrar)    Password errada.");
                         entrarAdmin(p);
+                        return;
                     }
                 }
                 break;
@@ -131,7 +134,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         limparEcra();
 
-        System.out.println("Email: ");
+        System.out.println("(entrarUtilizador)      Email: ");
         String email = "";
         email = input.next();
         if(email.equals("sair")){
@@ -139,7 +142,7 @@ public class Main {
             return;
         }
 
-        System.out.println("Password: ");
+        System.out.println("(entrarUtilizador)      Password: ");
         String pass = "";
         pass = input.next();
         if(pass.equals("sair")){
@@ -152,7 +155,7 @@ public class Main {
 
         boolean f = true;
         while (!(u.getPassword().equals(pass))) {
-            System.out.println("Password Incorreta\nPassword:");
+            System.out.println("(entrarUtilizador)      Password Incorreta\nPassword:");
             pass = input.next();
         }
         limparEcra();
@@ -166,7 +169,6 @@ public class Main {
         }
     }
 
-    //TODO  acabar funcaoCliente
     //TODO  aluguer
     //TODO  atencao ao idaluguer quando comecar de novo
 
@@ -184,17 +186,17 @@ public class Main {
         x = input.nextInt();
 
         Coordenada coordInicio = u.getCoord();
-        System.out.println("Coordenadas de destino:");
-        System.out.print("X: ");
+        System.out.println("(opcoesCliente)     Coordenadas de destino:");
+        System.out.print("(opcoesCliente)       X: ");
         int coordX = input.nextInt();
-        System.out.print("Y: ");
+        System.out.print("(opcoesCliente)       Y: ");
         int coordY = input.nextInt();
         Coordenada coordFim = new Coordenada(coordX, coordY);
 
         Menu.menuOpcoesCliente();
         int opcao = -1;
         while(opcao!=1 && opcao!=2 && opcao!=3 && opcao!=4 && opcao!=5) {
-            System.out.println("Opcao incorreta");
+            System.out.println("(opcoesCliente)     Opcao incorreta");
             opcao = input.nextInt();
         }
 
@@ -202,7 +204,7 @@ public class Main {
         switch (opcao){
             case(1):
                 v = p.veiculoMaisProximo(coordInicio);
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesCliente)     0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -211,7 +213,7 @@ public class Main {
 
             case(2):
                 v = p.veiculoMaisBarato();
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesCliente)     0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -220,7 +222,7 @@ public class Main {
 
             case(3):
                 v = p.veiculoMaisBaratoPe(u);
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesCliente)     0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -229,7 +231,7 @@ public class Main {
 
             case(4):
                 v = p.veiculoEspecifico();
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesCliente)     0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -238,7 +240,7 @@ public class Main {
 
             case(5):
                 v = p.veiculoAutonomiaDesejada();
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesCliente)     0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -252,7 +254,6 @@ public class Main {
 //        Aluguer al = new Aluguer(id, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classificacao);
     }
 
-    //TODO  acabar funcao opcoesProprietario
     //TODO  Adicionar veiculo
 
     /**
@@ -270,14 +271,14 @@ public class Main {
         Menu.menuOpcoesProprietario();
         x = input.nextInt();
         while(x!=0 && x!=1 && x!=2 && x!=3){
-            System.out.println("Opcao incorreta");
+            System.out.println("(opcoesProprietario)    Opcao incorreta");
             x = input.nextInt();
         }
 
         switch(x){
             case(1):
                 p.veiculoDisponivel(u);
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesProprietario)    0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -285,7 +286,7 @@ public class Main {
 
 //            case(2):
 //                p.abastecerVeiculo(u);
-//                System.out.println("0 - retroceder");
+//                System.out.println("(opcoesProprietario)    0 - retroceder");
 //                while(y != 0){
 //                    y = input.nextInt();
 //                }
@@ -293,7 +294,7 @@ public class Main {
 
             case(3):
                 p.adicionarVeiculo(u);
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesProprietario)    0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -303,19 +304,19 @@ public class Main {
                 for(Veiculo v : p.listaCarros(u)){
                     v.toString();
                 }
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesProprietario)    0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
                 break;
 
             case(5):
-//                p.verClassificacao(u);
-//                System.out.println("0 - retroceder");
-//                while(y != 0){
-//                    y = input.nextInt();
-//                }
-//                break;
+                p.verClassificacao(u);
+                System.out.println("(opcoesProprietario)    0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
+                break;
 
             case(0):
                 executa(p);
@@ -335,10 +336,14 @@ public class Main {
         limparEcra();
 
         if(x !=12345){
-            System.out.print("Password: ");
+            System.out.print("(entrarAdmin)     Password: ");
             x = input.nextInt();
+            if(x==0){
+                menuEntrar(p);
+                return;
+            }
             while(x != 12345){
-                System.out.print("Password Incorreta (0 para sair)\nPassword:");
+                System.out.print("(entrarAdmin)     Password Incorreta (0 para sair)\nPassword:");
                 x = input.nextInt();
                 if(x == 0){
                     menuEntrar(p);
@@ -346,6 +351,9 @@ public class Main {
                 }
             }
         }
+
+
+
 
         limparEcra();
         opcoesAdmin(p);
@@ -365,8 +373,8 @@ public class Main {
         Menu.menuOpcoesAdmin();
         x = input.nextInt();
         while(!(x>=0 && x<=14)){
-            System.out.println("Opcao incorreta");
-            System.out.print("Opcão: ");
+            System.out.println("(opcoesAdmin)   Opcao incorreta");
+            System.out.print("(opcoesAdmin)   Opcão: ");
             x = input.nextInt();
         }
 
@@ -375,7 +383,7 @@ public class Main {
                 for(Utilizador u : p.listaUtilizadores()){
                     System.out.println(u.toString());
                 }
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -386,7 +394,7 @@ public class Main {
                 for(Utilizador u : p.listaClientes()){
                     System.out.println(u.toString());
                 }
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -397,7 +405,7 @@ public class Main {
                 for(Utilizador u : p.listaProprietarios()){
                     System.out.println(u.toString());
                 }
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -407,7 +415,7 @@ public class Main {
                 for(Veiculo v : p.listaVeiculos()){
                     System.out.println(v.toString());
                 }
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -418,7 +426,7 @@ public class Main {
                 for(Veiculo v : p.listaLivres()){
                     System.out.println(v.toString());
                 }
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -429,7 +437,7 @@ public class Main {
                 for(Veiculo v : p.listaOcupados()){
                     System.out.println(v.toString());
                 }
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -438,7 +446,7 @@ public class Main {
 
             case(7):
                 p.removeUtilizador();
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -447,7 +455,7 @@ public class Main {
 
             case(8):
                 p.removeTodosUtilizadores();
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -456,7 +464,7 @@ public class Main {
 
             case(9):
                 p.removeVeiculo();
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -465,7 +473,7 @@ public class Main {
 
             case(10):
                 p.removeTodosVeiculos();
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -474,7 +482,7 @@ public class Main {
 
             case(11):
                 p.apagarTudo();
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -486,7 +494,7 @@ public class Main {
                 opcoesAdmin(p);
             case(13):
 //                UMCarroJa.setVeiculos(PovoarBD.povoarVeiculos());
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -498,7 +506,7 @@ public class Main {
                 System.out.print("1 - Clientes\n2 - Proprietarios\n3 - Veiculos\n\nOpcao: ");
                 int opcao = input.nextInt();
                 p.escreveEmFicheiroTxt("bd" ,opcao);
-                System.out.println("0 - retroceder");
+                System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -516,6 +524,7 @@ public class Main {
      * @param p
      * @throws Exception
      */
+    //TODO  se meter NIF invalido da exception NIF ou password errado
     private static void registarUtilizador (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
@@ -523,6 +532,7 @@ public class Main {
         int x = input.nextInt();
         if(x == 0){
             executa(p);
+            return;
         }
         while(x!=1 && x!=2){
             System.out.print("Opção errada!\nOpção: ");
@@ -573,6 +583,7 @@ public class Main {
                 break;
         }
         executa(p);
+        return;
     }
 
     /**

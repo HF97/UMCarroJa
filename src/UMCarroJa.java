@@ -350,9 +350,9 @@ public class UMCarroJa implements Serializable{
 
 
 //    TODO  problema, nao aparece o getClassificacao
-//    public int verClassificacao(Proprietario u){
-//        return this.utilizadores.get(u.getEmail());
-//    }
+    public String verClassificacao(Proprietario u){
+        return this.utilizadores.get(u.getEmail()).getEmail();
+    }
 
 
 //    //TODO  apenas avisar se está abaixo de 10%
@@ -379,7 +379,9 @@ public class UMCarroJa implements Serializable{
 //    }
 
 
-    //TODO  veiculo info do proprietario
+    //TODO  adicionar ao historico
+
+
     public void adicionarVeiculo(Proprietario u){
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula: ");
