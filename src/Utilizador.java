@@ -95,9 +95,9 @@ public abstract class Utilizador implements Serializable {
         StringBuilder sb = new StringBuilder("Nome: ");
         sb.append(this.getNome());
         sb.append("\nNIF: ");
+        sb.append(this.getNIF());
         sb.append("\nPassword: ");
         sb.append(this.getPassword());
-        sb.append(this.getNIF());
         sb.append("\nEmail: ");
         sb.append(this.getEmail());
         sb.append("\nMorada: ");

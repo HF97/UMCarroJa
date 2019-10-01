@@ -381,6 +381,7 @@ public class Main {
         switch(x){
             case(1):
                 for(Utilizador u : p.listaUtilizadores()){
+                    System.out.println(u.getClass().getSimpleName() + "--------------------");
                     System.out.println(u.toString());
                 }
                 System.out.println("(opcoesAdmin)   0 - retroceder");
@@ -391,8 +392,12 @@ public class Main {
                 break;
 
             case(2):
-                for(Utilizador u : p.listaClientes()){
-                    System.out.println(u.toString());
+                //lista de clientes
+                for(Utilizador u : p.listaUtilizadores()){
+                    if(u.getClass().getSimpleName().equals("Cliente")){
+                        System.out.println(u.getClass().getSimpleName() + "-----------------------");
+                        System.out.println(u.toString());
+                    }
                 }
                 System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
@@ -402,8 +407,12 @@ public class Main {
                 break;
 
             case(3):
-                for(Utilizador u : p.listaProprietarios()){
-                    System.out.println(u.toString());
+                //lista de proprietarios
+                for(Utilizador u : p.listaUtilizadores()){
+                    if(u.getClass().getSimpleName().equals("Proprietario")){
+                        System.out.println(u.getClass().getSimpleName() + "-----------------------");
+                        System.out.println(u.toString());
+                    }
                 }
                 System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
