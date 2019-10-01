@@ -99,7 +99,7 @@ public class Main {
                         entrar = false;
                         return;
                     } catch (Exception e) {
-                        System.out.println("(menuEntrar)    NIF ou Password errado(a).");
+                        System.out.println("Utilizador inexistente");
                         entrarUtilizador(p);
                         return;
                     }
@@ -111,7 +111,7 @@ public class Main {
                         entrarAdmin(p);
                         return;
                     } catch (Exception e) {
-                        System.out.println("(menuEntrar)    Password errada.");
+                        System.out.println("Erro login admin");
                         entrarAdmin(p);
                         return;
                     }
@@ -157,15 +157,24 @@ public class Main {
         while (!(u.getPassword().equals(pass))) {
             System.out.println("(entrarUtilizador)      Password Incorreta\nPassword:");
             pass = input.next();
+            if(pass.equals("sair")){
+                menuEntrar(p);
+                return;
+            }
         }
-        limparEcra();
+
+        System.out.println(u.getClass().getSimpleName());
+
+//        limparEcra();
 
         if (u.getClass().getSimpleName().equals("Cliente")) {
             opcoesCliente((Cliente) u, p);
+            return;
         }
 
         if (u.getClass().getSimpleName().equals("Proprietario")) {
             opcoesProprietario((Proprietario) u, p);
+            return;
         }
     }
 
@@ -181,15 +190,13 @@ public class Main {
     private static void opcoesCliente (Cliente u, UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
-        int x = -1;
         int y = -1;
-        x = input.nextInt();
 
         Coordenada coordInicio = u.getCoord();
         System.out.println("(opcoesCliente)     Coordenadas de destino:");
-        System.out.print("(opcoesCliente)       X: ");
+        System.out.print("(opcoesCliente)     X: ");
         int coordX = input.nextInt();
-        System.out.print("(opcoesCliente)       Y: ");
+        System.out.print("(opcoesCliente)     Y: ");
         int coordY = input.nextInt();
         Coordenada coordFim = new Coordenada(coordX, coordY);
 
