@@ -289,6 +289,7 @@ public class Main {
                 while(y != 0){
                     y = input.nextInt();
                 }
+                opcoesProprietario(u,p);
                 break;
 
 //            case(2):
@@ -297,6 +298,7 @@ public class Main {
 //                while(y != 0){
 //                    y = input.nextInt();
 //                }
+//            opcoesProprietario(u,p);
 //                break;
 
             case(3):
@@ -305,6 +307,7 @@ public class Main {
                 while(y != 0){
                     y = input.nextInt();
                 }
+                opcoesProprietario(u,p);
                 break;
 
             case(4):
@@ -315,6 +318,7 @@ public class Main {
                 while(y != 0){
                     y = input.nextInt();
                 }
+                opcoesProprietario(u,p);
                 break;
 
             case(5):
@@ -323,6 +327,7 @@ public class Main {
                 while(y != 0){
                     y = input.nextInt();
                 }
+                opcoesProprietario(u,p);
                 break;
 
             case(0):
@@ -600,26 +605,6 @@ public class Main {
         }
         executa(p);
         return;
-    }
-
-    /**
-     * Funcao de leitura de password
-     */
-    private static String lerPassword(){
-        Scanner input = new Scanner(System.in);
-        System.out.print("Password: ");
-        String password = input.next();
-        return password;
-    }
-
-    /**
-     * Funcao de leitura de password
-     */
-    private static String lerPasswordErrada(){
-        Scanner input = new Scanner(System.in);
-        System.out.print("Password Errada\nPassword: ");
-        String password = input.next();
-        return password;
     }
 
     /**

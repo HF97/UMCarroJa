@@ -43,7 +43,8 @@ public class Menu {
                 "1 - Veiculo disponivel\n" +
                 "2 - Abastecer veiculo\n" +
                 "3 - Adicionar veiculo\n" +
-                "4 - Lista de carros\n\n" +
+                "4 - Lista de carros\n" +
+                "5 - Ver classificacao\n\n" +
                 "0 - Voltar\n"
         );
         System.out.print("\nOpção: ");
