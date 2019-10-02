@@ -111,9 +111,7 @@ public class UMCarroJa implements Serializable{
         this.utilizadores.put(u.getEmail(), u.clone());
     }
 
-    public void adicionaVeiculo (Veiculo v){
-        this.veiculos.put(v.getMatricula(), v.clone());
-    }
+    public void adicionaVeiculo (Veiculo v){ this.veiculos.put(v.getMatricula(), v.clone()); }
 
     public void adicionaAluguer (Aluguer al){
         this.alugueres.put(al.getId(), al.clone());
@@ -386,41 +384,57 @@ public class UMCarroJa implements Serializable{
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula: ");
         String matricula = input.next();
+
         System.out.println("Velocidade media por km: ");
         double velmedkm = input.nextDouble();
+
         System.out.println("Preco por km: ");
         double precokm = input.nextDouble();
+
         System.out.println("Consumo: ");
         double consumo = input.nextDouble();
         int classificacao = 0;
+
+        System.out.println("Autonomia: ");
+        int autonomia = input.nextInt();
+
         System.out.println("Indique as coordenadas do lugar que se encontra: ");
         System.out.println("X: ");
         int coordX = input.nextInt();
         System.out.println("Y: ");
         int coordY = input.nextInt();
         Coordenada coord = new Coordenada(coordX, coordY);
-        System.out.println("Autonomia: ");
-        int autonomia = input.nextInt();
+
         String prop = u.getEmail();
+
         List<Aluguer> histAlugVeic = new ArrayList<Aluguer>();
+
         System.out.println("Tipo de veiculo: ");
         Menu.tipoVeiculo();
         int x = input.nextInt();
+
         String estado = "livre";
+
         while(x!=1 && x!=2 && x!=3){
             System.out.println("Tipo incorreto");
         }
+
         switch (x){
             case(1):
                 Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado, histAlugVeic);
                 adicionaVeiculo(gas.clone());
+                break;
 
             case(2):
-                Hibrido hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado, histAlugVeic);
+                Veiculo hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado, histAlugVeic);
                 adicionaVeiculo(hib.clone());
+                break;
+
             case(3):
                 Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado, histAlugVeic);
                 adicionaVeiculo(ele.clone());
+                break;
+
         }
     }
 
@@ -430,22 +444,12 @@ public class UMCarroJa implements Serializable{
     //------------
     //OPCOES ADMIN
     //------------
-    public List<Utilizador> listaUtilizadores(){
-        List<Utilizador> uti = new ArrayList<Utilizador>();
-        Iterator<Map.Entry<String, Utilizador>> it = this.utilizadores.entrySet().iterator();
-        while(it.hasNext()){
-            uti.add(it.next().getValue());
-        }
-        return uti;
+    public Collection<Utilizador> listaUtilizadores(){
+        return this.getUtilizadores().values();
     }
 
-    public List<Veiculo> listaVeiculos(){
-        List<Veiculo> vei = new ArrayList<Veiculo>();
-        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
-        while(it.hasNext()){
-            vei.add(it.next().getValue());
-        }
-        return vei;
+    public Collection<Veiculo> listaVeiculos(){
+        return this.getVeiculos().values();
     }
 
     public List<Veiculo> listaLivres(){
@@ -463,7 +467,6 @@ public class UMCarroJa implements Serializable{
         }
         return ocu;
     }
-
 
 
     public UMCarroJa clone(){

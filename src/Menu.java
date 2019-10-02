@@ -56,7 +56,7 @@ public class Menu {
                 "2 - Hibrido\n" +
                 "3 - Eletrico\n"
         );
-        System.out.print("\nOpção: ");
+        System.out.print("Opção: ");
     }
 
     public static void menuOpcoesAdmin(){

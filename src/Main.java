@@ -1,9 +1,7 @@
 import java.lang.ref.Cleaner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.lang.Exception;
 
 //TODO  excepcoes
@@ -277,7 +275,7 @@ public class Main {
         int y = -1;
         Menu.menuOpcoesProprietario();
         x = input.nextInt();
-        while(x!=0 && x!=1 && x!=2 && x!=3){
+        while(x!=0 && x!=1 && x!=2 && x!=3 && x!=4 && x!=5){
             System.out.println("(opcoesProprietario)    Opcao incorreta");
             x = input.nextInt();
         }
@@ -311,9 +309,14 @@ public class Main {
                 break;
 
             case(4):
+//                System.out.println("dentro4");
                 for(Veiculo v : p.listaCarros(u)){
                     v.toString();
+//                    System.out.println("dentrociclo4");
+
                 }
+//                System.out.println("foraciclo4");
+
                 System.out.println("(opcoesProprietario)    0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
@@ -348,7 +351,7 @@ public class Main {
         limparEcra();
 
         if(x !=12345){
-            System.out.print("(entrarAdmin)     Password: ");
+            System.out.print("(entrarAdmin)     Password (0 para retroceder): ");
             x = input.nextInt();
             if(x==0){
                 menuEntrar(p);
@@ -382,6 +385,7 @@ public class Main {
         limparEcra();
         int x = -1;
         int y = -1;
+
         Menu.menuOpcoesAdmin();
         x = input.nextInt();
         while(!(x>=0 && x<=14)){
@@ -396,10 +400,12 @@ public class Main {
                     System.out.println(u.getClass().getSimpleName() + "--------------------");
                     System.out.println(u.toString());
                 }
+
                 System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
+
                 opcoesAdmin(p);
                 break;
 
@@ -411,10 +417,12 @@ public class Main {
                         System.out.println(u.toString());
                     }
                 }
+
                 System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
+
                 opcoesAdmin(p);
                 break;
 
@@ -426,20 +434,28 @@ public class Main {
                         System.out.println(u.toString());
                     }
                 }
+
                 System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
+
                 opcoesAdmin(p);
                 break;
+
             case(4):
+                System.out.println("Numero de veiculos registados: " + p.getVeiculos().size());
+                System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size());
+
                 for(Veiculo v : p.listaVeiculos()){
                     System.out.println(v.toString());
                 }
+
                 System.out.println("(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
+
                 opcoesAdmin(p);
                 break;
 
@@ -513,6 +529,7 @@ public class Main {
             case(12):
 //                UMCarroJa.setUtilizadores(PovoarBD.povoarClientes());
                 opcoesAdmin(p);
+
             case(13):
 //                UMCarroJa.setVeiculos(PovoarBD.povoarVeiculos());
                 System.out.println("(opcoesAdmin)   0 - retroceder");
@@ -533,6 +550,7 @@ public class Main {
                 }
                 opcoesAdmin(p);
                 break;
+
             case(0):
                 executa(p);
                 break;
@@ -560,17 +578,18 @@ public class Main {
             x = input.nextInt();
         }
         limparEcra();
+        System.out.print("Email: ");
+        String email = input.next();
+
+        System.out.print("Password: ");
+        String password = input.next();
+
         System.out.print("Nome: ");
         String nome = input.next();
 
         System.out.print("NIF: ");
         int NIF = input.nextInt();
 
-        System.out.print("Email: ");
-        String email = input.next();
-
-        System.out.print("Password: ");
-        String password = input.next();
         input.nextLine(); //para receber o \n
 
         System.out.print("Morada:" );

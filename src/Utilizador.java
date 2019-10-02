@@ -92,14 +92,14 @@ public abstract class Utilizador implements Serializable {
     public abstract Utilizador clone();
 
     public String toString(){
-        StringBuilder sb = new StringBuilder("Nome: ");
+        StringBuilder sb = new StringBuilder("Email: ");
+        sb.append(this.getEmail());
+        sb.append("\nPassword: ");
+        sb.append(this.getPassword());
+        sb.append("\nNome: ");
         sb.append(this.getNome());
         sb.append("\nNIF: ");
         sb.append(this.getNIF());
-        sb.append("\nPassword: ");
-        sb.append(this.getPassword());
-        sb.append("\nEmail: ");
-        sb.append(this.getEmail());
         sb.append("\nMorada: ");
         sb.append(this.getMorada());
         sb.append("\nData de nascimento: ");
