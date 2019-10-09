@@ -15,6 +15,7 @@ public class Menu {
                 "2 - Entrar Administrador\n\n" +
                 "0 - Voltar"
         );
+        System.out.print("\nOpção: ");
     }
 
     public  static void menuRegistar(){

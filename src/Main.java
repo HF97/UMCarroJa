@@ -309,10 +309,8 @@ public class Main {
                 break;
 
             case(4):
-//                System.out.println("dentro4");
                 for(Veiculo v : p.listaCarros(u)){
-                    v.toString();
-//                    System.out.println("dentrociclo4");
+                    System.out.println(v.toString());
 
                 }
 //                System.out.println("foraciclo4");
@@ -448,7 +446,9 @@ public class Main {
                 System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size());
 
                 for(Veiculo v : p.listaVeiculos()){
-                    System.out.println(v.toString());
+                    if(v.getClass().getSimpleName().equals("Gasolina")) {
+                        System.out.println(v.toString());
+                    }
                 }
 
                 System.out.println("(opcoesAdmin)   0 - retroceder");
