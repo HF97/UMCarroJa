@@ -394,6 +394,8 @@ public class Main {
 
         switch(x){
             case(1):
+                System.out.println("Numero de veiculos registados: " + p.listaUtilizadores().size());
+
                 for(Utilizador u : p.listaUtilizadores()){
                     System.out.println(u.getClass().getSimpleName() + "--------------------");
                     System.out.println(u.toString());
@@ -446,9 +448,8 @@ public class Main {
                 System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size());
 
                 for(Veiculo v : p.listaVeiculos()){
-                    if(v.getClass().getSimpleName().equals("Gasolina")) {
-                        System.out.println(v.toString());
-                    }
+                    System.out.println(v.getClass().getSimpleName() + "--------------------");
+                    System.out.println(v.toString());
                 }
 
                 System.out.println("(opcoesAdmin)   0 - retroceder");
@@ -595,7 +596,7 @@ public class Main {
         System.out.print("Morada:" );
         String morada = input.nextLine();
 
-        System.out.print("Data de nascimento (dd-mm-yyyy: ");
+        System.out.print("Data de nascimento (dd-mm-yyyy): ");
         LocalDate datanasc = null;
         List<Integer> histAlugUti = new ArrayList<Integer>();
         boolean f = true;

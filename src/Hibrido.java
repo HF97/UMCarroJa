@@ -25,8 +25,7 @@ public class Hibrido extends Veiculo implements Serializable {
     }
 
     public String toString(){
-        StringBuilder sb = new StringBuilder(this.getClass().getSimpleName());
-        sb.append(super.toString());
+        StringBuilder sb = new StringBuilder(super.toString());
         return sb.toString();
     }
 }
