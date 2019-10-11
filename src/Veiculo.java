@@ -9,7 +9,6 @@ public abstract class Veiculo implements Serializable {
     private double velmediakm;
     private double precokm;
     private double consumo;
-
     private int classificacao;
     private Coordenada coord;
     private int autonomia;
