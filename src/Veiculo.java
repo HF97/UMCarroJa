@@ -13,7 +13,7 @@ public abstract class Veiculo implements Serializable {
     private Coordenada coord;
     private int autonomia;
     private String proprietario;
-    private List<Aluguer> histAlugVeic;
+    private List<Integer> histAlugVeic;
     private String estado;
 
     public Veiculo(){
@@ -26,10 +26,10 @@ public abstract class Veiculo implements Serializable {
         this.autonomia = 0;
         this.proprietario = "";
         this.estado = "livre";
-        this.histAlugVeic = new ArrayList<Aluguer>();
+        this.histAlugVeic = new ArrayList<Integer>();
     }
 
-    public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario, String estado, Collection<Aluguer> histAlugVeic){
+    public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, Coordenada coord, int autonomia, String proprietario, String estado, Collection<Integer> histAlugVeic){
         this.matricula = matricula;
         this.velmediakm = velmediakm;
         this.precokm = precokm;
@@ -39,7 +39,7 @@ public abstract class Veiculo implements Serializable {
         this.autonomia = autonomia;
         this.proprietario = proprietario;
         this.estado = estado;
-        for(Aluguer a : histAlugVeic){
+        for(Integer a : histAlugVeic){
             histAlugVeic.add(a);
         }
     }
@@ -93,7 +93,7 @@ public abstract class Veiculo implements Serializable {
         return estado;
     }
 
-    public List<Aluguer> getHistAlugVeic(){
+    public List<Integer> getHistAlugVeic(){
         return this.histAlugVeic;
     }
 
@@ -113,7 +113,7 @@ public abstract class Veiculo implements Serializable {
         this.estado = estado;
     }
 
-    public void setHistAlugVeic(List<Aluguer> histAlugVeic) {
+    public void setHistAlugVeic(List<Integer> histAlugVeic) {
         this.histAlugVeic = histAlugVeic;
     }
 
@@ -154,9 +154,33 @@ public abstract class Veiculo implements Serializable {
         sb.append("\nEstado: ");
         sb.append(this.getEstado());
         sb.append("\nHistorico:");
-        for(Aluguer a : this.getHistAlugVeic()){
-            sb.append(sb.toString());
+        for(Integer a : this.getHistAlugVeic()){
+            sb.append(a.toString());
         }
         return sb.toString();
     }
+
+//    public void toString(){
+//        System.out.print("Matricula: ");
+//        System.out.println(matricula);
+//        System.out.print("Velocidade media: ");
+//        System.out.println(velmediakm);
+//        System.out.print("Preco por km: ");
+//        System.out.println(precokm);
+//        System.out.print("Consumo: ");
+//        System.out.println(consumo);
+//        System.out.print("Classificacao: ");
+//        System.out.println(classificacao);
+//        System.out.println(getCoord());
+//        System.out.print("Autonomia: ");
+//        System.out.println(autonomia);
+//        System.out.print("Proprietario: ");
+//        System.out.println(proprietario);
+//        System.out.print("Estado: ");
+//        System.out.println(estado);
+//        System.out.println("Historico: ");
+//        for(Aluguer a : this.getHistAlugVeic()){
+//            System.out.println();
+//        }
+//    }
 }

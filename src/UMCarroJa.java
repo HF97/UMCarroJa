@@ -407,7 +407,7 @@ public class UMCarroJa implements Serializable{
 
         String prop = u.getEmail();
 
-        List<Aluguer> histAlugVeic = new ArrayList<Aluguer>();
+        List<Integer> histAlugVeic = new ArrayList<Integer>();
 
         System.out.println("Tipo de veiculo: ");
         Menu.tipoVeiculo();

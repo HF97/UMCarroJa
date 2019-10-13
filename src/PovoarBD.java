@@ -55,7 +55,7 @@ public class PovoarBD {
 
     public static Map<String,Veiculo> povoarVeiculos(){
         Map<String,Veiculo> veiculos = new HashMap<String, Veiculo>();
-        List<Aluguer> histAlugUti = new ArrayList<Aluguer>();
+        List<Integer> histAlugUti = new ArrayList<Integer>();
         Coordenada coord1 = new Coordenada(0,0);
         Gasolina g1 = new Gasolina("11-aa-11", 50.0, 5.0, 5.7, 0, coord1, 800, "joaofelix@gmail.com", "livre", histAlugUti);
         veiculos.put("joaofelix@gmail.com", g1.clone());
