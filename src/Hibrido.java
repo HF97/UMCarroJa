@@ -19,7 +19,7 @@ public class Hibrido extends Veiculo implements Serializable {
         return new Hibrido(this);
     }
 
-        public boolean equals (Object o){
+    public boolean equals (Object o){
         Hibrido h = (Hibrido) o;
         return super.equals(h);
     }

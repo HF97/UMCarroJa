@@ -135,52 +135,52 @@ public abstract class Veiculo implements Serializable {
 
     public abstract Veiculo clone();
 
-    public String toString(){
-        StringBuilder sb = new StringBuilder("Matricula: ");
-        sb.append(this.getMatricula());
-        sb.append("Velocidade media por km: ");
-        sb.append(this.getVelmediakm());
-        sb.append("\nPreco por km: ");
-        sb.append(this.getPrecokm());
-        sb.append("\nConsumo: ");
-        sb.append(this.getConsumo());
-        sb.append("\nClassificacao: ");
-        sb.append(this.getClassificacao());
-        sb.append(this.getCoord());
-        sb.append("\nAutonomia: ");
-        sb.append(this.getAutonomia());
-        sb.append("\nProprietario: ");
-        sb.append(this.getProprietario());
-        sb.append("\nEstado: ");
-        sb.append(this.getEstado());
-        sb.append("\nHistorico:");
-        for(Integer a : this.getHistAlugVeic()){
-            sb.append(a.toString());
-        }
-        return sb.toString();
-    }
-
-//    public void toString(){
-//        System.out.print("Matricula: ");
-//        System.out.println(matricula);
-//        System.out.print("Velocidade media: ");
-//        System.out.println(velmediakm);
-//        System.out.print("Preco por km: ");
-//        System.out.println(precokm);
-//        System.out.print("Consumo: ");
-//        System.out.println(consumo);
-//        System.out.print("Classificacao: ");
-//        System.out.println(classificacao);
-//        System.out.println(getCoord());
-//        System.out.print("Autonomia: ");
-//        System.out.println(autonomia);
-//        System.out.print("Proprietario: ");
-//        System.out.println(proprietario);
-//        System.out.print("Estado: ");
-//        System.out.println(estado);
-//        System.out.println("Historico: ");
-//        for(Aluguer a : this.getHistAlugVeic()){
-//            System.out.println();
+//    public String toString(){
+//        StringBuilder sb = new StringBuilder("Matricula: ");
+//        sb.append(this.getMatricula());
+//        sb.append("Velocidade media por km: ");
+//        sb.append(this.getVelmediakm());
+//        sb.append("\nPreco por km: ");
+//        sb.append(this.getPrecokm());
+//        sb.append("\nConsumo: ");
+//        sb.append(this.getConsumo());
+//        sb.append("\nClassificacao: ");
+//        sb.append(this.getClassificacao());
+//        sb.append(this.getCoord());
+//        sb.append("\nAutonomia: ");
+//        sb.append(this.getAutonomia());
+//        sb.append("\nProprietario: ");
+//        sb.append(this.getProprietario());
+//        sb.append("\nEstado: ");
+//        sb.append(this.getEstado());
+//        sb.append("\nHistorico:");
+//        for(Integer a : ){
+//            sb.append(a.toString());
 //        }
+//        return sb.toString();
 //    }
+
+    public void imprime(){
+        System.out.print("Matricula: ");
+        System.out.println(matricula);
+        System.out.print("Velocidade media: ");
+        System.out.println(velmediakm);
+        System.out.print("Preco por km: ");
+        System.out.println(precokm);
+        System.out.print("Consumo: ");
+        System.out.println(consumo);
+        System.out.print("Classificacao: ");
+        System.out.println(classificacao);
+        System.out.print(getCoord());
+        System.out.print("Autonomia: ");
+        System.out.println(autonomia);
+        System.out.print("Proprietario: ");
+        System.out.println(proprietario);
+        System.out.print("Estado: ");
+        System.out.println(estado);
+        System.out.println("Historico: ");
+        for(Integer a : this.getHistAlugVeic()){
+            System.out.println();
+        }
+    }
 }
