@@ -449,7 +449,7 @@ public class Main {
 
                 for(Veiculo v : p.listaVeiculos()){
                     System.out.println(v.getClass().getSimpleName() + "--------------------");
-                    v.imprime();
+                    System.out.println(v.toString());
                 }
 
                 System.out.println("(opcoesAdmin)   0 - retroceder");
