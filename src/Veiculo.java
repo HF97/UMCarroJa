@@ -138,7 +138,7 @@ public abstract class Veiculo implements Serializable {
     public String toString(){
         StringBuilder sb = new StringBuilder("Matricula: ");
         sb.append(this.getMatricula());
-        sb.append("Velocidade media por km: ");
+        sb.append("\nVelocidade media por km: ");
         sb.append(this.getVelmediakm());
         sb.append("\nPreco por km: ");
         sb.append(this.getPrecokm());

@@ -401,7 +401,7 @@ public class Main {
                     System.out.println(u.toString());
                 }
 
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -418,7 +418,7 @@ public class Main {
                     }
                 }
 
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -435,7 +435,7 @@ public class Main {
                     }
                 }
 
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -452,7 +452,7 @@ public class Main {
                     System.out.println(v.toString());
                 }
 
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -464,7 +464,7 @@ public class Main {
                 for(Veiculo v : p.listaLivres()){
                     System.out.println(v.toString());
                 }
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -475,7 +475,7 @@ public class Main {
                 for(Veiculo v : p.listaOcupados()){
                     System.out.println(v.toString());
                 }
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -484,7 +484,7 @@ public class Main {
 
             case(7):
                 p.removeUtilizador();
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -493,7 +493,7 @@ public class Main {
 
             case(8):
                 p.removeTodosUtilizadores();
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -502,7 +502,7 @@ public class Main {
 
             case(9):
                 p.removeVeiculo();
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -511,7 +511,7 @@ public class Main {
 
             case(10):
                 p.removeTodosVeiculos();
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -520,7 +520,7 @@ public class Main {
 
             case(11):
                 p.apagarTudo();
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -533,7 +533,7 @@ public class Main {
 
             case(13):
 //                UMCarroJa.setVeiculos(PovoarBD.povoarVeiculos());
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
@@ -545,7 +545,7 @@ public class Main {
                 System.out.print("1 - Clientes\n2 - Proprietarios\n3 - Veiculos\n\nOpcao: ");
                 int opcao = input.nextInt();
                 p.escreveEmFicheiroTxt("bd" ,opcao);
-                System.out.println("(opcoesAdmin)   0 - retroceder");
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
