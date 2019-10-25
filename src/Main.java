@@ -394,7 +394,7 @@ public class Main {
 
         switch(x){
             case(1):
-                System.out.println("Numero de veiculos registados: " + p.listaUtilizadores().size());
+                System.out.println("Numero de utilizadores registados: " + p.listaUtilizadores().size());
 
                 for(Utilizador u : p.listaUtilizadores()){
                     System.out.println(u.getClass().getSimpleName() + "--------------------");

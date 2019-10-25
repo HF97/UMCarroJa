@@ -348,8 +348,8 @@ public class UMCarroJa implements Serializable{
 
 
 //    TODO  problema, nao aparece o getClassificacao
-    public String verClassificacao(Proprietario u){
-        return this.utilizadores.get(u.getEmail()).getEmail();
+    public void verClassificacao(Proprietario u){
+        System.out.println("Classificacao: "+u.getClassificacao());
     }
 
 
