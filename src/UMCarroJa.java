@@ -342,18 +342,20 @@ public class UMCarroJa implements Serializable{
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula do veiculo: ");
         String matricula = input.next();
-        this.livres.add(this.veiculos.get(matricula).getMatricula());
-        System.out.println("Veiculo com matricula " + matricula + " está livre");
+        if(veiculos.containsKey(matricula)){
+            this.livres.add(this.veiculos.get(matricula).getMatricula());
+            System.out.println("Veiculo com matricula " + matricula + " está livre");
+        }
+        else System.out.println("Veiculo inexistente\n");
     }
 
 
-//    TODO  problema, nao aparece o getClassificacao
     public void verClassificacao(Proprietario u){
         System.out.println("Classificacao: "+u.getClassificacao());
     }
 
 
-//    //TODO  apenas avisar se está abaixo de 10%
+//    //TODO  apenas avisar se está abaixo de 10km
 //    public void abastecerVeiculo(Proprietario u){
 //        Scanner input = new Scanner(System.in);
 //        System.out.println("Matricula do veiculo: ");

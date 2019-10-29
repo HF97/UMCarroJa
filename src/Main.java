@@ -166,7 +166,7 @@ public class Main {
 //        limparEcra();
 
         if (u.getClass().getSimpleName().equals("Cliente")) {
-            opcoesCliente((Cliente) u, p);
+            entrarCliente((Cliente) u, p);
             return;
         }
 
@@ -174,6 +174,21 @@ public class Main {
             opcoesProprietario((Proprietario) u, p);
             return;
         }
+    }
+
+    private static void entrarCliente(Cliente u, UMCarroJa p) throws Exception{
+        Scanner input = new Scanner(System.in);
+        limparEcra();
+
+        Coordenada coordInicio = u.getCoord();
+        System.out.println("(opcoesCliente)     Coordenadas de destino:");
+        System.out.print("(opcoesCliente)     X: ");
+        int coordX = input.nextInt();
+        System.out.print("(opcoesCliente)     Y: ");
+        int coordY = input.nextInt();
+        Coordenada coordFim = new Coordenada(coordX, coordY);
+
+        opcoesCliente(u,p,coordFim);
     }
 
     //TODO  aluguer
@@ -185,21 +200,14 @@ public class Main {
      * @param p
      * @throws Exception
      */
-    private static void opcoesCliente (Cliente u, UMCarroJa p) throws Exception {
+    private static void opcoesCliente (Cliente u, UMCarroJa p, Coordenada coordFim) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
         int y = -1;
 
-        Coordenada coordInicio = u.getCoord();
-        System.out.println("(opcoesCliente)     Coordenadas de destino:");
-        System.out.print("(opcoesCliente)     X: ");
-        int coordX = input.nextInt();
-        System.out.print("(opcoesCliente)     Y: ");
-        int coordY = input.nextInt();
-        Coordenada coordFim = new Coordenada(coordX, coordY);
-
         Menu.menuOpcoesCliente();
         int opcao = -1;
+        opcao = input.nextInt();
         while(opcao!=1 && opcao!=2 && opcao!=3 && opcao!=4 && opcao!=5) {
             System.out.println("(opcoesCliente)     Opcao incorreta");
             opcao = input.nextInt();
@@ -208,12 +216,12 @@ public class Main {
         Veiculo v = new Gasolina();
         switch (opcao){
             case(1):
-                v = p.veiculoMaisProximo(coordInicio);
+                v = p.veiculoMaisProximo(coordFim);
                 System.out.println("(opcoesCliente)     0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
                 }
-                opcoesCliente(u,p);
+                opcoesCliente(u,p,coordFim);
                 break;
 
             case(2):
@@ -222,7 +230,7 @@ public class Main {
                 while(y != 0){
                     y = input.nextInt();
                 }
-                opcoesCliente(u,p);
+                opcoesCliente(u,p,coordFim);
                 break;
 
             case(3):
@@ -231,7 +239,7 @@ public class Main {
                 while(y != 0){
                     y = input.nextInt();
                 }
-                opcoesCliente(u,p);
+                opcoesCliente(u,p,coordFim);
                 break;
 
             case(4):
@@ -240,7 +248,7 @@ public class Main {
                 while(y != 0){
                     y = input.nextInt();
                 }
-                opcoesCliente(u,p);
+                opcoesCliente(u,p,coordFim);
                 break;
 
             case(5):
@@ -249,7 +257,7 @@ public class Main {
                 while(y != 0){
                     y = input.nextInt();
                 }
-                opcoesCliente(u,p);
+                opcoesCliente(u,p,coordFim);
                 break;
         }
 
@@ -309,11 +317,12 @@ public class Main {
                 break;
 
             case(4):
-                for(Veiculo v : p.listaCarros(u)){
+//                Lista de carros
+                System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size());
+                for(Veiculo v : p.listaVeiculos()){
+                    System.out.println(v.getClass().getSimpleName() + "--------------------");
                     System.out.println(v.toString());
-
                 }
-//                System.out.println("foraciclo4");
 
                 System.out.println("(opcoesProprietario)    0 - retroceder");
                 while(y != 0){
@@ -448,7 +457,7 @@ public class Main {
                 System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size());
 
                 for(Veiculo v : p.listaVeiculos()){
-                    System.out.println(v.getClass().getSimpleName() + "--------------------");
+                    System.out.println(v.getClass().getSimpleName() + "--------------------\n");
                     System.out.println(v.toString());
                 }
 
