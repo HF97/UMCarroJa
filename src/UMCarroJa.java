@@ -71,10 +71,6 @@ public class UMCarroJa implements Serializable{
         this.idAluguer = p.getIdAluguer();
     }
 
-    public int getNumeroCarro() {
-        return this.numeroCarro;
-    }
-
     public Map<String, Utilizador> getUtilizadores() {
         return this.utilizadores;
     }
@@ -99,28 +95,65 @@ public class UMCarroJa implements Serializable{
         return idAluguer;
     }
 
+    /**
+     * Define o id de aluguer
+     *
+     */
     public void setIdAluguer(int idAluguer) {
         this.idAluguer = idAluguer;
     }
 
+    /**
+     * Retorna o numero do id de carro
+     *
+     */
+    public int getNumeroCarro() {
+        return this.numeroCarro;
+    }
+
+    /**
+     *
+     * Define o numero de id de carro
+     *
+     */
     public void setNumeroCarro(int numeroCarro) {
         this.numeroCarro = numeroCarro;
     }
 
+    /**
+     * Adiciona um utilizador
+     *
+     */
     public void adicionaUtilizador (Utilizador u){
         this.utilizadores.put(u.getEmail(), u.clone());
     }
 
+    /**
+     * Adiciona um veiculo
+     *
+     */
     public void adicionaVeiculo (Veiculo v){ this.veiculos.put(v.getMatricula(), v.clone()); }
 
+    /**
+     * Adiciona um aluguer
+     *
+     */
     public void adicionaAluguer (Aluguer al){
         this.alugueres.put(al.getId(), al.clone());
     }
 
+    /**
+     * Retorna um utilizador especifico
+     *
+     */
     public Utilizador getUtilizador(String email){
         return this.utilizadores.get(email);
     }
 
+    /**
+     * Apaga utilizador especifico
+     *
+     */
     public void removeUtilizador(){
         Scanner input = new Scanner(System.in);
         System.out.print("Email do utilizador: ");
@@ -128,10 +161,18 @@ public class UMCarroJa implements Serializable{
         this.utilizadores.remove(email);
     }
 
+    /**
+     * Apaga utilizadores
+     *
+     */
     public void removeTodosUtilizadores(){
         this.utilizadores.clear();
     }
 
+    /**
+     * Apaga veiculo especifico
+     *
+     */
     public void removeVeiculo(){
         Scanner input = new Scanner(System.in);
         System.out.print("Matricula do veiculo: ");
@@ -139,10 +180,18 @@ public class UMCarroJa implements Serializable{
         this.utilizadores.remove(matricula);
     }
 
+    /**
+     * Apaga todos os veiculos
+     *
+     */
     public void removeTodosVeiculos(){
         this.veiculos.clear();
     }
 
+    /**
+     * Apaga base de dados toda
+     *
+     */
     public void apagarTudo(){
         this.utilizadores.clear();
         this.veiculos.clear();
@@ -151,29 +200,50 @@ public class UMCarroJa implements Serializable{
         this.ocupados.clear();
     }
 
+    /**
+     * Faz set de utilizadores
+     *
+     */
     public void setUtilizadores(Map<String, Utilizador> utilizadores) {
         this.utilizadores = utilizadores;
     }
 
+    /**
+     * Faz set de veiculos
+     *
+     */
     public void setVeiculos(Map<String, Veiculo> veiculos) {
         this.veiculos = veiculos;
     }
 
+    /**
+     * Faz set alugueres
+     *
+     */
     public void setAlugueres(Map<Integer, Aluguer> alugueres) {
         this.alugueres = alugueres;
     }
 
+    /**
+     * Faz set veiculos livres
+     *
+     */
     public void setLivres(List<String> livres) {
         this.livres = livres;
     }
 
+    /**
+     * Faz set de veiculos ocupados
+     *
+     */
     public void setOcupados(List<String> ocupados) {
         this.ocupados = ocupados;
     }
 
-    //    -----------------
+//    -----------------
 //    Guardar basedados
 //    -----------------
+
     public static UMCarroJa carregaObjetoInformacao() throws IOException, ClassNotFoundException, FileNotFoundException
     {
         FileInputStream carregaFicheiro = new FileInputStream("basedados");
@@ -326,6 +396,11 @@ public class UMCarroJa implements Serializable{
     //OPCOES PROPRIETARIO
     //-------------------
 
+    /**
+     * Retorna a lista de carros de um proprietario
+     *
+     * @param u proprietario
+     */
     public List<Veiculo> listaCarros(Proprietario u){
         List<Veiculo> veicProp = new ArrayList<Veiculo>();
         Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
@@ -337,7 +412,11 @@ public class UMCarroJa implements Serializable{
         return veicProp;
     }
 
-
+    /**
+     * Diz se veiculo esta disponivel ou no caso de nao existir diz que e inexistente
+     *
+     * @param u proprietario
+     */
     public void veiculoDisponivel(Proprietario u){
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula do veiculo: ");
@@ -349,34 +428,46 @@ public class UMCarroJa implements Serializable{
         else System.out.println("Veiculo inexistente\n");
     }
 
-
+    /**
+     * Diz a classificacao de um proprietario
+     *
+     * @param u proprietario
+     */
     public void verClassificacao(Proprietario u){
         System.out.println("Classificacao: "+u.getClassificacao());
     }
 
+    /**
+     * Abastece um veiculo com uma determinada percentagem
+     *
+     * @param u proprietario
+     */
+    public void abastecerVeiculo(Proprietario u){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Matricula do veiculo: ");
+        String matricula = input.next();
 
-//    //TODO  apenas avisar se está abaixo de 10km
-//    public void abastecerVeiculo(Proprietario u){
-//        Scanner input = new Scanner(System.in);
-//        System.out.println("Matricula do veiculo: ");
-//        String matricula = input.next();
-//
-//        System.out.println("Ate que percentagem de deposito deseja encher: ");
-//        int percentagem = input.nextInt();
-//
-//        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
-//        int auto = 0;
-//        while(it.hasNext()){
-//            if(it.next().getValue().getMatricula().equals(matricula)){
-//
-//                if(it.next().getValue().getAutonomia())
-//
-//                it.next().getValue().setAutonomia(it.next().getValue().getAutonomia() + percentagem);
-//                auto = it.next().getValue().getAutonomia();
-//            }
-//        }
-//        System.out.println("Veiculo de matricula " + matricula + " agora tem " + auto + " de autonomia");
-//    }
+        System.out.println("Ate que percentagem de deposito deseja encher: ");
+        int percentagem = input.nextInt();
+
+        Veiculo v = this.veiculos.get(matricula);
+        v.setAutonomia(percentagem);
+
+        System.out.println("Veiculo de matricula " + matricula + " agora tem " + percentagem + " de autonomia");
+    }
+
+    /**
+     * Se autonomia menor que 10 retorna 1 s enao retorn 0
+     *
+     * @param v veiculo
+     */
+    public int testarAutonomia(Veiculo v){
+        int autonomia = v.getAutonomia();
+        if(autonomia < 10){
+            return 1;
+        }
+        return 0;
+    }
 
 
     //TODO  adicionar ao historico
@@ -446,14 +537,27 @@ public class UMCarroJa implements Serializable{
     //------------
     //OPCOES ADMIN
     //------------
+
+    /**
+     * Retorna a lista de utilizadores
+     *
+     */
     public Collection<Utilizador> listaUtilizadores(){
         return this.getUtilizadores().values();
     }
 
+    /**
+     * Retorna a lista de veiculos
+     *
+     */
     public Collection<Veiculo> listaVeiculos(){
         return this.getVeiculos().values();
     }
 
+    /**
+     * Retorna a lista de veiculos livres
+     *
+     */
     public List<Veiculo> listaLivres(){
         List<Veiculo> liv = new ArrayList<Veiculo>();
         for(String s : this.livres){
@@ -462,6 +566,10 @@ public class UMCarroJa implements Serializable{
         return liv;
     }
 
+    /**
+     * Retorna a lista de veiculos ocupados
+     *
+     */
     public List<Veiculo> listaOcupados(){
         List<Veiculo> ocu = new ArrayList<Veiculo>();
         for(String s : this.ocupados){
@@ -470,7 +578,10 @@ public class UMCarroJa implements Serializable{
         return ocu;
     }
 
-
+    /**
+     * Clone da class UMCarroJa
+     *
+     */
     public UMCarroJa clone(){
         return new UMCarroJa(this);
     }

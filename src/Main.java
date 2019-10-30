@@ -298,14 +298,14 @@ public class Main {
                 opcoesProprietario(u,p);
                 break;
 
-//            case(2):
-//                p.abastecerVeiculo(u);
-//                System.out.println("(opcoesProprietario)    0 - retroceder");
-//                while(y != 0){
-//                    y = input.nextInt();
-//                }
-//            opcoesProprietario(u,p);
-//                break;
+            case(2):
+                p.abastecerVeiculo(u);
+                System.out.println("(opcoesProprietario)    0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
+            opcoesProprietario(u,p);
+                break;
 
             case(3):
                 p.adicionarVeiculo(u);
@@ -318,7 +318,7 @@ public class Main {
 
             case(4):
 //                Lista de carros
-                System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size());
+                System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size() + "\n");
                 for(Veiculo v : p.listaVeiculos()){
                     System.out.println(v.getClass().getSimpleName() + "--------------------");
                     System.out.println(v.toString());
@@ -403,7 +403,7 @@ public class Main {
 
         switch(x){
             case(1):
-                System.out.println("Numero de utilizadores registados: " + p.listaUtilizadores().size());
+                System.out.println("Numero de utilizadores registados: " + p.listaUtilizadores().size() +"\n");
 
                 for(Utilizador u : p.listaUtilizadores()){
                     System.out.println(u.getClass().getSimpleName() + "--------------------");
@@ -454,10 +454,10 @@ public class Main {
 
             case(4):
                 System.out.println("Numero de veiculos registados: " + p.getVeiculos().size());
-                System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size());
+                System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size() + "\n");
 
                 for(Veiculo v : p.listaVeiculos()){
-                    System.out.println(v.getClass().getSimpleName() + "--------------------\n");
+                    System.out.println(v.getClass().getSimpleName() + "--------------------");
                     System.out.println(v.toString());
                 }
 
@@ -538,7 +538,12 @@ public class Main {
 
             case(12):
 //                UMCarroJa.setUtilizadores(PovoarBD.povoarClientes());
+                System.out.println("\n(opcoesAdmin)   0 - retroceder");
+                while(y != 0){
+                    y = input.nextInt();
+                }
                 opcoesAdmin(p);
+                break;
 
             case(13):
 //                UMCarroJa.setVeiculos(PovoarBD.povoarVeiculos());

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PovoarBD {
-    public static Map<String,Utilizador> povoarClientes(){
+    public Map<String,Utilizador> povoarClientes(){
         Map<String,Utilizador> utilizadores = new HashMap<String, Utilizador>();
         List<Integer> histAlugUti = new ArrayList<Integer>();
         List<String> carros = new ArrayList<String>();
@@ -53,7 +53,7 @@ public class PovoarBD {
         return utilizadores;
     }
 
-    public static Map<String,Veiculo> povoarVeiculos(){
+    public Map<String,Veiculo> povoarVeiculos(){
         Map<String,Veiculo> veiculos = new HashMap<String, Veiculo>();
         List<Integer> histAlugUti = new ArrayList<Integer>();
         Coordenada coord1 = new Coordenada(0,0);
