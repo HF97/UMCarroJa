@@ -453,6 +453,7 @@ public class Main {
                 break;
 
             case(4):
+                //Lista todos veiculos
                 System.out.println("Numero de veiculos registados: " + p.getVeiculos().size());
                 System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size() + "\n");
 
@@ -470,6 +471,7 @@ public class Main {
                 break;
 
             case(5):
+                //Lista veiculos livres
                 for(Veiculo v : p.listaLivres()){
                     System.out.println(v.toString());
                 }
@@ -481,6 +483,7 @@ public class Main {
                 break;
 
             case(6):
+                //lista veiculos ocupados
                 for(Veiculo v : p.listaOcupados()){
                     System.out.println(v.toString());
                 }
@@ -492,6 +495,7 @@ public class Main {
                 break;
 
             case(7):
+                //remove utilizador
                 p.removeUtilizador();
                 System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
@@ -501,6 +505,7 @@ public class Main {
                 break;
 
             case(8):
+                //remove todos utilizadores
                 p.removeTodosUtilizadores();
                 System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
@@ -510,6 +515,7 @@ public class Main {
                 break;
 
             case(9):
+                //remove veiculo
                 p.removeVeiculo();
                 System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
@@ -519,6 +525,7 @@ public class Main {
                 break;
 
             case(10):
+                //remove todos veiculos
                 p.removeTodosVeiculos();
                 System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
@@ -528,6 +535,7 @@ public class Main {
                 break;
 
             case(11):
+                //apaga base dados
                 p.apagarTudo();
                 System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
