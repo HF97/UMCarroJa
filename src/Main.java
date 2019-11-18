@@ -564,9 +564,16 @@ public class Main {
 
                 //TODO  meter funcao a funcionar, apenas imprime titulo
             case(14):
-                System.out.print("1 - Clientes\n2 - Proprietarios\n3 - Veiculos\n\nOpcao: ");
+                System.out.print("1 - Clientes\n2 - Proprietarios\n3 - Veiculos\n4 - Tudo\n\nOpcao: ");
                 int opcao = input.nextInt();
-                p.escreveEmFicheiroTxt("bd" ,opcao);
+                if(opcao == 4){
+                    p.escreveEmFicheiroTxt("clientes", 1);
+                    p.escreveEmFicheiroTxt("proprietarios", 2);
+                    p.escreveEmFicheiroTxt("veiculos", 3);
+                }
+                else {
+                    p.escreveEmFicheiroTxt("bd", opcao);
+                }
                 System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();

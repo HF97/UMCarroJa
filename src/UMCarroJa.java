@@ -320,7 +320,6 @@ public class UMCarroJa implements Serializable{
                     fich.println(veic.next().getValue().toString());
                 }
                 break;
-
         }
         fich.flush();
         fich.close();
