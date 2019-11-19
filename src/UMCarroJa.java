@@ -22,6 +22,9 @@ public class UMCarroJa implements Serializable{
     private Map<String, Utilizador> utilizadores;
     private Map<String, Veiculo> veiculos;
     private Map<Integer, Aluguer> alugueres;
+    private Map<Integer, List<Integer>> histCli;
+    private Map<Integer, List<Integer>> histProp;
+    private Map<Integer, List<Integer>> histVeic;
     private List<String> livres;
     private List<String> ocupados;
     private int idAluguer;
@@ -455,10 +458,6 @@ public class UMCarroJa implements Serializable{
         return 0;
     }
 
-
-    //TODO  adicionar ao historico
-
-
     public void adicionarVeiculo(Proprietario u){
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula: ");
@@ -486,8 +485,6 @@ public class UMCarroJa implements Serializable{
 
         String prop = u.getEmail();
 
-        List<Integer> histAlugVeic = new ArrayList<Integer>();
-
         System.out.println("Tipo de veiculo: ");
         Menu.tipoVeiculo();
         int x = input.nextInt();
@@ -500,17 +497,17 @@ public class UMCarroJa implements Serializable{
 
         switch (x){
             case(1):
-                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado, histAlugVeic);
+                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado);
                 adicionaVeiculo(gas.clone());
                 break;
 
             case(2):
-                Veiculo hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado, histAlugVeic);
+                Veiculo hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado);
                 adicionaVeiculo(hib.clone());
                 break;
 
             case(3):
-                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado, histAlugVeic);
+                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado);
                 adicionaVeiculo(ele.clone());
                 break;
 

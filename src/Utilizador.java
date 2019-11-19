@@ -24,7 +24,7 @@ public abstract class Utilizador implements Serializable {
         this.histAlugUti = new ArrayList<Integer>();
     }
 
-    public Utilizador(String nome, int NIF, String email, String password, String morada, LocalDate datanasc, Collection<Integer> histAlugUti){
+    public Utilizador(String nome, int NIF, String email, String password, String morada, LocalDate datanasc){
         this.nome = nome;
         this.NIF = NIF;
         this.email = email;
@@ -32,9 +32,6 @@ public abstract class Utilizador implements Serializable {
         this.morada = morada;
         this.datanasc = datanasc;
         this.histAlugUti = new ArrayList<Integer>();
-        for(Integer a : histAlugUti){
-            histAlugUti.add(a);
-        }
     }
 
     public Utilizador(Utilizador a){
@@ -85,8 +82,7 @@ public abstract class Utilizador implements Serializable {
                 a.getEmail().equals(email) &&
                 a.getPassword() == password &&
                 a.getMorada().equals(morada) &&
-                a.getDatanasc().equals(datanasc) &&
-                a.getHistAlugUti().equals(histAlugUti);
+                a.getDatanasc().equals(datanasc);
     }
 
     public abstract Utilizador clone();
@@ -105,9 +101,6 @@ public abstract class Utilizador implements Serializable {
         sb.append("\nData de nascimento: ");
         sb.append(this.getDatanasc());
         sb.append("\nHistorico: ");
-        for(Integer a : histAlugUti){
-            sb.append(a.toString());
-        }
         return sb.toString();
     }
 }

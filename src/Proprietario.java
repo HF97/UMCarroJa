@@ -15,8 +15,8 @@ public class Proprietario extends Utilizador implements Serializable {
         List<Integer> carros = new ArrayList<Integer>();
     }
 
-    public Proprietario (String nome, int NIF, String email, String password, String morada, LocalDate datanasc, int classificacao, Collection<Integer> histAlugUti, Collection<String> carros){
-        super(nome, NIF, email, password, morada, datanasc, histAlugUti);
+    public Proprietario (String nome, int NIF, String email, String password, String morada, LocalDate datanasc, int classificacao, Collection<String> carros){
+        super(nome, NIF, email, password, morada, datanasc);
         this.classificacao = classificacao;
         this.carros = new ArrayList<String>();
         for(String s : carros){

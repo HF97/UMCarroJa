@@ -11,8 +11,8 @@ public class Cliente extends Utilizador implements Serializable {
         coord = new Coordenada();
     }
 
-    public Cliente(String nome, int NIF, String email, String password, String morada, LocalDate datanasc, Coordenada coord, Collection<Integer> histAlugUti){
-        super(nome, NIF, email, password, morada, datanasc, histAlugUti);
+    public Cliente(String nome, int NIF, String email, String password, String morada, LocalDate datanasc, Coordenada coord){
+        super(nome, NIF, email, password, morada, datanasc);
         this.coord = coord;
     }
 

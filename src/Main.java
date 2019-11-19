@@ -612,7 +612,6 @@ public class Main {
 
         System.out.print("Data de nascimento (dd-mm-yyyy): ");
         LocalDate datanasc = null;
-        List<Integer> histAlugUti = new ArrayList<Integer>();
         boolean f = true;
         do{
             try{
@@ -627,13 +626,13 @@ public class Main {
         switch (x){
             case(1):
                 Coordenada coord = new Coordenada();
-                Cliente c = new Cliente(nome, NIF, email, password, morada, datanasc, coord, histAlugUti);
+                Cliente c = new Cliente(nome, NIF, email, password, morada, datanasc, coord);
                 p.adicionaUtilizador(c.clone());
                 break;
             case(2):
                 int classificacao = 0;
                 List<String> carros = new ArrayList<String>();
-                Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao, histAlugUti, carros);
+                Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao, carros);
                 p.adicionaUtilizador(prop.clone());
                 break;
         }
