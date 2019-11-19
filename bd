@@ -1,1 +1,27 @@
-------- Veiculos --------
+Email: uti1
+Password: uti1
+Nome: 1
+NIF: 1
+Morada: 1
+Data de nascimento: 1111-11-11
+Historico: 
+Coordenada {x:0.0, y:0.0}
+
+Email: prop1
+Password: prop1
+Nome: 1
+NIF: 1
+Morada: 1
+Data de nascimento: 1111-11-11
+Historico: 
+Classificacao: 0
+
+Email: uti2
+Password: uti2
+Nome: 2
+NIF: 2
+Morada: 2
+Data de nascimento: 2222-12-22
+Historico: 
+Coordenada {x:0.0, y:0.0}
+

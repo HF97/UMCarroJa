@@ -180,7 +180,6 @@ public class Main {
         Scanner input = new Scanner(System.in);
         limparEcra();
 
-        Coordenada coordInicio = u.getCoord();
         System.out.println("(opcoesCliente)     Coordenadas de destino:");
         System.out.print("(opcoesCliente)     X: ");
         int coordX = input.nextInt();
@@ -564,16 +563,10 @@ public class Main {
 
                 //TODO  meter funcao a funcionar, apenas imprime titulo
             case(14):
-                System.out.print("1 - Clientes\n2 - Proprietarios\n3 - Veiculos\n4 - Tudo\n\nOpcao: ");
+                System.out.print("1 - Utilizadores\n2 - Veiculos\n\nOpcao: ");
                 int opcao = input.nextInt();
-                if(opcao == 4){
-                    p.escreveEmFicheiroTxt("clientes", 1);
-                    p.escreveEmFicheiroTxt("proprietarios", 2);
-                    p.escreveEmFicheiroTxt("veiculos", 3);
-                }
-                else {
-                    p.escreveEmFicheiroTxt("bd", opcao);
-                }
+                p.escreveEmFicheiroTxt("bd", opcao);
+
                 System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();

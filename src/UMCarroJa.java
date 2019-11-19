@@ -296,25 +296,12 @@ public class UMCarroJa implements Serializable{
         PrintWriter fich = new PrintWriter(nomeFicheiro);
         switch(opcao){
             case(1):
-                fich.println("------- Utilizadores --------");
                 Iterator<Map.Entry<String, Utilizador>> cli = this.utilizadores.entrySet().iterator();
                 while(cli.hasNext()){
-                    if(cli.next().getValue().getClass().getSimpleName().equals("Cliente")){
-                        fich.println(cli.next().getValue().toString());
-                    }
+                    fich.println(cli.next().getValue().toString());
                 }
                 break;
             case(2):
-                fich.println("------- Proprietarios --------");
-                Iterator<Map.Entry<String, Utilizador>> prop = this.utilizadores.entrySet().iterator();
-                while(prop.hasNext()){
-                    if(prop.next().getValue().getClass().getSimpleName().equals("Proprietario")){
-                        fich.println(prop.next().getValue().toString());
-                    }
-                }
-                break;
-            case(3):
-                fich.println("------- Veiculos --------");
                 Iterator<Map.Entry<String, Veiculo>> veic = this.veiculos.entrySet().iterator();
                 while(veic.hasNext()){
                     fich.println(veic.next().getValue().toString());
