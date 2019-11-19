@@ -180,14 +180,21 @@ public class Main {
         Scanner input = new Scanner(System.in);
         limparEcra();
 
+        System.out.println("(opcoesCliente)     Coordenadas onde se encontra:");
+        System.out.print("(opcoesCliente)     X: ");
+        int coordXI = input.nextInt();
+        System.out.print("(opcoesCliente)     Y: ");
+        int coordYI = input.nextInt();
+        Coordenada coordI = new Coordenada(coordXI, coordYI);
+
         System.out.println("(opcoesCliente)     Coordenadas de destino:");
         System.out.print("(opcoesCliente)     X: ");
-        int coordX = input.nextInt();
+        int coordXF = input.nextInt();
         System.out.print("(opcoesCliente)     Y: ");
-        int coordY = input.nextInt();
-        Coordenada coordFim = new Coordenada(coordX, coordY);
+        int coordYF = input.nextInt();
+        Coordenada coordF = new Coordenada(coordXF, coordYF);
 
-        opcoesCliente(u,p,coordFim);
+        viagem(u,p,coordF,coordI);
     }
 
     //TODO  aluguer
@@ -199,7 +206,7 @@ public class Main {
      * @param p
      * @throws Exception
      */
-    private static void opcoesCliente (Cliente u, UMCarroJa p, Coordenada coordFim) throws Exception {
+    private static void viagem (Cliente u, UMCarroJa p, Coordenada coordF, Coordenada coordI) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
         int y = -1;
@@ -207,63 +214,48 @@ public class Main {
         Menu.menuOpcoesCliente();
         int opcao = -1;
         opcao = input.nextInt();
-        while(opcao!=1 && opcao!=2 && opcao!=3 && opcao!=4 && opcao!=5) {
-            System.out.println("(opcoesCliente)     Opcao incorreta");
+        while(opcao!=1 && opcao!=2 && opcao!=3 && opcao!=4 && opcao!=5 && opcao!=0) {
+            System.out.println("(Viagem)     Opcao incorreta");
             opcao = input.nextInt();
         }
+        if(opcao==0) return;
 
         Veiculo v = new Gasolina();
         switch (opcao){
             case(1):
-                v = p.veiculoMaisProximo(coordFim);
-                System.out.println("(opcoesCliente)     0 - retroceder");
-                while(y != 0){
-                    y = input.nextInt();
-                }
-                opcoesCliente(u,p,coordFim);
+                v = p.veiculoMaisProximo(coordF);
                 break;
 
             case(2):
                 v = p.veiculoMaisBarato();
-                System.out.println("(opcoesCliente)     0 - retroceder");
-                while(y != 0){
-                    y = input.nextInt();
-                }
-                opcoesCliente(u,p,coordFim);
                 break;
 
             case(3):
                 v = p.veiculoMaisBaratoPe(u);
-                System.out.println("(opcoesCliente)     0 - retroceder");
-                while(y != 0){
-                    y = input.nextInt();
-                }
-                opcoesCliente(u,p,coordFim);
                 break;
 
             case(4):
                 v = p.veiculoEspecifico();
-                System.out.println("(opcoesCliente)     0 - retroceder");
-                while(y != 0){
-                    y = input.nextInt();
-                }
-                opcoesCliente(u,p,coordFim);
                 break;
 
             case(5):
                 v = p.veiculoAutonomiaDesejada();
-                System.out.println("(opcoesCliente)     0 - retroceder");
-                while(y != 0){
-                    y = input.nextInt();
-                }
-                opcoesCliente(u,p,coordFim);
                 break;
         }
 
-        int id = p.getIdAluguer();
-        p.setIdAluguer(id+1);
+        if(p.temAutonomia(v, coordI, coordF) == 0){
+            viagem(u, p, coordF, coordI);
+            return;
+        }
+        else {
+
+            int id = p.getIdAluguer();
+            p.setIdAluguer(id + 1);
 
 //        Aluguer al = new Aluguer(id, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classificacao);
+
+
+        }
     }
 
     //TODO  Adicionar veiculo

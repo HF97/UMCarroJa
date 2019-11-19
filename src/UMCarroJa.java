@@ -447,9 +447,9 @@ public class UMCarroJa implements Serializable{
      *
      * @param v veiculo
      */
-    public int testarAutonomia(Veiculo v){
+    public int temAutonomia(Veiculo v, Coordenada coordI, Coordenada coordF){
         int autonomia = v.getAutonomia();
-        if(autonomia < 10){
+        if(coordI.distancia(coordF) > autonomia){
             return 1;
         }
         return 0;
