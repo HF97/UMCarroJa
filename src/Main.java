@@ -1,4 +1,5 @@
 import java.lang.ref.Cleaner;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -248,11 +249,45 @@ public class Main {
             return;
         }
         else {
-
             int id = p.getIdAluguer();
             p.setIdAluguer(id + 1);
 
-//        Aluguer al = new Aluguer(id, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classificacao);
+            double distancia = coordI.distancia(coordF);
+            Duration duracao = Duration.ofMinutes((int)(2 * distancia));
+
+            double custoTotal = distancia * v.getPrecokm();
+
+            Aluguer al = new Aluguer(id, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classificacao);
+
+            List<Integer> l = new ArrayList<Integer>();
+            if(p.getHistCli().get(u.getEmail())==null){
+                l.add(id);
+                p.getHistCli().put(u.getEmail(),l);
+                l.clear();
+            }
+            else{
+                p.getHistCli().get(u.getEmail()).add(id);
+            }
+
+            if(p.getHistProp().get(v.getProprietario())==null){
+                l.add(id);
+                p.getHistProp().put(v.getProprietario(),l);
+                l.clear();
+            }
+            else {
+                p.getHistProp().get(v.getProprietario()).add(id);
+            }
+
+            if(p.getHistVeic().get(v.getMatricula())==null){
+                l.add(id);
+                p.getHistProp().put(v.getMatricula(),l);
+                l.clear();
+            }
+            else {
+                p.getHistVeic().get(v.getMatricula()).add(id);
+            }
+
+
 
 
         }

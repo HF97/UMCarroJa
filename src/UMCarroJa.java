@@ -22,9 +22,9 @@ public class UMCarroJa implements Serializable{
     private Map<String, Utilizador> utilizadores;
     private Map<String, Veiculo> veiculos;
     private Map<Integer, Aluguer> alugueres;
-    private Map<Integer, List<Integer>> histCli;
-    private Map<Integer, List<Integer>> histProp;
-    private Map<Integer, List<Integer>> histVeic;
+    private Map<String, List<Integer>> histCli;
+    private Map<String, List<Integer>> histProp;
+    private Map<String, List<Integer>> histVeic;
     private List<String> livres;
     private List<String> ocupados;
     private int idAluguer;
@@ -34,12 +34,15 @@ public class UMCarroJa implements Serializable{
         this.utilizadores = new HashMap<String, Utilizador>();
         this.veiculos = new HashMap<String, Veiculo>();
         this.alugueres = new HashMap<Integer, Aluguer>();
+        this.histCli = new HashMap<String, List<Integer>>();
+        this.histProp = new HashMap<String, List<Integer>>();
+        this.histProp = new HashMap<String, List<Integer>>();
         this.livres = new ArrayList<String>();
         this.ocupados = new ArrayList<String>();
-        this.idAluguer = 1;
+        this.idAluguer = 0;
     }
 
-    public UMCarroJa(int numeroCarro, Collection<Utilizador> u, Collection<Veiculo> v, Collection<Aluguer> al, Collection<String> liv, Collection<String> ocu, Integer idAluguer){
+    public UMCarroJa(int numeroCarro, Collection<Utilizador> u, Collection<Veiculo> v, Collection<Aluguer> al, Collection<List<Integer>> cli, Collection<List<Integer>> prop, Collection<List<Integer>> veic, Collection<String> liv, Collection<String> ocu, Integer idAluguer){
         this.numeroCarro = numeroCarro;
         this.utilizadores = new HashMap<String, Utilizador>(u.size());
         for(Utilizador a : u){
@@ -53,6 +56,8 @@ public class UMCarroJa implements Serializable{
         for(Aluguer a : al){
             this.alugueres.put(a.getId(), a.clone());
         }
+        this.histCli = new HashMap<String, List<Integer>>();
+        this.histProp = new HashMap<String, List<Integer>>();
         this.livres = new ArrayList<String>();
         for(String a : liv){
             this.livres.add(a);
@@ -69,6 +74,9 @@ public class UMCarroJa implements Serializable{
         this.utilizadores = p.getUtilizadores();
         this.veiculos = p.getVeiculos();
         this.alugueres = p.getAlugueres();
+        this.histCli = p.getHistCli();
+        this.histProp = p.getHistProp();
+        this.histVeic = p.getHistVeic();
         this.livres = p.getLivres();
         this.ocupados = p.getOcupados();
         this.idAluguer = p.getIdAluguer();
@@ -85,6 +93,12 @@ public class UMCarroJa implements Serializable{
     public Map<Integer, Aluguer> getAlugueres() {
         return this.alugueres;
     }
+
+    public Map<String, List<Integer>> getHistCli() {return this.histCli;}
+
+    public Map<String, List<Integer>> getHistProp() {return this.histProp;}
+
+    public Map<String, List<Integer>> getHistVeic() {return this.histVeic;}
 
     public List<String> getLivres(){
         return this.livres;
