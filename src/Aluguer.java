@@ -12,7 +12,7 @@ public class Aluguer implements Serializable {
     private String emailCliente;
     private String emailProprietario;
     private double custoTotal;
-    private int classificacao;
+    private double classificacao;
 
     public Aluguer() {
         this.id = 0;
@@ -23,10 +23,10 @@ public class Aluguer implements Serializable {
         this.emailCliente = "";
         this.emailProprietario = "";
         this.custoTotal = 0.0;
-        this.classificacao = 0;
+        this.classificacao = 0.0;
     }
 
-    public Aluguer(int id, Coordenada coord, Veiculo veiculo, LocalDate data, Duration duracao, String emailCliente, String emailProprietario, double custoTotal, int classificacao){
+    public Aluguer(int id, Coordenada coord, Veiculo veiculo, LocalDate data, Duration duracao, String emailCliente, String emailProprietario, double custoTotal, double classificacao){
         this.id = id;
         this.coord = coord;
         this.veiculo = veiculo;
@@ -82,7 +82,7 @@ public class Aluguer implements Serializable {
         return custoTotal;
     }
 
-    public int getClassificacao() {
+    public double getClassificacao() {
         return classificacao;
     }
 
@@ -118,7 +118,7 @@ public class Aluguer implements Serializable {
         this.custoTotal = custoTotal;
     }
 
-    public void setClassificacao(int classificacao) {
+    public void setClassificacao(double classificacao) {
         this.classificacao = classificacao;
     }
 

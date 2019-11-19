@@ -257,6 +257,8 @@ public class Main {
 
             double custoTotal = distancia * v.getPrecokm();
 
+            double classificacao = p.getUtilizadores().get(v.getProprietario())
+
             Aluguer al = new Aluguer(id, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classificacao);
 
             List<Integer> l = new ArrayList<Integer>();
@@ -665,9 +667,11 @@ public class Main {
                 p.adicionaUtilizador(c.clone());
                 break;
             case(2):
-                int classificacao = 0;
+                double classificacao = 0.0;
+                int numClass = 0;
+                double total = 0.0;
                 List<String> carros = new ArrayList<String>();
-                Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao, carros);
+                Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao, numClass, total, carros);
                 p.adicionaUtilizador(prop.clone());
                 break;
         }
