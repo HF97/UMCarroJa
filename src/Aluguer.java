@@ -5,7 +5,8 @@ import java.time.Duration;
 public class Aluguer implements Serializable {
 
     private int id;
-    private Coordenada coord;
+    private Coordenada coordI;
+    private Coordenada coordF;
     private Veiculo veiculo;
     private LocalDate data;
     private Duration duracao;
@@ -16,7 +17,8 @@ public class Aluguer implements Serializable {
 
     public Aluguer() {
         this.id = 0;
-        this.coord = new Coordenada();
+        this.coordI = new Coordenada();
+        this.coordF = new Coordenada();
         this.veiculo = new Gasolina();
         this.data = LocalDate.now();
         this.duracao = Duration.ZERO;
@@ -26,9 +28,10 @@ public class Aluguer implements Serializable {
         this.classificacao = 0.0;
     }
 
-    public Aluguer(int id, Coordenada coord, Veiculo veiculo, LocalDate data, Duration duracao, String emailCliente, String emailProprietario, double custoTotal, double classificacao){
+    public Aluguer(int id, Coordenada coordI, Coordenada coordF, Veiculo veiculo, LocalDate data, Duration duracao, String emailCliente, String emailProprietario, double custoTotal, double classificacao){
         this.id = id;
-        this.coord = coord;
+        this.coordI = coordI;
+        this.coordF = coordF
         this.veiculo = veiculo;
         this.data = data;
         this.duracao = duracao;
@@ -40,7 +43,8 @@ public class Aluguer implements Serializable {
 
     public Aluguer(Aluguer al){
         this.id = al.getId();
-        this.coord = al.getCoord();
+        this.coordI = al.getCoordI();
+        this.coordF = al.getCoordF();
         this.veiculo = al.getVeiculo();
         this.data = al.getData();
         this.duracao = al.getDuracao();
@@ -54,8 +58,10 @@ public class Aluguer implements Serializable {
         return id;
     }
 
-    public Coordenada getCoord() {
-        return coord;
+    public Coordenada getCoordI() {return coordI;}
+
+    public Coordenada getCoordF() {
+        return coordF;
     }
 
     public Veiculo getVeiculo() {
@@ -90,9 +96,11 @@ public class Aluguer implements Serializable {
         this.id = id;
     }
 
-    public void setCoord(Coordenada coord) {
-        this.coord = coord;
+    public void setCoordI(Coordenada coordI) {
+        this.coordI = coordI;
     }
+
+    public void setCoordF
 
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
@@ -127,7 +135,8 @@ public class Aluguer implements Serializable {
         if(o==null || o.getClass() != this.getClass()) {return false;}
         Aluguer al = (Aluguer) o;
         return id == al.getId() &&
-                coord.equals(al.getCoord()) &&
+                coordI.equals(al.getCoordI()) &&
+                coordF.equals(al.coordF()) &&
                 veiculo.equals(al.getVeiculo()) &&
                 data.equals(al.getData()) &&
                 duracao == al.getDuracao() &&
@@ -144,7 +153,10 @@ public class Aluguer implements Serializable {
     public String toString(){
         StringBuilder sb = new StringBuilder("Id: ");
         sb.append(this.getId());
-        sb.append(this.getCoord().toString());
+        sb.append("Coordenada de Inicio: ");
+        sb.append(this.getCoordI().toString());
+        sb.append("Coordenada de Fim: ");
+        sb.append(this.getCoordF().toString());
         sb.append(this.getVeiculo().toString());
         sb.append(this.getData().toString());
         sb.append("Duracao: ");

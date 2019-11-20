@@ -257,9 +257,9 @@ public class Main {
 
             double custoTotal = distancia * v.getPrecokm();
 
-            double classificacao = p.getUtilizadores().get(v.getProprietario())
+            double classificacao = p.getUtilizadores().get(v.getProprietario()).
 
-            Aluguer al = new Aluguer(id, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classificacao);
+            Aluguer al = new Aluguer(id, coordI, coordF, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classificacao);
 
             List<Integer> l = new ArrayList<Integer>();
             if(p.getHistCli().get(u.getEmail())==null){
