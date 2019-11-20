@@ -22,6 +22,7 @@ public class UMCarroJa implements Serializable{
     private Map<String, Utilizador> utilizadores;
     private Map<String, Veiculo> veiculos;
     private Map<Integer, Aluguer> alugueres;
+    private Map<String, String> listVeicProp;
     private Map<String, List<Integer>> histCli;
     private Map<String, List<Integer>> histProp;
     private Map<String, List<Integer>> histVeic;
@@ -34,6 +35,7 @@ public class UMCarroJa implements Serializable{
         this.utilizadores = new HashMap<String, Utilizador>();
         this.veiculos = new HashMap<String, Veiculo>();
         this.alugueres = new HashMap<Integer, Aluguer>();
+        this.listVeicProp = new HashMap<String, String>();
         this.histCli = new HashMap<String, List<Integer>>();
         this.histProp = new HashMap<String, List<Integer>>();
         this.histProp = new HashMap<String, List<Integer>>();
@@ -56,6 +58,7 @@ public class UMCarroJa implements Serializable{
         for(Aluguer a : al){
             this.alugueres.put(a.getId(), a.clone());
         }
+        this.listVeicProp = new HashMap<String, String>();
         this.histCli = new HashMap<String, List<Integer>>();
         this.histProp = new HashMap<String, List<Integer>>();
         this.livres = new ArrayList<String>();
@@ -74,6 +77,7 @@ public class UMCarroJa implements Serializable{
         this.utilizadores = p.getUtilizadores();
         this.veiculos = p.getVeiculos();
         this.alugueres = p.getAlugueres();
+        this.listVeicProp = p.getListVeicProp();
         this.histCli = p.getHistCli();
         this.histProp = p.getHistProp();
         this.histVeic = p.getHistVeic();
@@ -93,6 +97,8 @@ public class UMCarroJa implements Serializable{
     public Map<Integer, Aluguer> getAlugueres() {
         return this.alugueres;
     }
+
+    public Map<String, String> getListVeicProp() { return listVeicProp; }
 
     public Map<String, List<Integer>> getHistCli() {return this.histCli;}
 
@@ -535,6 +541,7 @@ public class UMCarroJa implements Serializable{
             case(3):
                 Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado);
                 adicionaVeiculo(ele.clone());
+                u.getCarros().add(matricula);
                 break;
 
         }

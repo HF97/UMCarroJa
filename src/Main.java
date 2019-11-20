@@ -669,9 +669,9 @@ public class Main {
             case(2):
                 double classificacao = 0.0;
                 int numClass = 0;
-                double total = 0.0;
+                int total = 0;
                 List<String> carros = new ArrayList<String>();
-                Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao, numClass, total, carros);
+                Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao, numClass, total);
                 p.adicionaUtilizador(prop.clone());
                 break;
         }
