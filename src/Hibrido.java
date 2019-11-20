@@ -7,8 +7,8 @@ public class Hibrido extends Veiculo implements Serializable {
         super();
     }
 
-    public Hibrido(String matricula, double velmediakm, double precokm, double consumo, int classificacao, int soma, int contTotal, Coordenada coord, int autonomia, String proprietario, String estado){
-        super(matricula, velmediakm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, proprietario, estado);
+    public Hibrido(String matricula, double velmediakm, double precokm, double consumo, int classificacao, int soma, int contTotal, Coordenada coord, int autonomia, int capacidadeDeposito, String proprietario){
+        super(matricula, velmediakm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, capacidadeDeposito, proprietario);
     }
 
     public Hibrido(Hibrido h){

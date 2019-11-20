@@ -393,7 +393,7 @@ public class UMCarroJa implements Serializable{
         int autonomia = input.nextInt();
         Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
         while(it.hasNext()){
-            if(it.next().getValue().getAutonomia() == autonomia && it.next().getValue().getEstado().equals("livre")){
+            if(it.next().getValue().getAutonomia() == autonomia && livres.contains(it.next().getKey())){
                 return it.next().getValue();
             }
         }
@@ -512,6 +512,9 @@ public class UMCarroJa implements Serializable{
         System.out.println("Autonomia: ");
         int autonomia = input.nextInt();
 
+        System.out.println("Capacidade do deposito: ");
+        int capacidadeDeposito = input.nextInt();
+
         System.out.println("Indique as coordenadas do lugar que se encontra: ");
         System.out.println("X: ");
         int coordX = input.nextInt();
@@ -539,7 +542,7 @@ public class UMCarroJa implements Serializable{
 
         switch (x) {
             case (1):
-                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, prop, estado);
+                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, capacidadeDeposito, prop);
                 adicionaVeiculo(gas.clone());
                 if (this.listVeicProp.get(prop) == null){
                     m.add(matricula);
@@ -552,7 +555,7 @@ public class UMCarroJa implements Serializable{
                 break;
 
             case(2):
-                Veiculo hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, prop, estado);
+                Veiculo hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, capacidadeDeposito, prop);
                 adicionaVeiculo(hib.clone());
                 if (this.listVeicProp.get(prop) == null){
                     m.add(matricula);
@@ -565,7 +568,7 @@ public class UMCarroJa implements Serializable{
                 break;
 
             case(3):
-                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, prop, estado);
+                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, capacidadeDeposito, prop);
                 adicionaVeiculo(ele.clone());
                 if (this.listVeicProp.get(prop) == null){
                     m.add(matricula);

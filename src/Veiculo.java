@@ -32,10 +32,9 @@ public abstract class Veiculo implements Serializable {
         this.autonomia = 0;
         this.capacidadeDeposito = 0;
         this.proprietario = "";
-        this.estado = "livre";
     }
 
-    public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, int soma, int contTotal, Coordenada coord, int autonomia, int capacidadeDeposito, String proprietario, String estado){
+    public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, int soma, int contTotal, Coordenada coord, int autonomia, int capacidadeDeposito, String proprietario){
         this.matricula = matricula;
         this.velmediakm = velmediakm;
         this.precokm = precokm;
@@ -47,7 +46,6 @@ public abstract class Veiculo implements Serializable {
         this.autonomia = autonomia;
         this.capacidadeDeposito = capacidadeDeposito;
         this.proprietario = proprietario;
-        this.estado = estado;
     }
 
     public Veiculo(Veiculo v){
@@ -62,7 +60,6 @@ public abstract class Veiculo implements Serializable {
         this.autonomia = v.getAutonomia();
         this.capacidadeDeposito = v.getCapacidadeDeposito();
         this.proprietario = v.getProprietario();
-        this.estado = v.getEstado();
     }
 
     public String getMatricula() {
@@ -105,10 +102,6 @@ public abstract class Veiculo implements Serializable {
         return proprietario;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
     public void setAutonomia(int autonomia) {
         this.autonomia = autonomia;
     }
@@ -125,10 +118,6 @@ public abstract class Veiculo implements Serializable {
         this.coord = coord;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public boolean equals(Object o) {
         if (o==this) {return true;}
         if (o==null || o.getClass() != this.getClass()) {return false;}
@@ -142,8 +131,7 @@ public abstract class Veiculo implements Serializable {
                 v.getContTotal() == contTotal &&
                 v.getCoord().equals(coord) &&
                 v.getAutonomia() == (autonomia) &&
-                v.getProprietario().equals(proprietario) &&
-                v.getEstado().equals(estado);
+                v.getProprietario().equals(proprietario);
     }
 
     public abstract Veiculo clone();
@@ -168,8 +156,6 @@ public abstract class Veiculo implements Serializable {
         sb.append(this.getAutonomia());
         sb.append("\nProprietario: ");
         sb.append(this.getProprietario());
-        sb.append("\nEstado: ");
-        sb.append(this.getEstado());
         return sb.toString();
     }
 }

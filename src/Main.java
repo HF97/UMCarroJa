@@ -242,6 +242,7 @@ public class Main {
         }
 
         if(p.temAutonomia(v, coordI, coordF) == 0){
+            System.out.println("Veiculo nao tem autonomia para a viagem");
             viagem(u, p, coordF, coordI);
             return;
         }
@@ -295,6 +296,7 @@ public class Main {
             else {
                 p.getHistVeic().get(v.getMatricula()).add(id);
             }
+            System.out.println("Bom dia");
         }
     }
 
