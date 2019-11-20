@@ -25,7 +25,7 @@ public class Main {
             p = p.carregaObjetoInformacao();
         }
         catch (Exception e){
-            System.out.println("Erro a carregar");
+            System.out.println("Erro a carregar/Base de dados inexistente");
         }
         //Executa programa
         executa(p);
@@ -211,6 +211,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         limparEcra();
         int y = -1;
+        int classi;
 
         Menu.menuOpcoesCliente();
         int opcao = -1;
@@ -257,9 +258,17 @@ public class Main {
 
             double custoTotal = distancia * v.getPrecokm();
 
-//            double classificacao = p.getUtilizadores().get(v.getProprietario());
+            System.out.println("classificacao(0 a 5): ");
+            classi = input.nextInt();
 
-            Aluguer al = new Aluguer(id, coordI, coordF, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classificacao);
+            v.setContTotal(v.getContTotal() + 1);
+            v.setClassificacao((v.getSoma() + classi) / v.getContTotal());
+
+            Proprietario propr = (Proprietario)p.getUtilizadores().get(v.getProprietario());
+            propr.setContTotal(propr.getSoma() + 1);
+            propr.setClassificacao((propr.getSoma() + classi) / propr.getContTotal());
+
+            Aluguer al = new Aluguer(id, coordI, coordF, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classi);
 
             List<Integer> l = new ArrayList<Integer>();
             if(p.getHistCli().get(u.getEmail())==null){

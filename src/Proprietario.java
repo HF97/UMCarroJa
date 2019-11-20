@@ -7,47 +7,47 @@ import java.util.List;
 public class Proprietario extends Utilizador implements Serializable {
 
     private double classificacao;
-    private int numClass;
-    private int total;
+    private int contTotal;
+    private int soma;
     private List<String> carros;
 
     public Proprietario(){
         super();
         this.classificacao = 0.0;
-        this.numClass = 0;
-        this.total = 0;
+        this.contTotal = 0;
+        this.soma = 0;
     }
 
-    public Proprietario (String nome, int NIF, String email, String password, String morada, LocalDate datanasc, double classificacao, int numClass, int total){
+    public Proprietario (String nome, int NIF, String email, String password, String morada, LocalDate datanasc, double classificacao, int contTotal, int soma){
         super(nome, NIF, email, password, morada, datanasc);
         this.classificacao = classificacao;
-        this.numClass = numClass;
-        this.total = total;
+        this.contTotal = contTotal;
+        this.soma = soma;
         this.carros = new ArrayList<String>();
     }
 
     public Proprietario (Proprietario p){
         super(p);
         this.classificacao = p.getClassificacao();
-        this.numClass = p.getNumClass();
-        this.total = p.getTotal();
+        this.contTotal = p.getContTotal();
+        this.soma = p.getSoma();
     }
 
     public double getClassificacao(){
         return this.classificacao;
     }
 
-    public int getNumClass() {return this.numClass;}
+    public int getContTotal() {return this.contTotal;}
 
-    public int getTotal() {return this.total;}
+    public int getSoma() {return this.soma;}
 
     public void setClassificacao(double c){
         this.classificacao = c;
     }
 
-    public void setNumClass(int n) {this.numClass = n;}
+    public void setContTotal(int n) {this.contTotal = n;}
 
-    public void setTotal(int t) {this.total = t;}
+    public void setSoma(int t) {this.soma = t;}
 
     public boolean equals(Object o) {
         if (o==this) {return true;}
@@ -55,8 +55,8 @@ public class Proprietario extends Utilizador implements Serializable {
         Proprietario p = (Proprietario) o;
         return  super.equals(p) &&
                 p.getClassificacao() == (classificacao) &&
-                p.getNumClass() == (numClass) &&
-                p.getTotal() == (total);
+                p.getContTotal() == (contTotal) &&
+                p.getSoma() == (soma);
     }
 
     public Proprietario clone(){
@@ -68,9 +68,9 @@ public class Proprietario extends Utilizador implements Serializable {
         sb.append("\nClassificacao: ");
         sb.append(this.getClassificacao());
         sb.append("\nNumero de classificacoes: ");
-        sb.append(this.getNumClass());
+        sb.append(this.getContTotal());
         sb.append("\nTotal das classificacoes: ");
-        sb.append(this.getTotal());
+        sb.append(this.getSoma());
         return sb.toString();
     }
 }
