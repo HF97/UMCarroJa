@@ -7,7 +7,6 @@ import java.lang.Exception;
 
 //TODO  excepcoes
 //TODO  EXCEPTIONS
-//TODO  remover password...
 
 public class Main {
 
@@ -198,9 +197,6 @@ public class Main {
         viagem(u,p,coordF,coordI);
     }
 
-    //TODO  aluguer
-    //TODO  atencao ao idaluguer quando comecar de novo
-
     /**
      * Permite ao cliente escolher o que quer fazer na app
      * @param u cliente
@@ -262,11 +258,13 @@ public class Main {
             classi = input.nextInt();
 
             v.setContTotal(v.getContTotal() + 1);
-            v.setClassificacao((v.getSoma() + classi) / v.getContTotal());
+            v.setSoma(v.getSoma() + classi);
+            v.setClassificacao(v.getSoma() / v.getContTotal());
 
             Proprietario propr = (Proprietario)p.getUtilizadores().get(v.getProprietario());
             propr.setContTotal(propr.getSoma() + 1);
-            propr.setClassificacao((propr.getSoma() + classi) / propr.getContTotal());
+            propr.setSoma(propr.getSoma() + classi);
+            propr.setClassificacao(propr.getSoma() / propr.getContTotal());
 
             Aluguer al = new Aluguer(id, coordI, coordF, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classi);
 
@@ -297,14 +295,8 @@ public class Main {
             else {
                 p.getHistVeic().get(v.getMatricula()).add(id);
             }
-
-
-
-
         }
     }
-
-    //TODO  Adicionar veiculo
 
     /**
      * Permite ao proprietario escolher o que fazer na app
@@ -599,7 +591,6 @@ public class Main {
                 opcoesAdmin(p);
                 break;
 
-                //TODO  meter funcao a funcionar, apenas imprime titulo
             case(14):
                 System.out.print("1 - Utilizadores\n2 - Veiculos\n\nOpcao: ");
                 int opcao = input.nextInt();
@@ -624,7 +615,6 @@ public class Main {
      * @param p
      * @throws Exception
      */
-    //TODO  se meter NIF invalido da exception NIF ou password errado
     private static void registarUtilizador (UMCarroJa p) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();

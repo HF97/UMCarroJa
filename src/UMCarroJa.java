@@ -372,7 +372,6 @@ public class UMCarroJa implements Serializable{
         return null;
     }
 
-    //TODO  meter uma exception
     public Veiculo veiculoEspecifico(){
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula do veiculo especifico: ");
@@ -456,13 +455,18 @@ public class UMCarroJa implements Serializable{
         System.out.println("Matricula do veiculo: ");
         String matricula = input.next();
 
-        System.out.println("Ate que percentagem de deposito deseja encher: ");
-        int percentagem = input.nextInt();
+        if(this.veiculos.get(matricula).getAutonomia() == 100){
+            System.out.println("Deposito cheio");
+        }
+        else {
+            System.out.println("Ate que percentagem de deposito deseja encher(0 a 100): ");
+            int percentagem = input.nextInt();
 
-        Veiculo v = this.veiculos.get(matricula);
-        v.setAutonomia(percentagem);
+            Veiculo v = this.veiculos.get(matricula);
+            v.setAutonomia(percentagem);
 
-        System.out.println("Veiculo de matricula " + matricula + " agora tem " + percentagem + " de autonomia");
+            System.out.println("Veiculo de matricula " + matricula + " agora tem " + percentagem + " de autonomia");
+        }
     }
 
     /**
@@ -484,7 +488,7 @@ public class UMCarroJa implements Serializable{
      */
     public int temAutonomia(Veiculo v, Coordenada coordI, Coordenada coordF){
         int autonomia = v.getAutonomia();
-        if(coordI.distancia(coordF) > autonomia){
+        if(coordI.distancia(coordF) > (v.getCapacidadeDeposito() * 100) / v.getConsumo()){
             return 1;
         }
         return 0;

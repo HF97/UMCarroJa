@@ -8,12 +8,15 @@ public abstract class Veiculo implements Serializable {
     private String matricula;
     private double velmediakm;
     private double precokm;
+    //consumo l/100
     private double consumo;
     private double classificacao;
     private int soma;
     private int contTotal;
     private Coordenada coord;
+    //autonomia de 0 a 100
     private int autonomia;
+    private int capacidadeDeposito;
     private String proprietario;
     private String estado;
 
@@ -27,11 +30,12 @@ public abstract class Veiculo implements Serializable {
         this.contTotal = 0;
         this.coord = new Coordenada();
         this.autonomia = 0;
+        this.capacidadeDeposito = 0;
         this.proprietario = "";
         this.estado = "livre";
     }
 
-    public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, int soma, int contTotal, Coordenada coord, int autonomia, String proprietario, String estado){
+    public Veiculo(String matricula, double velmediakm, double precokm, double consumo, int classificacao, int soma, int contTotal, Coordenada coord, int autonomia, int capacidadeDeposito, String proprietario, String estado){
         this.matricula = matricula;
         this.velmediakm = velmediakm;
         this.precokm = precokm;
@@ -41,6 +45,7 @@ public abstract class Veiculo implements Serializable {
         this.contTotal = contTotal;
         this.coord = coord;
         this.autonomia = autonomia;
+        this.capacidadeDeposito = capacidadeDeposito;
         this.proprietario = proprietario;
         this.estado = estado;
     }
@@ -55,6 +60,7 @@ public abstract class Veiculo implements Serializable {
         this.contTotal = v.getContTotal();
         this.coord = v.getCoord();
         this.autonomia = v.getAutonomia();
+        this.capacidadeDeposito = v.getCapacidadeDeposito();
         this.proprietario = v.getProprietario();
         this.estado = v.getEstado();
     }
@@ -89,6 +95,10 @@ public abstract class Veiculo implements Serializable {
 
     public int getAutonomia() {
         return autonomia;
+    }
+
+    public int getCapacidadeDeposito() {
+        return capacidadeDeposito;
     }
 
     public String getProprietario() {
