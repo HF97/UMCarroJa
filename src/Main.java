@@ -257,7 +257,7 @@ public class Main {
 
             double custoTotal = distancia * v.getPrecokm();
 
-            double classificacao = p.getUtilizadores().get(v.getProprietario()).
+//            double classificacao = p.getUtilizadores().get(v.getProprietario());
 
             Aluguer al = new Aluguer(id, coordI, coordF, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classificacao);
 

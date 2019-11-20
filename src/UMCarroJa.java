@@ -22,7 +22,7 @@ public class UMCarroJa implements Serializable{
     private Map<String, Utilizador> utilizadores;
     private Map<String, Veiculo> veiculos;
     private Map<Integer, Aluguer> alugueres;
-    private Map<String, String> listVeicProp;
+    private Map<String, List<String>> listVeicProp;
     private Map<String, List<Integer>> histCli;
     private Map<String, List<Integer>> histProp;
     private Map<String, List<Integer>> histVeic;
@@ -35,7 +35,7 @@ public class UMCarroJa implements Serializable{
         this.utilizadores = new HashMap<String, Utilizador>();
         this.veiculos = new HashMap<String, Veiculo>();
         this.alugueres = new HashMap<Integer, Aluguer>();
-        this.listVeicProp = new HashMap<String, String>();
+        this.listVeicProp = new HashMap<String, List<String>>();
         this.histCli = new HashMap<String, List<Integer>>();
         this.histProp = new HashMap<String, List<Integer>>();
         this.histProp = new HashMap<String, List<Integer>>();
@@ -44,7 +44,7 @@ public class UMCarroJa implements Serializable{
         this.idAluguer = 0;
     }
 
-    public UMCarroJa(int numeroCarro, Collection<Utilizador> u, Collection<Veiculo> v, Collection<Aluguer> al, Collection<List<Integer>> cli, Collection<List<Integer>> prop, Collection<List<Integer>> veic, Collection<String> liv, Collection<String> ocu, Integer idAluguer){
+    public UMCarroJa(int numeroCarro, Collection<Utilizador> u, Collection<Veiculo> v, Collection<Aluguer> al, Collection<String> lvp, Collection<List<Integer>> cli, Collection<List<Integer>> prop, Collection<List<Integer>> veic, Collection<String> liv, Collection<String> ocu, Integer idAluguer){
         this.numeroCarro = numeroCarro;
         this.utilizadores = new HashMap<String, Utilizador>(u.size());
         for(Utilizador a : u){
@@ -58,7 +58,7 @@ public class UMCarroJa implements Serializable{
         for(Aluguer a : al){
             this.alugueres.put(a.getId(), a.clone());
         }
-        this.listVeicProp = new HashMap<String, String>();
+        this.listVeicProp = new HashMap<String, List<String>>();
         this.histCli = new HashMap<String, List<Integer>>();
         this.histProp = new HashMap<String, List<Integer>>();
         this.livres = new ArrayList<String>();
@@ -98,7 +98,7 @@ public class UMCarroJa implements Serializable{
         return this.alugueres;
     }
 
-    public Map<String, String> getListVeicProp() { return listVeicProp; }
+    public Map<String, List<String>> getListVeicProp() { return listVeicProp; }
 
     public Map<String, List<Integer>> getHistCli() {return this.histCli;}
 
@@ -470,11 +470,11 @@ public class UMCarroJa implements Serializable{
      *
      */
     public Collection<Veiculo> listaVeiculosProp(Proprietario u){
-        List<Veiculo> veic = new ArrayList<Veiculo>();
-        for(String s : u.getCarros()){
-            veic.add(this.veiculos.get(s));
+        List<Veiculo> car = new ArrayList<Veiculo>();
+        for(String s : this.listVeicProp.get(u)){
+            car.add(this.veiculos.get(s));
         }
-        return veic;
+        return car;
     }
 
     /**
@@ -523,25 +523,54 @@ public class UMCarroJa implements Serializable{
 
         String estado = "livre";
 
+        int soma = 0;
+
+        int contTotal = 0;
+
         while(x!=1 && x!=2 && x!=3){
             System.out.println("Tipo incorreto");
         }
 
-        switch (x){
-            case(1):
-                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado);
+        List<String> m = new ArrayList<String>();
+
+        switch (x) {
+            case (1):
+                Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, prop, estado);
                 adicionaVeiculo(gas.clone());
+                if (this.listVeicProp.get(prop) == null){
+                    m.add(matricula);
+                    this.listVeicProp.put(prop, m);
+                }
+                else{
+                    this.listVeicProp.get(prop).add(matricula);
+                }
+                m.clear();
                 break;
 
             case(2):
-                Veiculo hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado);
+                Veiculo hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, prop, estado);
                 adicionaVeiculo(hib.clone());
+                if (this.listVeicProp.get(prop) == null){
+                    m.add(matricula);
+                    this.listVeicProp.put(prop, m);
+                }
+                else{
+                    this.listVeicProp.get(prop).add(matricula);
+                }
+                m.clear();
                 break;
 
             case(3):
-                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, coord, autonomia, prop, estado);
+                Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, prop, estado);
                 adicionaVeiculo(ele.clone());
-                u.getCarros().add(matricula);
+                if (this.listVeicProp.get(prop) == null){
+                    m.add(matricula);
+                    this.listVeicProp.put(prop, m);
+                }
+                else{
+                    this.listVeicProp.get(prop).add(matricula);
+                }
+                m.clear();
                 break;
 
         }
