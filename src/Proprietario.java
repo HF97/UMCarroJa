@@ -8,18 +8,18 @@ public class Proprietario extends Utilizador implements Serializable {
 
     private double classificacao;
     private int numClass;
-    private double total;
+    private int total;
     private List<String> carros;
 
     public Proprietario(){
         super();
-        this.classificacao = 0;
-        this.numClass = 0.0;
-        this.total = 0.0
+        this.classificacao = 0.0;
+        this.numClass = 0;
+        this.total = 0;
         List<Integer> carros = new ArrayList<Integer>();
     }
 
-    public Proprietario (String nome, int NIF, String email, String password, String morada, LocalDate datanasc, double classificacao, int numClass, double total, Collection<String> carros){
+    public Proprietario (String nome, int NIF, String email, String password, String morada, LocalDate datanasc, double classificacao, int numClass, int total, Collection<String> carros){
         super(nome, NIF, email, password, morada, datanasc);
         this.classificacao = classificacao;
         this.numClass = numClass;
@@ -44,7 +44,7 @@ public class Proprietario extends Utilizador implements Serializable {
 
     public int getNumClass() {return this.numClass;}
 
-    public double getTotal() {return this.total;}
+    public int getTotal() {return this.total;}
 
     public List<String> getCarros() {
         return carros;
@@ -56,7 +56,7 @@ public class Proprietario extends Utilizador implements Serializable {
 
     public void setNumClass(int n) {this.numClass = n;}
 
-    public void setTotal(double t) {this.total = t;}
+    public void setTotal(int t) {this.total = t;}
 
     public void setCarros(List<String> carros) {
         this.carros = carros;

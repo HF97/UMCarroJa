@@ -31,7 +31,7 @@ public class Aluguer implements Serializable {
     public Aluguer(int id, Coordenada coordI, Coordenada coordF, Veiculo veiculo, LocalDate data, Duration duracao, String emailCliente, String emailProprietario, double custoTotal, double classificacao){
         this.id = id;
         this.coordI = coordI;
-        this.coordF = coordF
+        this.coordF = coordF;
         this.veiculo = veiculo;
         this.data = data;
         this.duracao = duracao;
@@ -100,7 +100,7 @@ public class Aluguer implements Serializable {
         this.coordI = coordI;
     }
 
-    public void setCoordF
+    public void setCoordF(Coordenada coordF) {this.coordF = coordF;}
 
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
@@ -136,7 +136,7 @@ public class Aluguer implements Serializable {
         Aluguer al = (Aluguer) o;
         return id == al.getId() &&
                 coordI.equals(al.getCoordI()) &&
-                coordF.equals(al.coordF()) &&
+                coordF.equals(al.getCoordF()) &&
                 veiculo.equals(al.getVeiculo()) &&
                 data.equals(al.getData()) &&
                 duracao == al.getDuracao() &&

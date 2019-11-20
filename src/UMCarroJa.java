@@ -460,6 +460,18 @@ public class UMCarroJa implements Serializable{
     }
 
     /**
+     * Retorna a lista de veiculos de um certo proprietario
+     *
+     */
+    public Collection<Veiculo> listaVeiculosProp(Proprietario u){
+        List<Veiculo> veic = new ArrayList<Veiculo>();
+        for(String s : u.getCarros()){
+            veic.add(this.veiculos.get(s));
+        }
+        return veic;
+    }
+
+    /**
      * Se autonomia menor que 10 retorna 1 s enao retorn 0
      *
      * @param v veiculo
@@ -544,7 +556,7 @@ public class UMCarroJa implements Serializable{
     }
 
     /**
-     * Retorna a lista de veiculos
+     * Retorna a lista de todos veiculos
      *
      */
     public Collection<Veiculo> listaVeiculos(){

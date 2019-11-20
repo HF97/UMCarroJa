@@ -346,8 +346,8 @@ public class Main {
 
             case(4):
 //                Lista de carros
-                System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size() + "\n");
-                for(Veiculo v : p.listaVeiculos()){
+                System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculosProp(u).size() + "\n");
+                for(Veiculo v : p.listaVeiculosProp(u)){
                     System.out.println(v.getClass().getSimpleName() + "--------------------");
                     System.out.println(v.toString());
                 }
