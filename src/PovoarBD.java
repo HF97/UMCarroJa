@@ -5,9 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 public class PovoarBD {
-    public Map<String,Utilizador> povoarClientes(){
+    public static Map<String,Utilizador> povoarClientes(){
         Map<String,Utilizador> utilizadores = new HashMap<String, Utilizador>();
-        List<Integer> histAlugUti = new ArrayList<Integer>();
         List<String> carros = new ArrayList<String>();
         Coordenada coord1 = new Coordenada(0,0);
         Cliente c1 = new Cliente("Hugo Silva", 111111111, "hugosilva@gmail.com", "hugosilva", "Rua do Hugo", LocalDate.parse("11-11-1990"), coord1);
@@ -53,9 +52,8 @@ public class PovoarBD {
         return utilizadores;
     }
 
-    public Map<String,Veiculo> povoarVeiculos(){
+    public static Map<String,Veiculo> povoarVeiculos(){
         Map<String,Veiculo> veiculos = new HashMap<String, Veiculo>();
-        List<Integer> histAlugUti = new ArrayList<Integer>();
         Coordenada coord1 = new Coordenada(0,0);
         Gasolina g1 = new Gasolina("11-aa-11", 50.0, 5.0, 5.7, 0, 0, 0, coord1, 100, 50, "joaofelix@gmail.com");
         veiculos.put("joaofelix@gmail.com", g1.clone());

@@ -576,7 +576,7 @@ public class Main {
                 break;
 
             case(12):
-//                UMCarroJa.setUtilizadores(PovoarBD.povoarClientes());
+                p.setUtilizadores(PovoarBD.povoarClientes());
                 System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
@@ -585,7 +585,7 @@ public class Main {
                 break;
 
             case(13):
-//                UMCarroJa.setVeiculos(PovoarBD.povoarVeiculos());
+                p.setVeiculos(PovoarBD.povoarVeiculos());
                 System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
