@@ -227,8 +227,11 @@ public class UMCarroJa implements Serializable{
      * Faz set de utilizadores
      *
      */
-    public void setUtilizadores(Map<String, Utilizador> utilizadores) {
-        this.utilizadores = utilizadores;
+    public void setUtilizadores(Map<String, Utilizador> utili) {
+        Iterator<Map.Entry<String, Utilizador>> uti = utili.entrySet().iterator();
+        while(uti.hasNext()) {
+            this.utilizadores.put(uti.next().getKey(), uti.next().getValue().clone());
+        }
     }
 
     /**
@@ -236,7 +239,10 @@ public class UMCarroJa implements Serializable{
      *
      */
     public void setVeiculos(Map<String, Veiculo> veiculos) {
-        this.veiculos = veiculos;
+        Iterator<Map.Entry<String, Veiculo>> uti = veiculos.entrySet().iterator();
+        while(uti.hasNext()){
+            this.veiculos.put(uti.next().getKey(), uti.next().getValue().clone());
+        }
     }
 
     /**
@@ -509,7 +515,7 @@ public class UMCarroJa implements Serializable{
         double consumo = input.nextDouble();
         int classificacao = 0;
 
-        System.out.println("Autonomia: ");
+        System.out.println("Autonomia (0 a 100): ");
         int autonomia = input.nextInt();
 
         System.out.println("Capacidade do deposito: ");

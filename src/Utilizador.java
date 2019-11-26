@@ -100,7 +100,6 @@ public abstract class Utilizador implements Serializable {
         sb.append(this.getMorada());
         sb.append("\nData de nascimento: ");
         sb.append(this.getDatanasc());
-        sb.append("\nHistorico: ");
         return sb.toString();
     }
 }

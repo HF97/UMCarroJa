@@ -577,6 +577,10 @@ public class Main {
 
             case(12):
                 p.setUtilizadores(PovoarBD.povoarClientes());
+//                Iterator<Map.Entry<String, Utilizador>> uti = PovoarBD.povoarClientes().entrySet().iterator();
+//                while (uti.hasNext()){
+//                    uti.next().getValue().toString();
+//                }
                 System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
@@ -586,6 +590,11 @@ public class Main {
 
             case(13):
                 p.setVeiculos(PovoarBD.povoarVeiculos());
+//                Map<String,Veiculo> veic = PovoarBD.povoarVeiculos();
+//                Iterator<Map.Entry<String, Veiculo>> uti = veic.entrySet().iterator();
+//                while(uti.hasNext()){
+//                    uti.next().getValue().toString();
+//                }
                 System.out.println("\n(opcoesAdmin)   0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
@@ -637,8 +646,10 @@ public class Main {
         System.out.print("Password: ");
         String password = input.next();
 
+        input.nextLine();
+
         System.out.print("Nome: ");
-        String nome = input.next();
+        String nome = input.nextLine();
 
         System.out.print("NIF: ");
         int NIF = input.nextInt();

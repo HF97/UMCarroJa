@@ -7,7 +7,6 @@ import java.util.Map;
 public class PovoarBD {
     public static Map<String,Utilizador> povoarClientes(){
         Map<String,Utilizador> utilizadores = new HashMap<String, Utilizador>();
-        List<String> carros = new ArrayList<String>();
         Coordenada coord1 = new Coordenada(0,0);
         Cliente c1 = new Cliente("Hugo Silva", 111111111, "hugosilva@gmail.com", "hugosilva", "Rua do Hugo", LocalDate.parse("11-11-1990"), coord1);
         utilizadores.put("hugosilva@gmail.com", c1.clone());
@@ -55,23 +54,23 @@ public class PovoarBD {
     public static Map<String,Veiculo> povoarVeiculos(){
         Map<String,Veiculo> veiculos = new HashMap<String, Veiculo>();
         Coordenada coord1 = new Coordenada(0,0);
-        Gasolina g1 = new Gasolina("11-aa-11", 50.0, 5.0, 5.7, 0, 0, 0, coord1, 100, 50, "joaofelix@gmail.com");
+        Gasolina g1 = new Gasolina("11-aa-11", 50.0, 5.0, 5.0, 0, 0, 0, coord1, 100, 50, "joaofelix@gmail.com");
         veiculos.put("joaofelix@gmail.com", g1.clone());
-        Gasolina g2 = new Gasolina("22-bb-22", 70.0, 8.0, 8.7, 0, 0, 0, coord1, 100, 60, "rubendias@gmail.com");
+        Gasolina g2 = new Gasolina("22-bb-22", 70.0, 8.0, 8.0, 0, 0, 0, coord1, 100, 60, "rubendias@gmail.com");
         veiculos.put("rubendias@gmail.com", g2.clone());
-        Gasolina g3 = new Gasolina("33-cc-33", 85.0, 8.0, 6.7, 0, 0, 0, coord1, 100, 40, "andrealmeida@gmail.com");
+        Gasolina g3 = new Gasolina("33-cc-33", 58.0, 8.0, 6.0, 0, 0, 0, coord1, 100, 40, "andrealmeida@gmail.com");
         veiculos.put("andrealmeida@gmail.com", g3.clone());
         Eletrico e1 = new Eletrico("44-dd-44", 55.0, 2.0, 3.0, 0, 0, 0, coord1, 100, 50, "renatorodrigues@gmail.com");
         veiculos.put("renatorodrigues@gmail.com", e1.clone());
-        Eletrico e2 = new Eletrico("55-ee-55", 40.0, 3.0, 2.5, 0, 0, 0,  coord1, 100, 50,"franciscocervi@gmail.com");
+        Eletrico e2 = new Eletrico("55-ee-55", 40.0, 3.0, 2.0, 0, 0, 0,  coord1, 100, 50,"franciscocervi@gmail.com");
         veiculos.put("franciscocervi@gmail.com", e2.clone());
         Eletrico e3 = new Eletrico("66-ff-66", 45.0, 4.0, 4.0, 0, 0, 0, coord1, 100, 60, "joaofelix@gmail.com");
         veiculos.put("joaofelix@gmail.com", e3.clone());
-        Hibrido h1 = new Hibrido("77-gg-77", 30.0, 3.5, 2.1, 0, 0, 0, coord1, 100, 60, "andrealmeida@gmail.com");
+        Hibrido h1 = new Hibrido("77-gg-77", 30.0, 3.0, 2.0, 0, 0, 0, coord1, 100, 60, "andrealmeida@gmail.com");
         veiculos.put("andrealmeida@gmail.com", h1.clone());
-        Hibrido h2 = new Hibrido("88-hh-88", 45.0, 4.0, 3.7, 0, 0, 0, coord1, 100, 50, "renatorodrigues@gmail.com");
+        Hibrido h2 = new Hibrido("88-hh-88", 45.0, 4.0, 3.0, 0, 0, 0, coord1, 100, 50, "renatorodrigues@gmail.com");
         veiculos.put("renatorodrigues@gmail.com", h2.clone());
-        Hibrido h3 = new Hibrido("99-ii-99", 25.0, 2.0, 1.7, 0, 0, 0, coord1, 100, 60, "joaofelix@gmail.com");
+        Hibrido h3 = new Hibrido("99-ii-99", 25.0, 2.0, 1.0, 0, 0, 0, coord1, 100, 60, "joaofelix@gmail.com");
         veiculos.put("joaofelix@gmail.com", h3.clone());
         return veiculos;
     }
