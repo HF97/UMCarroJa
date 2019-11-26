@@ -384,7 +384,7 @@ public class UMCarroJa implements Serializable{
         String matricula = input.next();
         Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
         while(it.hasNext()){
-            if(it.next().getValue().getMatricula().equals(matricula)){
+            if(it.next().getKey().equals(matricula)){
                 return it.next().getValue();
             }
         }
@@ -495,9 +495,9 @@ public class UMCarroJa implements Serializable{
     public int temAutonomia(Veiculo v, Coordenada coordI, Coordenada coordF){
         int autonomia = v.getAutonomia();
         if(coordI.distancia(coordF) > (v.getCapacidadeDeposito() * 100) / v.getConsumo()){
-            return 1;
+            return 0;
         }
-        return 0;
+        return 1;
     }
 
     public void adicionarVeiculo(Proprietario u){
