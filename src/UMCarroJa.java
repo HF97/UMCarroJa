@@ -402,19 +402,15 @@ public class UMCarroJa implements Serializable{
         }
     }
 
-    //RETORNA SET COM TODOS OS CARROS COM A AUTONOMIA
-    //PASSA A RETORNAR O PRIMEIRO CARRO ENCONTRADO COM A AUTONOMIA DESEJADA
+    /**
+     * Da o veiculo com a autonomia desejada
+     *
+     * @return veiculo
+     */
     public Veiculo veiculoAutonomiaDesejada(){
         Scanner input = new Scanner(System.in);
         System.out.println("Autonomia desejada: ");
         int autonomia = input.nextInt();
-//        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
-//        while(it.hasNext()){
-//            if(it.next().getValue().getAutonomia() == autonomia && livres.contains(it.next().getKey())){
-//                return it.next().getValue();
-//            }
-//        }
-//        return null;
         for(String s : this.livres){
             if(this.veiculos.get(s).getAutonomia() == autonomia) {
                 return this.veiculos.get(s);
