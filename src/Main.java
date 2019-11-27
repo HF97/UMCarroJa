@@ -194,7 +194,7 @@ public class Main {
         int coordYF = input.nextInt();
         Coordenada coordF = new Coordenada(coordXF, coordYF);
 
-        viagem(u,p,coordF,coordI);
+        viagem(u,p,coordI,coordF);
     }
 
     /**
@@ -203,7 +203,7 @@ public class Main {
      * @param p
      * @throws Exception
      */
-    private static void viagem (Cliente u, UMCarroJa p, Coordenada coordF, Coordenada coordI) throws Exception {
+    private static void viagem (Cliente u, UMCarroJa p, Coordenada coordI, Coordenada coordF) throws Exception {
         Scanner input = new Scanner(System.in);
         limparEcra();
         int y = -1;
@@ -221,15 +221,21 @@ public class Main {
         Veiculo v = new Gasolina();
         switch (opcao){
             case(1):
-                v = p.veiculoMaisProximo(coordF);
+                v = p.veiculoMaisProximo(coordI);
+                System.out.println(v.getClass().getSimpleName() + "----------------");
+                System.out.println(v.toString());
                 break;
 
             case(2):
                 v = p.veiculoMaisBarato();
+                System.out.println(v.getClass().getSimpleName() + "----------------");
+                System.out.println(v.toString());
                 break;
 
             case(3):
                 v = p.veiculoMaisBaratoPe(u);
+                System.out.println(v.getClass().getSimpleName() + "----------------");
+                System.out.println(v.toString());
                 break;
 
             case(4):
@@ -240,6 +246,8 @@ public class Main {
 
             case(5):
                 v = p.veiculoAutonomiaDesejada();
+                System.out.println(v.getClass().getSimpleName() + "----------------");
+                System.out.println(v.toString());
                 break;
         }
 

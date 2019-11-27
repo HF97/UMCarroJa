@@ -356,11 +356,16 @@ public class UMCarroJa implements Serializable{
         return v;
     }
 
+    /**
+     * Da o veiculo cujo preco por km e consumo sao menores
+     *
+     * @return veiculo
+     */
     public Veiculo veiculoMaisBarato(){
         Scanner input = new Scanner(System.in);
         Veiculo v = this.veiculos.get(this.livres.get(0)).clone();
         for(String s : this.livres){
-            if(this.veiculos.get(s).getPrecokm() < v.getPrecokm()){
+            if((this.veiculos.get(s).getPrecokm()*this.veiculos.get(s).getConsumo()) < (v.getPrecokm()*v.getConsumo())){
                 v = this.veiculos.get(s);
             }
         }
@@ -375,6 +380,7 @@ public class UMCarroJa implements Serializable{
                 return it.next().getValue();
             }
         }
+        System.out.println("Nao ha nenhum veiculo com distancia a pe");
         return null;
     }
 
