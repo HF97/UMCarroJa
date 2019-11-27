@@ -384,17 +384,22 @@ public class UMCarroJa implements Serializable{
         return null;
     }
 
-    public Veiculo veiculoEspecifico(){
+    /**
+     * Da o veiculo com a matriculo especificada
+     *
+     * @return veiculo
+     */
+    public Veiculo veiculoEspecifico() throws Exception{
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula do veiculo especifico: ");
         String matricula = input.next();
-        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
-        while(it.hasNext()){
-            if(it.next().getKey().equals(matricula)){
-                return it.next().getValue();
-            }
+        if (this.livres.contains(matricula)) {
+            return this.veiculos.get(matricula);
         }
-        return null;
+        else{
+            Veiculo v = veiculoEspecifico();
+            return v;
+        }
     }
 
     //RETORNA SET COM TODOS OS CARROS COM A AUTONOMIA
