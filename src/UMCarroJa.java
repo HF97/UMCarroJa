@@ -372,15 +372,17 @@ public class UMCarroJa implements Serializable{
         return v;
     }
 
-    //a pe fica a ser distancia menor que 2
-    public Veiculo veiculoMaisBaratoPe(Cliente u){
-        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
-        while(it.hasNext()){
-            if(it.next().getValue().getCoord().distancia(u.getCoord()) < 2){
-                return it.next().getValue();
+    /**
+     * Da o veiculo com a matriculo especificada
+     *
+     * @return veiculo
+     */
+    public Veiculo veiculoMaisBaratoPe(Coordenada coord){
+        for(String s : this.livres){
+            if(this.veiculos.get(s).getCoord().distancia(coord) < 2){
+                return this.veiculos.get(s);
             }
         }
-        System.out.println("Nao ha nenhum veiculo com distancia a pe");
         return null;
     }
 

@@ -233,9 +233,14 @@ public class Main {
                 break;
 
             case(3):
-                v = p.veiculoMaisBaratoPe(u);
-                System.out.println(v.getClass().getSimpleName() + "----------------");
-                System.out.println(v.toString());
+                try {
+                    v = p.veiculoMaisBaratoPe(coordI);
+                    System.out.println(v.getClass().getSimpleName() + "----------------");
+                    System.out.println(v.toString());
+                }catch (Exception e){
+                    System.out.println("Nao ha nenhum veiculo com distancia a pe");
+                    viagem(u,p,coordI,coordF);
+                }
                 break;
 
             case(4):
