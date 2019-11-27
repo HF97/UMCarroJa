@@ -408,13 +408,20 @@ public class UMCarroJa implements Serializable{
         Scanner input = new Scanner(System.in);
         System.out.println("Autonomia desejada: ");
         int autonomia = input.nextInt();
-        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
-        while(it.hasNext()){
-            if(it.next().getValue().getAutonomia() == autonomia && livres.contains(it.next().getKey())){
-                return it.next().getValue();
+//        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
+//        while(it.hasNext()){
+//            if(it.next().getValue().getAutonomia() == autonomia && livres.contains(it.next().getKey())){
+//                return it.next().getValue();
+//            }
+//        }
+//        return null;
+        for(String s : this.livres){
+            if(this.veiculos.get(s).getAutonomia() == autonomia) {
+                return this.veiculos.get(s);
             }
         }
-        return null;
+        Veiculo v = veiculoAutonomiaDesejada();
+        return v;
     }
 
     //-------------------
