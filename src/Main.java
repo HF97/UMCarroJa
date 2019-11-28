@@ -218,6 +218,13 @@ public class Main {
         }
         if(opcao==0) return;
 
+        if(opcao == 6){
+            for(Aluguer a : p.listaAlugueresCliente(u.getEmail())){
+                System.out.println(a.toString() + "\n");
+            }
+            return;
+        }
+
         Veiculo v = new Gasolina();
         switch (opcao){
             case(1):
@@ -289,6 +296,8 @@ public class Main {
             Duration duracao = Duration.ofMinutes((int)(2 * distancia));
 
             double custoTotal = distancia * v.getPrecokm();
+
+            System.out.print("Duracao da viagem: " + duracao + "\n");
 
             System.out.println("classificacao(0 a 5): ");
             classi = input.nextInt();
@@ -422,6 +431,20 @@ public class Main {
                     y = input.nextInt();
                 }
                 opcoesProprietario(u,p);
+                break;
+
+            case(6):
+                for(Aluguer a : p.listaAlugueresProprietario(u.getEmail())){
+                    System.out.println(a.toString() + "\n");
+                }
+                break;
+
+            case(7):
+                System.out.println("Matricula do veiculo: ");
+                String matricula = input.next();
+                for(Aluguer a : p.listaAlugueresVeiculo(matricula)){
+                    System.out.println(a.toString() + "\n");
+                }
                 break;
 
             case(0):
@@ -665,6 +688,30 @@ public class Main {
                     y = input.nextInt();
                 }
                 opcoesAdmin(p);
+                break;
+
+            case(15):
+                System.out.println("Email do cliente: ");
+                String emailCliHist = input.next();
+                for(Aluguer a : p.listaAlugueresCliente(emailCliHist)){
+                    System.out.println(a.toString() + "\n");
+                }
+                break;
+
+            case(16):
+                System.out.println("Email do Proprietario: ");
+                String emailPropHist = input.next();
+                for(Aluguer a : p.listaAlugueresProprietario(emailPropHist)){
+                    System.out.println(a.toString() + "\n");
+                }
+                break;
+
+            case(17):
+                System.out.println("Matricula do veiculo: ");
+                String matriculaHist = input.next();
+                for(Aluguer a : p.listaAlugueresVeiculo(matriculaHist)){
+                    System.out.println(a.toString() + "\n");
+                }
                 break;
 
             case(0):

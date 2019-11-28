@@ -33,7 +33,9 @@ public class Menu {
                 "2 - Veiculo mais barato\n" +
                 "3 - Veiculo mais barato a distancia a pe\n" +
                 "4 - Veiculo especifico\n" +
-                "5 - Veiculo com autonomia desejada\n\n" +
+                "5 - Veiculo com autonomia desejada\n" +
+                "6 - Historico de alugueres\n" +
+                "7 - Lista alugueres de veiculo\n\n" +
                 "0 - Voltar\n"
         );
         System.out.print("\nOpção: ");
@@ -76,6 +78,9 @@ public class Menu {
                 "12 - Povoar BD utilizadores\n"+
                 "13 - Povoar BD veiculos\n"+
                 "14 - Imprimir para ficheiro\n"+
+                "15 - Lista alugueres de cliente\n" +
+                "16 - Lista alugueres de proprietario\n" +
+                "17 - Lista alugueres de veiculo\n\n" +
                 "0 - Voltar\n"
         );
         System.out.print("\nOpção: ");

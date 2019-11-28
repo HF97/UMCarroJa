@@ -379,6 +379,19 @@ public class UMCarroJa implements Serializable{
     }
 
     /**
+     * Da a lista de alugueres de um cliente
+     *
+     * @return Lista de alugueres
+     */
+    public List<Aluguer> listaAlugueresCliente (String c){
+        List<Aluguer> al = new ArrayList<Aluguer>();
+        for(Integer i : this.histCli.get(c)) {
+            al.add(this.alugueres.get(i));
+        }
+        return al;
+    }
+
+    /**
      * Da o veiculo com a autonomia desejada
      *
      * @return veiculo
@@ -580,8 +593,33 @@ public class UMCarroJa implements Serializable{
         }
     }
 
+    /**
+     * Da a lista de alugueres de um Proprietario
+     *
+     * @param c Cliente
+     * @return Lista de alugueres
+     */
+    public List<Aluguer> listaAlugueresProprietario (String c){
+        List<Aluguer> al = new ArrayList<Aluguer>();
+        for(Integer i : this.histProp.get(c)) {
+            al.add(this.alugueres.get(i));
+        }
+        return al;
+    }
 
-
+    /**
+     * Da a lista de alugueres de um veiculo
+     *
+     * @param matricula Matricula
+     * @return Lista de alugueres
+     */
+    public List<Aluguer> listaAlugueresVeiculo (String matricula){
+        List<Aluguer> al = new ArrayList<Aluguer>();
+        for(Integer i : this.histVeic.get(matricula)) {
+            al.add(this.alugueres.get(i));
+        }
+        return al;
+    }
 
     //------------
     //OPCOES ADMIN
