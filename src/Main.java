@@ -212,8 +212,8 @@ public class Main {
         Menu.menuOpcoesCliente();
         int opcao = -1;
         opcao = input.nextInt();
-        while(opcao!=1 && opcao!=2 && opcao!=3 && opcao!=4 && opcao!=5 && opcao!=0) {
-            System.out.println("(Viagem)     Opcao incorreta");
+        while(opcao!=1 && opcao!=2 && opcao!=3 && opcao!=4 && opcao!=5 && opcao!=6 && opcao!=0) {
+            System.out.println("(Viagem)     Opcao incorreta\n(Viagem)      Opcao: ");
             opcao = input.nextInt();
         }
         if(opcao==0) return;
@@ -222,6 +222,7 @@ public class Main {
             for(Aluguer a : p.listaAlugueresCliente(u.getEmail())){
                 System.out.println(a.toString() + "\n");
             }
+            viagem(u,p,coordI,coordF);
             return;
         }
 
@@ -297,9 +298,9 @@ public class Main {
 
             double custoTotal = distancia * v.getPrecokm();
 
-            System.out.print("Duracao da viagem: " + duracao + "\n");
+            System.out.println("\nDuracao da viagem: " + duracao.toMinutes() + "\n");
 
-            System.out.println("classificacao(0 a 5): ");
+            System.out.println("\nclassificacao(0 a 5): ");
             classi = input.nextInt();
 
             System.out.println("antes de class e soma veiculo");
@@ -355,11 +356,11 @@ public class Main {
             }
 
             if(p.getHistVeic().get(v.getMatricula())==null){
-                System.out.println("Depois Meter historico se nao existe do prop");
+                System.out.println("Depois Meter historico se nao existe do veic");
                 l.add(id);
                 p.getHistProp().put(v.getMatricula(),l);
                 l.clear();
-                System.out.println("Depois Meter historico se nao existe do prop");
+                System.out.println("Depois Meter historico se nao existe do veic");
             }
             else {
                 System.out.println("Depois Meter historico se nao existe do prop");
@@ -384,7 +385,7 @@ public class Main {
         int y = -1;
         Menu.menuOpcoesProprietario();
         x = input.nextInt();
-        while(x!=0 && x!=1 && x!=2 && x!=3 && x!=4 && x!=5){
+        while(x!=0 && x!=1 && x!=2 && x!=3 && x!=4 && x!=5 && x!=6 && x!=7){
             System.out.println("(opcoesProprietario)    Opcao incorreta");
             x = input.nextInt();
         }
@@ -507,7 +508,7 @@ public class Main {
 
         Menu.menuOpcoesAdmin();
         x = input.nextInt();
-        while(!(x>=0 && x<=14)){
+        while(!(x>=0 && x<=17)){
             System.out.println("(opcoesAdmin)   Opcao incorreta");
             System.out.print("(opcoesAdmin)   Opcão: ");
             x = input.nextInt();

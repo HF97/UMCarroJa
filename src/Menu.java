@@ -34,8 +34,7 @@ public class Menu {
                 "3 - Veiculo mais barato a distancia a pe\n" +
                 "4 - Veiculo especifico\n" +
                 "5 - Veiculo com autonomia desejada\n" +
-                "6 - Historico de alugueres\n" +
-                "7 - Lista alugueres de veiculo\n\n" +
+                "6 - Historico de alugueres\n\n" +
                 "0 - Voltar\n"
         );
         System.out.print("\nOpção: ");
@@ -47,7 +46,9 @@ public class Menu {
                 "2 - Abastecer veiculo\n" +
                 "3 - Adicionar veiculo\n" +
                 "4 - Lista de carros\n" +
-                "5 - Ver classificacao\n\n" +
+                "5 - Ver classificacao\n" +
+                "6 - Alugueres\n" +
+                "7 - Alugueres de veiculo\n" +
                 "0 - Voltar\n"
         );
         System.out.print("\nOpção: ");
