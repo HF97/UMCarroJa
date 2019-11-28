@@ -221,15 +221,25 @@ public class Main {
         Veiculo v = new Gasolina();
         switch (opcao){
             case(1):
-                v = p.veiculoMaisProximo(coordI);
-                System.out.println(v.getClass().getSimpleName() + "----------------");
-                System.out.println(v.toString());
+                try {
+                    v = p.veiculoMaisProximo(coordI);
+                    System.out.println(v.getClass().getSimpleName() + "----------------");
+                    System.out.println(v.toString());
+                }catch (Exception e){
+                    System.out.println("Nao ha nenhum veiculo disponivel");
+                    viagem(u,p,coordI,coordF);
+                }
                 break;
 
             case(2):
-                v = p.veiculoMaisBarato();
-                System.out.println(v.getClass().getSimpleName() + "----------------");
-                System.out.println(v.toString());
+                try {
+                    v = p.veiculoMaisBarato();
+                    System.out.println(v.getClass().getSimpleName() + "----------------");
+                    System.out.println(v.toString());
+                }catch (Exception e){
+                    System.out.println("Nao ha nenhum veiculo livre");
+                    viagem(u,p,coordI,coordF);
+                }
                 break;
 
             case(3):
@@ -244,15 +254,25 @@ public class Main {
                 break;
 
             case(4):
-                v = p.veiculoEspecifico();
-                System.out.println(v.getClass().getSimpleName() + "----------------");
-                System.out.println(v.toString());
+                try {
+                    v = p.veiculoEspecifico();
+                    System.out.println(v.getClass().getSimpleName() + "----------------");
+                    System.out.println(v.toString());
+                }catch (Exception e){
+                    System.out.println("Esse veiculo nao existe");
+                    viagem(u,p,coordI,coordF);
+                }
                 break;
 
             case(5):
-                v = p.veiculoAutonomiaDesejada();
-                System.out.println(v.getClass().getSimpleName() + "----------------");
-                System.out.println(v.toString());
+                try {
+                    v = p.veiculoAutonomiaDesejada();
+                    System.out.println(v.getClass().getSimpleName() + "----------------");
+                    System.out.println(v.toString());
+                }catch (Exception e){
+                    System.out.println("Nao ha nenhum veiculo com essa autonomia");
+                    viagem(u,p,coordI,coordF);
+                }
                 break;
         }
 
@@ -357,10 +377,10 @@ public class Main {
             case(1):
                 p.veiculoDisponivel(u);
                 System.out.println("(opcoesProprietario)    0 - retroceder");
-                while(y != 0){
+                while (y != 0) {
                     y = input.nextInt();
                 }
-                opcoesProprietario(u,p);
+                opcoesProprietario(u, p);
                 break;
 
             case(2):
@@ -369,7 +389,7 @@ public class Main {
                 while(y != 0){
                     y = input.nextInt();
                 }
-            opcoesProprietario(u,p);
+                opcoesProprietario(u,p);
                 break;
 
             case(3):
@@ -382,13 +402,10 @@ public class Main {
                 break;
 
             case(4):
-//                Lista de carros
-                System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculosProp(u).size() + "\n");
                 for(Veiculo v : p.listaVeiculosProp(u)){
                     System.out.println(v.getClass().getSimpleName() + "--------------------");
                     System.out.println(v.toString());
                 }
-
                 System.out.println("(opcoesProprietario)    0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();

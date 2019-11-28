@@ -367,7 +367,7 @@ public class UMCarroJa implements Serializable{
      * @return veiculo
      */
     public Veiculo veiculoMaisBarato(){
-        Scanner input = new Scanner(System.in);
+        if(this.livres.size() == 0) return null;
         Veiculo v = this.veiculos.get(this.livres.get(0)).clone();
         for(String s : this.livres){
             if((this.veiculos.get(s).getPrecokm()*this.veiculos.get(s).getConsumo()) < (v.getPrecokm()*v.getConsumo())){
@@ -383,6 +383,7 @@ public class UMCarroJa implements Serializable{
      * @return veiculo
      */
     public Veiculo veiculoMaisBaratoPe(Coordenada coord){
+        if(this.livres.size() == 0) return null;
         for(String s : this.livres){
             if(this.veiculos.get(s).getCoord().distancia(coord) < 2){
                 return this.veiculos.get(s);
@@ -397,6 +398,7 @@ public class UMCarroJa implements Serializable{
      * @return veiculo
      */
     public Veiculo veiculoEspecifico() throws Exception{
+        if(this.livres.size() == 0 ) return null;
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula do veiculo especifico: ");
         String matricula = input.next();
@@ -415,6 +417,7 @@ public class UMCarroJa implements Serializable{
      * @return veiculo
      */
     public Veiculo veiculoAutonomiaDesejada(){
+        if(this.livres.size() == 0) return null;
         Scanner input = new Scanner(System.in);
         System.out.println("Autonomia desejada: ");
         int autonomia = input.nextInt();
@@ -452,15 +455,15 @@ public class UMCarroJa implements Serializable{
      *
      * @param u proprietario
      */
-    public void veiculoDisponivel(Proprietario u){
+    public void veiculoDisponivel(Proprietario u) throws Exception{
         Scanner input = new Scanner(System.in);
         System.out.println("Matricula do veiculo: ");
         String matricula = input.next();
-        if(veiculos.containsKey(matricula)){
+        if(veiculos.containsKey(matricula) && this.veiculos.get(matricula).getProprietario().equals(u.getEmail())){
             this.livres.add(this.veiculos.get(matricula).getMatricula());
             System.out.println("Veiculo com matricula " + matricula + " está livre");
         }
-        else System.out.println("Veiculo inexistente\n");
+        else System.out.println("Veiculo inexistente ou nao tem permissao para alterar a disponibilidade destes veiculo\n");
     }
 
     /**
@@ -469,7 +472,7 @@ public class UMCarroJa implements Serializable{
      * @param u proprietario
      */
     public void verClassificacao(Proprietario u){
-        System.out.println("Classificacao: "+u.getClassificacao());
+        System.out.println("Classificacao: " + u.getClassificacao());
     }
 
     /**
@@ -482,8 +485,8 @@ public class UMCarroJa implements Serializable{
         System.out.println("Matricula do veiculo: ");
         String matricula = input.next();
 
-        if(this.veiculos.get(matricula).getAutonomia() == 100){
-            System.out.println("Deposito cheio");
+        if(this.veiculos.get(matricula).getAutonomia() == 100 || this.veiculos.get(matricula).getProprietario().equals(u.getEmail())){
+            System.out.println("Deposito cheio ou nao tem permissao para abastecer este veiculo");
         }
         else {
             System.out.println("Ate que percentagem de deposito deseja encher(0 a 100): ");
@@ -502,7 +505,7 @@ public class UMCarroJa implements Serializable{
      */
     public Collection<Veiculo> listaVeiculosProp(Proprietario u){
         List<Veiculo> car = new ArrayList<Veiculo>();
-        for(String s : this.listVeicProp.get(u)){
+        for(String s : this.listVeicProp.get(u.getEmail())){
             car.add(this.veiculos.get(s));
         }
         return car;
