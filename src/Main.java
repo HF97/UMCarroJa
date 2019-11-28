@@ -310,6 +310,11 @@ public class Main {
 
             v.setCoord(coordF);
 
+            double litrosGastos = (distancia * v.getConsumo()) / 100;
+            double percentagemUsada = (litrosGastos * 100) / v.getCapacidadeDeposito();
+            int novaAutonomia = (int)(v.getAutonomia()-percentagemUsada);
+            v.setAutonomia(novaAutonomia);
+
             System.out.println("antes de class e soma proprietario");
             Proprietario propr = (Proprietario)p.getUtilizadores().get(v.getProprietario());
             propr.setContTotal(propr.getSoma() + 1);
