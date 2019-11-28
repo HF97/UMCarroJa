@@ -135,15 +135,6 @@ public class UMCarroJa implements Serializable{
     }
 
     /**
-     *
-     * Define o numero de id de carro
-     *
-     */
-    public void setNumeroCarro(int numeroCarro) {
-        this.numeroCarro = numeroCarro;
-    }
-
-    /**
      * Adiciona um utilizador
      *
      */
@@ -243,30 +234,6 @@ public class UMCarroJa implements Serializable{
         while(uti.hasNext()){
             this.veiculos.put(uti.next().getKey(), uti.next().getValue().clone());
         }
-    }
-
-    /**
-     * Faz set alugueres
-     *
-     */
-    public void setAlugueres(Map<Integer, Aluguer> alugueres) {
-        this.alugueres = alugueres;
-    }
-
-    /**
-     * Faz set veiculos livres
-     *
-     */
-    public void setLivres(List<String> livres) {
-        this.livres = livres;
-    }
-
-    /**
-     * Faz set de veiculos ocupados
-     *
-     */
-    public void setOcupados(List<String> ocupados) {
-        this.ocupados = ocupados;
     }
 
 //    -----------------

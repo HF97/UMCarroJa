@@ -299,6 +299,8 @@ public class Main {
             v.setClassificacao(v.getSoma() / v.getContTotal());
             System.out.println("depois de class e soma veiculo");
 
+            v.setCoord(coordF);
+
             System.out.println("antes de class e soma proprietario");
             Proprietario propr = (Proprietario)p.getUtilizadores().get(v.getProprietario());
             propr.setContTotal(propr.getSoma() + 1);

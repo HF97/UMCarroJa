@@ -92,44 +92,6 @@ public class Aluguer implements Serializable {
         return classificacao;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setCoordI(Coordenada coordI) {
-        this.coordI = coordI;
-    }
-
-    public void setCoordF(Coordenada coordF) {this.coordF = coordF;}
-
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
-    }
-
-    public void setData(LocalDate data){
-        this.data = data;
-    }
-
-    public void setDuracao(Duration duracao) {
-        this.duracao = duracao;
-    }
-
-    public void setEmailCliente(String emailCliente) {
-        this.emailCliente = emailCliente;
-    }
-
-    public void setEmailProprietario(String emailProprietario) {
-        this.emailProprietario = emailProprietario;
-    }
-
-    public void setCustoTotal(double custoTotal) {
-        this.custoTotal = custoTotal;
-    }
-
-    public void setClassificacao(double classificacao) {
-        this.classificacao = classificacao;
-    }
-
     public boolean equals (Object o){
         if (o==this) {return true;}
         if(o==null || o.getClass() != this.getClass()) {return false;}
