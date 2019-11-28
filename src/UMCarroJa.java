@@ -345,12 +345,17 @@ public class UMCarroJa implements Serializable{
     //OPCOES Cliente
     //--------------
 
+    /**
+     * Da o veiculo mais proximo das coordenadas do cliente
+     *
+     * @return veiculo
+     */
     public Veiculo veiculoMaisProximo(Coordenada coord){
-        Iterator<Map.Entry<String, Veiculo>> it = this.veiculos.entrySet().iterator();
-        Veiculo v = it.next().getValue().clone();
-        while(it.hasNext()){
-            if(it.next().getValue().getCoord().distancia(coord) < v.getCoord().distancia(coord)){
-                v = it.next().getValue().clone();
+        if(this.livres.size() == 0) return null;
+        Veiculo v = this.veiculos.get(this.livres.get(0));
+        for(String s : this.livres){
+            if(this.veiculos.get(s).getCoord().distancia(coord) < v.getCoord().distancia(coord)){
+                v = this.veiculos.get(s);
             }
         }
         return v;
