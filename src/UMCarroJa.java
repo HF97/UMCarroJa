@@ -388,6 +388,7 @@ public class UMCarroJa implements Serializable{
         for(Integer i : this.histCli.get(c)) {
             al.add(this.alugueres.get(i));
         }
+        System.out.println(al.size());
         return al;
     }
 

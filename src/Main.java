@@ -26,9 +26,16 @@ public class Main {
         catch (Exception e){
             System.out.println("Erro a carregar/Base de dados inexistente");
         }
-        //Executa programa
-        executa(p);
 
+        //Executa programa
+        try {
+            executa(p);
+        }catch (Exception e){
+            System.out.println("Erro durante a execucao do programa");
+            executa(p);
+        }
+
+        //Grava na base de dados
         try{
             p.gravaObjetoInformacao();
         }catch(Exception e){
@@ -56,10 +63,20 @@ public class Main {
         limparEcra();
         switch(x){
             case (1):
-                menuEntrar(p);
+                try {
+                    menuEntrar(p);
+                }catch (Exception e){
+                    System.out.println("Erro durante execucao menuEntrar");
+                    menuEntrar(p);
+                }
                 break;
             case(2):
-                registarUtilizador(p);
+                try{
+                    registarUtilizador(p);
+                }catch (Exception e){
+                    System.out.println("Erro durante execucao registarUtilizador");
+                    registarUtilizador(p);
+                }
                 break;
             case(0):
                 break;
@@ -298,16 +315,14 @@ public class Main {
 
             double custoTotal = distancia * v.getPrecokm();
 
-            System.out.println("\nDuracao da viagem: " + duracao.toMinutes() + "\n");
+            System.out.println("\nDuracao da viagem: " + duracao.toMinutes() + " minutos\n");
 
-            System.out.println("\nclassificacao(0 a 5): ");
+            System.out.println("classificacao(0 a 5): ");
             classi = input.nextInt();
 
-            System.out.println("antes de class e soma veiculo");
             v.setContTotal(v.getContTotal() + 1);
             v.setSoma(v.getSoma() + classi);
             v.setClassificacao(v.getSoma() / v.getContTotal());
-            System.out.println("depois de class e soma veiculo");
 
             v.setCoord(coordF);
 
@@ -316,50 +331,42 @@ public class Main {
             int novaAutonomia = (int)(v.getAutonomia()-percentagemUsada);
             v.setAutonomia(novaAutonomia);
 
-            System.out.println("antes de class e soma proprietario");
             Proprietario propr = (Proprietario)p.getUtilizadores().get(v.getProprietario());
             propr.setContTotal(propr.getSoma() + 1);
             propr.setSoma(propr.getSoma() + classi);
             propr.setClassificacao(propr.getSoma() / propr.getContTotal());
-            System.out.println("depois de class e soma proprietario");
 
-            System.out.println("Antes aluguer");
             Aluguer al = new Aluguer(id, coordI, coordF, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classi);
-            System.out.println("Depois aluguer");
 
             List<Integer> l = new ArrayList<Integer>();
-            if(p.getHistCli().get(u.getEmail())==null){
-                System.out.println("Antes Meter historico se nao existe do cliente");
+            if(p.getHistCli().get(u.getEmail()).size() == 0){
                 l.add(id);
                 p.getHistCli().put(u.getEmail(),l);
                 l.clear();
-                System.out.println("Depois Meter historico se nao existe do cliente");
 
             }
             else{
-                System.out.println("Antes Meter historico se existe do cliente");
                 p.getHistCli().get(u.getEmail()).add(id);
-                System.out.println("Depois Meter historico se existe do cliente");
             }
+            l.clear();
 
-            if(p.getHistProp().get(v.getProprietario())==null){
-                System.out.println("Ntes Meter historico se nao existe do prop");
-                l.add(id);
-                p.getHistProp().put(v.getProprietario(),l);
-                l.clear();
-                System.out.println("Depois Meter historico se nao existe do prop");
+            List<Integer> lp = new ArrayList<Integer>();
+            if(p.getHistProp().get(v.getProprietario()).size() == 0){
+                lp.add(id);
+                p.getHistProp().put(v.getProprietario(),lp);
+                lp.clear();
             }
             else {
-                System.out.println("Antes Meter historico se existe do prop");
                 p.getHistProp().get(v.getProprietario()).add(id);
-                System.out.println("Depois Meter historico se existe do prop");
             }
+            lp.clear();
 
-            if(p.getHistVeic().get(v.getMatricula())==null){
+            List<Integer> lv = new ArrayList<Integer>();
+            if(p.getHistVeic().get(v.getMatricula()).size() == 0){
                 System.out.println("Depois Meter historico se nao existe do veic");
-                l.add(id);
-                p.getHistProp().put(v.getMatricula(),l);
-                l.clear();
+                lv.add(id);
+                p.getHistVeic().put(v.getMatricula(),lv);
+                lv.clear();
                 System.out.println("Depois Meter historico se nao existe do veic");
             }
             else {
@@ -367,6 +374,7 @@ public class Main {
                 p.getHistVeic().get(v.getMatricula()).add(id);
                 System.out.println("Depois Meter historico se nao existe do prop");
             }
+            lv.clear();
             System.out.println("Bom dia");
         }
     }
