@@ -337,6 +337,7 @@ public class Main {
             propr.setClassificacao(propr.getSoma() / propr.getContTotal());
 
             Aluguer al = new Aluguer(id, coordI, coordF, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classi);
+            p.adicionaAluguer(al);
 
             List<Integer> l = new ArrayList<Integer>();
             if(p.getHistCli().get(u.getEmail()).size() == 0){
@@ -432,9 +433,21 @@ public class Main {
                 break;
 
             case(4):
-                for(Veiculo v : p.listaVeiculosProp(u)){
-                    System.out.println(v.getClass().getSimpleName() + "--------------------");
-                    System.out.println(v.toString());
+                if(p.getListVeicProp().containsKey(u.getEmail())){
+                    System.out.println("tem");
+                    System.out.println(p.getListVeicProp().get(u.getEmail()).size());
+                }
+                else{
+                    System.out.println("nao tem");
+                }
+
+                for(String s : p.getListVeicProp().get(u.getEmail())){
+
+//                }
+
+//                for(Veiculo v : p.listaVeiculosProp(u)){
+                    System.out.println(p.getVeiculos().get(s).getClass().getSimpleName() + "--------------------");
+                    System.out.println(p.getVeiculos().get(s).toString());
                 }
                 System.out.println("(opcoesProprietario)    0 - retroceder");
                 while(y != 0){
