@@ -38,7 +38,7 @@ public class UMCarroJa implements Serializable{
         this.listVeicProp = new HashMap<String, List<String>>();
         this.histCli = new HashMap<String, List<Integer>>();
         this.histProp = new HashMap<String, List<Integer>>();
-        this.histProp = new HashMap<String, List<Integer>>();
+        this.histVeic = new HashMap<String, List<Integer>>();
         this.livres = new ArrayList<String>();
         this.ocupados = new ArrayList<String>();
         this.idAluguer = 0;
@@ -60,7 +60,7 @@ public class UMCarroJa implements Serializable{
         }
         this.listVeicProp = new HashMap<String, List<String>>();
         this.histCli = new HashMap<String, List<Integer>>();
-        this.histProp = new HashMap<String, List<Integer>>();
+        this.histVeic = new HashMap<String, List<Integer>>();
         this.livres = new ArrayList<String>();
         for(String a : liv){
             this.livres.add(a);
@@ -466,7 +466,7 @@ public class UMCarroJa implements Serializable{
         System.out.println("Matricula do veiculo: ");
         String matricula = input.next();
 
-        if(this.veiculos.get(matricula).getAutonomia() == 100 || this.veiculos.get(matricula).getProprietario().equals(u.getEmail())){
+        if(this.veiculos.get(matricula).getAutonomia() == 100 || !this.veiculos.get(matricula).getProprietario().equals(u.getEmail())){
             System.out.println("Deposito cheio ou nao tem permissao para abastecer este veiculo");
         }
         else {
@@ -538,8 +538,6 @@ public class UMCarroJa implements Serializable{
         System.out.println("Tipo de veiculo: ");
         Menu.tipoVeiculo();
         int x = input.nextInt();
-
-        String estado = "livre";
 
         int soma = 0;
 

@@ -361,7 +361,11 @@ public class Main {
             }
             lp.clear();
 
+            System.out.println("Hist cliente e prop");
+
             List<Integer> lv = new ArrayList<Integer>();
+            System.out.println(p.getHistVeic().get(v.getMatricula()).size());
+            System.out.println("cenas");
             if(p.getHistVeic().get(v.getMatricula()).size() == 0){
                 System.out.println("Depois Meter historico se nao existe do veic");
                 lv.add(id);
@@ -375,6 +379,7 @@ public class Main {
                 System.out.println("Depois Meter historico se nao existe do prop");
             }
             lv.clear();
+
             System.out.println("Bom dia");
         }
     }
@@ -527,7 +532,7 @@ public class Main {
                 System.out.println("Numero de utilizadores registados: " + p.listaUtilizadores().size() +"\n");
 
                 for(Utilizador u : p.listaUtilizadores()){
-                    System.out.println(u.getClass().getSimpleName() + "--------------------");
+                    System.out.println("\n" + u.getClass().getSimpleName() + "--------------------");
                     System.out.println(u.toString());
                 }
 
@@ -543,7 +548,7 @@ public class Main {
                 //lista de clientes
                 for(Utilizador u : p.listaUtilizadores()){
                     if(u.getClass().getSimpleName().equals("Cliente")){
-                        System.out.println(u.getClass().getSimpleName() + "-----------------------");
+                        System.out.println("\n" + u.getClass().getSimpleName() + "-----------------------");
                         System.out.println(u.toString());
                     }
                 }
@@ -560,7 +565,7 @@ public class Main {
                 //lista de proprietarios
                 for(Utilizador u : p.listaUtilizadores()){
                     if(u.getClass().getSimpleName().equals("Proprietario")){
-                        System.out.println(u.getClass().getSimpleName() + "-----------------------");
+                        System.out.println("\n" + u.getClass().getSimpleName() + "-----------------------");
                         System.out.println(u.toString());
                     }
                 }
@@ -579,7 +584,7 @@ public class Main {
                 System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size() + "\n");
 
                 for(Veiculo v : p.listaVeiculos()){
-                    System.out.println(v.getClass().getSimpleName() + "--------------------");
+                    System.out.println("\n" + v.getClass().getSimpleName() + "--------------------");
                     System.out.println(v.toString());
                 }
 
