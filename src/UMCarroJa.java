@@ -466,14 +466,21 @@ public class UMCarroJa implements Serializable{
         System.out.println("Matricula do veiculo: ");
         String matricula = input.next();
 
-        if(this.veiculos.get(matricula).getAutonomia() == 100 || !this.veiculos.get(matricula).getProprietario().equals(u.getEmail())){
+        Veiculo v = this.veiculos.get(matricula);
+
+        if(this.veiculos.get(matricula).getAutonomia() == 100 || !v.getProprietario().equals(u.getEmail())){
             System.out.println("Deposito cheio ou nao tem permissao para abastecer este veiculo");
         }
         else {
-            System.out.println("Ate que percentagem de deposito deseja encher(0 a 100): ");
+            System.out.println("\nO veiculo tem autonomia:" + v.getAutonomia());
+            System.out.println("\nAte que percentagem de deposito deseja encher(0 a 100): ");
             int percentagem = input.nextInt();
 
-            Veiculo v = this.veiculos.get(matricula);
+            if(percentagem < v.getAutonomia()){
+                System.out.println("Autonomia tem de sair maior que a que o veiculo tem");
+                percentagem = input.nextInt();
+            }
+
             v.setAutonomia(percentagem);
 
             System.out.println("Veiculo de matricula " + matricula + " agora tem " + percentagem + " de autonomia");
