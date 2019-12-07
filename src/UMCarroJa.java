@@ -564,11 +564,11 @@ public class UMCarroJa implements Serializable{
                 Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, capacidadeDeposito, prop);
                 adicionaVeiculo(gas.clone());
                 if (this.listVeicProp.get(prop) == null){
-                    m.add(matricula);
-                    this.listVeicProp.put(prop, m);
+                    this.listVeicProp.get(prop).add(matricula);
                 }
                 else{
-                    this.listVeicProp.get(prop).add(matricula);
+                    m.add(matricula);
+                    this.listVeicProp.put(prop, m);
                 }
                 m.clear();
                 break;
@@ -594,6 +594,7 @@ public class UMCarroJa implements Serializable{
                     this.listVeicProp.put(prop, m);
                 }
                 else{
+                    this.listVeicProp.get(prop).add(matricula);
                     this.listVeicProp.get(prop).add(matricula);
                 }
                 m.clear();

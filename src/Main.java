@@ -304,6 +304,7 @@ public class Main {
         if(p.temAutonomia(v, coordI, coordF) == 0){
             System.out.println("Veiculo nao tem autonomia para a viagem");
             viagem(u, p, coordF, coordI);
+            viagem(u, p, coordF, coordI);
             return;
         }
         else {
@@ -429,6 +430,10 @@ public class Main {
 
             case(4):
                 if(p.getListVeicProp().containsKey(u.getEmail())){
+
+                    System.out.println(p.getListVeicProp().get(u.getEmail()).size());
+                    //NAO PODE SER 0
+
                     for(String s : p.getListVeicProp().get(u.getEmail())){
                         System.out.println("\n" + p.getVeiculos().get(s).getClass().getSimpleName() + "--------------------");
                         System.out.println(p.getVeiculos().get(s).toString());
@@ -790,7 +795,7 @@ public class Main {
                 datanasc = LocalDate.parse(dataDespesaInput, formatter);
                 f=false;
             }
-            catch(Exception e){System.out.print("Data invalida. (dd-mm-yyyy)");}
+            catch(Exception e){System.out.print("Data invalida. (dd-mm-yyyy)\nData de nascimento (dd-mm-yyyy): ");}
         }while(f);
 
         switch (x){
