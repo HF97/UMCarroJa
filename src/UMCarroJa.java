@@ -466,7 +466,7 @@ public class UMCarroJa implements Serializable{
         System.out.println("Matricula do veiculo: ");
         String matricula = input.next();
 
-        if(this.veiculos.get(matricula).getAutonomia() == 100 || this.veiculos.get(matricula).getProprietario().equals(u.getEmail())){
+        if(this.veiculos.get(matricula).getAutonomia() == 100 || !this.veiculos.get(matricula).getProprietario().equals(u.getEmail())){
             System.out.println("Deposito cheio ou nao tem permissao para abastecer este veiculo");
         }
         else {

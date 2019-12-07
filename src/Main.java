@@ -337,6 +337,7 @@ public class Main {
             propr.setClassificacao(propr.getSoma() / propr.getContTotal());
 
             Aluguer al = new Aluguer(id, coordI, coordF, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classi);
+            p.adicionaAluguer(al);
 
             List<Integer> l = new ArrayList<Integer>();
             if(p.getHistCli().get(u.getEmail()).size() == 0){
@@ -427,10 +428,17 @@ public class Main {
                 break;
 
             case(4):
-                for(Veiculo v : p.listaVeiculosProp(u)){
-                    System.out.println(v.getClass().getSimpleName() + "--------------------");
-                    System.out.println(v.toString());
+                if(p.getListVeicProp().containsKey(u.getEmail())){
+                    System.out.println("tem");
+                    for(String s : p.getListVeicProp().get(u.getEmail())){
+                        System.out.println("\n" + p.getVeiculos().get(s).getClass().getSimpleName() + "--------------------");
+                        System.out.println(p.getVeiculos().get(s).toString());
+                    }
                 }
+                else{
+                    System.out.println("nao tem");
+                }
+
                 System.out.println("(opcoesProprietario)    0 - retroceder");
                 while(y != 0){
                     y = input.nextInt();
@@ -527,7 +535,7 @@ public class Main {
                 System.out.println("Numero de utilizadores registados: " + p.listaUtilizadores().size() +"\n");
 
                 for(Utilizador u : p.listaUtilizadores()){
-                    System.out.println(u.getClass().getSimpleName() + "--------------------");
+                    System.out.println("\n" + u.getClass().getSimpleName() + "--------------------");
                     System.out.println(u.toString());
                 }
 
@@ -543,7 +551,7 @@ public class Main {
                 //lista de clientes
                 for(Utilizador u : p.listaUtilizadores()){
                     if(u.getClass().getSimpleName().equals("Cliente")){
-                        System.out.println(u.getClass().getSimpleName() + "-----------------------");
+                        System.out.println("\n" + u.getClass().getSimpleName() + "-----------------------");
                         System.out.println(u.toString());
                     }
                 }
@@ -560,7 +568,7 @@ public class Main {
                 //lista de proprietarios
                 for(Utilizador u : p.listaUtilizadores()){
                     if(u.getClass().getSimpleName().equals("Proprietario")){
-                        System.out.println(u.getClass().getSimpleName() + "-----------------------");
+                        System.out.println("\n" + u.getClass().getSimpleName() + "-----------------------");
                         System.out.println(u.toString());
                     }
                 }
@@ -579,7 +587,7 @@ public class Main {
                 System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size() + "\n");
 
                 for(Veiculo v : p.listaVeiculos()){
-                    System.out.println(v.getClass().getSimpleName() + "--------------------");
+                    System.out.println("\n" + v.getClass().getSimpleName() + "--------------------");
                     System.out.println(v.toString());
                 }
 
