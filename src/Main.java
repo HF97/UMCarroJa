@@ -233,15 +233,6 @@ public class Main {
             System.out.println("(Viagem)     Opcao incorreta\n(Viagem)      Opcao: ");
             opcao = input.nextInt();
         }
-        if(opcao==0) return;
-
-        if(opcao == 6){
-            for(Aluguer a : p.listaAlugueresCliente(u.getEmail())){
-                System.out.println(a.toString() + "\n");
-            }
-            viagem(u,p,coordI,coordF);
-            return;
-        }
 
         Veiculo v = new Gasolina();
         switch (opcao){
@@ -298,6 +289,15 @@ public class Main {
                     System.out.println("Nao ha nenhum veiculo com essa autonomia");
                     viagem(u,p,coordI,coordF);
                 }
+                break;
+            case(6):
+                for(Aluguer a : p.listaAlugueresCliente(u.getEmail())){
+                    System.out.println(a.toString() + "\n");
+                }
+                viagem(u,p,coordI,coordF);
+                return;
+            case(0):
+                menuEntrar(p);
                 break;
         }
 
@@ -429,14 +429,13 @@ public class Main {
 
             case(4):
                 if(p.getListVeicProp().containsKey(u.getEmail())){
-                    System.out.println("tem");
                     for(String s : p.getListVeicProp().get(u.getEmail())){
                         System.out.println("\n" + p.getVeiculos().get(s).getClass().getSimpleName() + "--------------------");
                         System.out.println(p.getVeiculos().get(s).toString());
                     }
                 }
                 else{
-                    System.out.println("nao tem");
+                    System.out.println("Nao tem veiculos registados");
                 }
 
                 System.out.println("(opcoesProprietario)    0 - retroceder");

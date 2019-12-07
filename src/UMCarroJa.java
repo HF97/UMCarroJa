@@ -61,6 +61,7 @@ public class UMCarroJa implements Serializable{
         this.listVeicProp = new HashMap<String, List<String>>();
         this.histCli = new HashMap<String, List<Integer>>();
         this.histProp = new HashMap<String, List<Integer>>();
+        this.histVeic = new HashMap<String, List<Integer>>();
         this.livres = new ArrayList<String>();
         for(String a : liv){
             this.livres.add(a);
