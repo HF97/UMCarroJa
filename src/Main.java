@@ -429,16 +429,21 @@ public class Main {
                 break;
 
             case(4):
-                if(p.getListVeicProp().containsKey(u.getEmail())){
-
-                    System.out.println(p.getListVeicProp().get(u.getEmail()).size());
-                    //NAO PODE SER 0
-
-                    for(String s : p.getListVeicProp().get(u.getEmail())){
-                        System.out.println("\n" + p.getVeiculos().get(s).getClass().getSimpleName() + "--------------------");
-                        System.out.println(p.getVeiculos().get(s).toString());
+                Collection<Veiculo> list = p.listaVeiculosProp(u);
+                if(list.size() > 0){
+                    for(Veiculo v : p.listaVeiculosProp(u)){
+                        System.out.println("\n" + v.getClass().getSimpleName() + "--------------------");
+                        System.out.println(v.toString());
                     }
                 }
+
+//                for(Veiculo v : p.getVeiculos().values()){
+//                    if(v.getProprietario().equals(u.getEmail())) {
+//                        System.out.println("\n" + v.getClass().getSimpleName() + "--------------------");
+//                        System.out.println(v.toString());
+//                    }
+//                }
+
                 else{
                     System.out.println("Nao tem veiculos registados");
                 }
@@ -811,6 +816,8 @@ public class Main {
                 List<String> carros = new ArrayList<String>();
                 Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao, numClass, total);
                 p.adicionaUtilizador(prop.clone());
+                List<String> l = new ArrayList<String>();
+                p.setListVeicProp(email, l);
                 break;
         }
         executa(p);

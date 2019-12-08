@@ -136,6 +136,14 @@ public class UMCarroJa implements Serializable{
     }
 
     /**
+     * Adiciona um um elemento a lista de veiculos do proprietario
+     *
+     */
+    public void setListVeicProp(String email, List<String> l){
+        this.listVeicProp.put(email, l);
+    }
+
+    /**
      * Adiciona um utilizador
      *
      */
@@ -489,10 +497,11 @@ public class UMCarroJa implements Serializable{
     }
 
     /**
-     * Retorna a lista de veiculos de um certo proprietario
+     * Se autonomia menor que 10 retorna 1 s enao retorn 0
      *
+     * @param u Proprietario
      */
-    public Collection<Veiculo> listaVeiculosProp(Proprietario u){
+    public Collection<Veiculo> listaVeiculosProp (Proprietario u){
         List<Veiculo> car = new ArrayList<Veiculo>();
         for(String s : this.listVeicProp.get(u.getEmail())){
             car.add(this.veiculos.get(s));
@@ -504,6 +513,8 @@ public class UMCarroJa implements Serializable{
      * Se autonomia menor que 10 retorna 1 s enao retorn 0
      *
      * @param v veiculo
+     * @param coordI coordenada inicial
+     * @param coordF coordenada final
      */
     public int temAutonomia(Veiculo v, Coordenada coordI, Coordenada coordF){
         int autonomia = v.getAutonomia();
@@ -563,41 +574,19 @@ public class UMCarroJa implements Serializable{
             case (1):
                 Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, capacidadeDeposito, prop);
                 adicionaVeiculo(gas.clone());
-                if (this.listVeicProp.get(prop) == null){
-                    this.listVeicProp.get(prop).add(matricula);
-                }
-                else{
-                    m.add(matricula);
-                    this.listVeicProp.put(prop, m);
-                }
-                m.clear();
+                this.listVeicProp.get(prop).add(matricula);
                 break;
 
             case(2):
                 Veiculo hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, capacidadeDeposito, prop);
                 adicionaVeiculo(hib.clone());
-                if (this.listVeicProp.get(prop) == null){
-                    m.add(matricula);
-                    this.listVeicProp.put(prop, m);
-                }
-                else{
-                    this.listVeicProp.get(prop).add(matricula);
-                }
-                m.clear();
+                this.listVeicProp.get(prop).add(matricula);
                 break;
 
             case(3):
                 Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, capacidadeDeposito, prop);
                 adicionaVeiculo(ele.clone());
-                if (this.listVeicProp.get(prop) == null){
-                    m.add(matricula);
-                    this.listVeicProp.put(prop, m);
-                }
-                else{
-                    this.listVeicProp.get(prop).add(matricula);
-                    this.listVeicProp.get(prop).add(matricula);
-                }
-                m.clear();
+                this.listVeicProp.get(prop).add(matricula);
                 break;
 
         }
