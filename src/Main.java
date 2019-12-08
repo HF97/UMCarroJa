@@ -212,6 +212,7 @@ public class Main {
         Coordenada coordF = new Coordenada(coordXF, coordYF);
 
         viagem(u,p,coordI,coordF);
+        return;
     }
 
     /**
@@ -295,15 +296,15 @@ public class Main {
                     System.out.println(a.toString() + "\n");
                 }
                 viagem(u,p,coordI,coordF);
-                return;
+                break;
             case(0):
                 menuEntrar(p);
-                break;
+                return;
+//                break;
         }
 
         if(p.temAutonomia(v, coordI, coordF) == 0){
             System.out.println("Veiculo nao tem autonomia para a viagem");
-            viagem(u, p, coordF, coordI);
             viagem(u, p, coordF, coordI);
             return;
         }
@@ -320,22 +321,6 @@ public class Main {
 
             System.out.println("classificacao(0 a 5): ");
             classi = input.nextInt();
-
-            v.setContTotal(v.getContTotal() + 1);
-            v.setSoma(v.getSoma() + classi);
-            v.setClassificacao(v.getSoma() / v.getContTotal());
-
-            v.setCoord(coordF);
-
-            double litrosGastos = (distancia * v.getConsumo()) / 100;
-            double percentagemUsada = (litrosGastos * 100) / v.getCapacidadeDeposito();
-            int novaAutonomia = (int)(v.getAutonomia()-percentagemUsada);
-            v.setAutonomia(novaAutonomia);
-
-            Proprietario propr = (Proprietario)p.getUtilizadores().get(v.getProprietario());
-            propr.setContTotal(propr.getSoma() + 1);
-            propr.setSoma(propr.getSoma() + classi);
-            propr.setClassificacao(propr.getSoma() / propr.getContTotal());
 
             Aluguer al = new Aluguer(id, coordI, coordF, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classi);
             p.adicionaAluguer(al);
@@ -377,8 +362,26 @@ public class Main {
                 System.out.println("Depois Meter historico se nao existe do prop");
             }
             lv.clear();
+
+            v.setContTotal(v.getContTotal() + 1);
+            v.setSoma(v.getSoma() + classi);
+            v.setClassificacao(v.getSoma() / v.getContTotal());
+
+            v.setCoord(coordF);
+
+            double litrosGastos = (distancia * v.getConsumo()) / 100;
+            double percentagemUsada = (litrosGastos * 100) / v.getCapacidadeDeposito();
+            int novaAutonomia = (int)(v.getAutonomia()-percentagemUsada);
+            v.setAutonomia(novaAutonomia);
+
+            Proprietario propr = (Proprietario)p.getUtilizadores().get(v.getProprietario());
+            propr.setContTotal(propr.getSoma() + 1);
+            propr.setSoma(propr.getSoma() + classi);
+            propr.setClassificacao(propr.getSoma() / propr.getContTotal());
+
             System.out.println("Bom dia");
         }
+        return;
     }
 
     /**
@@ -436,14 +439,6 @@ public class Main {
                         System.out.println(v.toString());
                     }
                 }
-
-//                for(Veiculo v : p.getVeiculos().values()){
-//                    if(v.getProprietario().equals(u.getEmail())) {
-//                        System.out.println("\n" + v.getClass().getSimpleName() + "--------------------");
-//                        System.out.println(v.toString());
-//                    }
-//                }
-
                 else{
                     System.out.println("Nao tem veiculos registados");
                 }
