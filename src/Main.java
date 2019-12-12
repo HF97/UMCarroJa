@@ -180,8 +180,6 @@ public class Main {
 
         System.out.println(u.getClass().getSimpleName());
 
-//        limparEcra();
-
         if (u.getClass().getSimpleName().equals("Cliente")) {
             entrarCliente((Cliente) u, p);
             return;
@@ -196,6 +194,36 @@ public class Main {
     private static void entrarCliente(Cliente u, UMCarroJa p) throws Exception{
         Scanner input = new Scanner(System.in);
         limparEcra();
+
+        Menu.menuCliente();
+
+        int opcao = -1;
+        opcao = input.nextInt();
+        while(opcao!=1 && opcao!=2 && opcao!=0) {
+            System.out.println("(EntrarCliente)     Opcao incorreta\n(EntrarCliente)      Opcao: ");
+            opcao = input.nextInt();
+        }
+        switch (opcao){
+            case(0):
+                try{
+                    executa(p);
+                }catch (Exception e){
+                    System.out.println("(EntrarCliente)Erro no executa");
+                    executa(p);
+                }
+                return;
+            case(2):
+                try{
+                    for(Aluguer a : p.listaAlugueresCliente(u.getEmail())) {
+                        System.out.println(a.toString() + "\n");
+                    }
+                    entrarCliente(u,p);
+                }catch (Exception e){
+                    System.out.println("(EntrarCliente)Erro no historico do cliente");
+                    entrarCliente(u,p);
+                }
+                return;
+        }
 
         System.out.println("(opcoesCliente)     Coordenadas onde se encontra:");
         System.out.print("(opcoesCliente)     X: ");
@@ -230,7 +258,7 @@ public class Main {
         Menu.menuOpcoesCliente();
         int opcao = -1;
         opcao = input.nextInt();
-        while(opcao!=1 && opcao!=2 && opcao!=3 && opcao!=4 && opcao!=5 && opcao!=6 && opcao!=0) {
+        while(opcao!=1 && opcao!=2 && opcao!=3 && opcao!=4 && opcao!=5 && opcao!=0) {
             System.out.println("(Viagem)     Opcao incorreta\n(Viagem)      Opcao: ");
             opcao = input.nextInt();
         }
@@ -291,12 +319,6 @@ public class Main {
                     viagem(u,p,coordI,coordF);
                 }
                 break;
-            case(6):
-                for(Aluguer a : p.listaAlugueresCliente(u.getEmail())){
-                    System.out.println(a.toString() + "\n");
-                }
-                viagem(u,p,coordI,coordF);
-                break;
             case(0):
                 menuEntrar(p);
                 return;
@@ -331,53 +353,6 @@ public class Main {
             p.getHistProp().get(v.getProprietario()).add(id);
             p.getHistVeic().get(v.getMatricula()).add(id);
 
-//            List<Integer> l = new ArrayList<Integer>();
-//            if(p.getHistCli().get(u.getEmail()).size() == 0){
-//                System.out.println("clie nao tem ant");
-//                l.add(id);
-//                p.getHistCli().put(u.getEmail(),l);
-//                l.clear();
-//                System.out.println("clie nao tem");
-//            }
-//            else{
-//                System.out.println("clie tem ant");
-//                p.getHistCli().get(u.getEmail()).add(id);
-//                System.out.println("clie tem");
-//            }
-//            l.clear();
-//
-//            System.out.println("Antes prop");
-//
-//            List<Integer> lp = new ArrayList<Integer>();
-//            if(p.getHistProp().get(v.getProprietario()).size() == 0){
-//                lp.add(id);
-//                p.getHistProp().put(v.getProprietario(),lp);
-//                lp.clear();
-//                System.out.println("prop nao tem");
-//            }
-//            else {
-//                p.getHistProp().get(v.getProprietario()).add(id);
-//                System.out.println("prop tem");
-//            }
-//            lp.clear();
-//
-//            System.out.println("Antes veiculo");
-//
-//            List<Integer> lv = new ArrayList<Integer>();
-//            if(p.getHistVeic().get(v.getMatricula()).size() == 0){
-//                System.out.println("Depois Meter historico se nao existe do veic");
-//                lv.add(id);
-//                p.getHistVeic().put(v.getMatricula(),lv);
-//                lv.clear();
-//                System.out.println("Depois Meter historico se nao existe do veic");
-//            }
-//            else {
-//                System.out.println("Depois Meter historico se nao existe do prop");
-//                p.getHistVeic().get(v.getMatricula()).add(id);
-//                System.out.println("Depois Meter historico se nao existe do prop");
-//            }
-//            lv.clear();
-
             v.setContTotal(v.getContTotal() + 1);
             v.setSoma(v.getSoma() + classi);
             v.setClassificacao(v.getSoma() / v.getContTotal());
@@ -396,6 +371,7 @@ public class Main {
 
             System.out.println("Bom dia");
         }
+        executa(p);
         return;
     }
 
@@ -475,18 +451,43 @@ public class Main {
                 break;
 
             case(6):
-                for(Aluguer a : p.listaAlugueresProprietario(u.getEmail())){
-                    System.out.println(a.toString() + "\n");
+                try {
+                    for (Aluguer a : p.listaAlugueresProprietario(u.getEmail())) {
+                        System.out.println(a.toString() + "\n");
+                    }
+                    System.out.println("(opcoesProprietario)    0 - retroceder");
+                    while(y != 0){
+                        y = input.nextInt();
+                    }
+                    opcoesProprietario(u,p);
+                }catch(Exception e){
+                    System.out.println("(OpcoesProprietario) Erro no historico do prop");
+                    opcoesProprietario(u,p);
                 }
                 break;
 
             case(7):
-                System.out.println("Matricula do veiculo: ");
-                String matricula = input.next();
-                for(Aluguer a : p.listaAlugueresVeiculo(matricula)){
-                    System.out.println(a.toString() + "\n");
+                try {
+                    System.out.println("Matricula do veiculo: ");
+                    String matricula = input.next();
+                    if(p.getVeiculos().get(matricula).getProprietario().equals(u.getEmail())) {
+                        for (Aluguer a : p.listaAlugueresVeiculo(matricula)) {
+                            System.out.println(a.toString() + "\n");
+                        }
+                    }
+                    else{
+                        System.out.println("Nao tem permissoes para ver o historico deste veiculo\n");
+                    }
+                    System.out.println("(opcoesProprietario)    0 - retroceder");
+                    while (y != 0) {
+                        y = input.nextInt();
+                    }
+                    opcoesProprietario(u, p);
+                    break;
+                }catch (Exception e){
+                    System.out.println("(OpcoesProprietario) Veiculo inexistente");
+                    opcoesProprietario(u,p);
                 }
-                break;
 
             case(0):
                 executa(p);

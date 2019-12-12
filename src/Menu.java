@@ -34,7 +34,6 @@ public class Menu {
                 "3 - Veiculo mais barato a distancia a pe\n" +
                 "4 - Veiculo especifico\n" +
                 "5 - Veiculo com autonomia desejada\n" +
-                "6 - Historico de alugueres\n\n" +
                 "0 - Voltar\n"
         );
         System.out.print("\nOpção: ");
@@ -85,5 +84,8 @@ public class Menu {
                 "0 - Voltar\n"
         );
         System.out.print("\nOpção: ");
+    }
+    public static void menuCliente(){
+        System.out.println("\n1 - Viagem\n2 - Historico\n\n0 - Voltar");
     }
 }

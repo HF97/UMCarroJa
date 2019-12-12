@@ -115,21 +115,23 @@ public class Aluguer implements Serializable {
     public String toString(){
         StringBuilder sb = new StringBuilder("Id: ");
         sb.append(this.getId());
-        sb.append("Coordenada de Inicio: ");
+        sb.append("\nCoordenada de Inicio: ");
         sb.append(this.getCoordI().toString());
-        sb.append("Coordenada de Fim: ");
-        sb.append(this.getCoordF().toString());
+        sb.append("\nCoordenada de Fim: ");
+        sb.append(this.getCoordF().toString()+"\n");
+        sb.append("Veiculo-----------\n");
         sb.append(this.getVeiculo().toString());
+        sb.append("\n------------------\n");
         sb.append(this.getData().toString());
-        sb.append("Duracao: ");
-        sb.append(this.getDuracao());
-        sb.append("Email do cliente: ");
+        sb.append("\nDuracao: ");
+        sb.append(this.getDuracao().toMinutes());
+        sb.append("\nEmail do cliente: ");
         sb.append(this.getEmailCliente());
-        sb.append("Email do proprietario: ");
+        sb.append("\nEmail do proprietario: ");
         sb.append(this.getEmailProprietario());
-        sb.append("Custo total: ");
+        sb.append("\nCusto total: ");
         sb.append(this.getCustoTotal());
-        sb.append("Classificacao: ");
+        sb.append("\nClassificacao: ");
         sb.append(this.getClassificacao());
         return sb.toString();
     }
