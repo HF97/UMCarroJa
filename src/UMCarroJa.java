@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -38,7 +39,7 @@ public class UMCarroJa implements Serializable{
         this.listVeicProp = new HashMap<String, List<String>>();
         this.histCli = new HashMap<String, List<Integer>>();
         this.histProp = new HashMap<String, List<Integer>>();
-        this.histProp = new HashMap<String, List<Integer>>();
+        this.histVeic = new HashMap<String, List<Integer>>();
         this.livres = new ArrayList<String>();
         this.ocupados = new ArrayList<String>();
         this.idAluguer = 0;
@@ -136,10 +137,28 @@ public class UMCarroJa implements Serializable{
     }
 
     /**
+     * Adiciona um um elemento a lista de historico de cliente
+     *
+     */
+    public void adicionaHistCli(String email, List<Integer> l) {this.histCli.put(email, l);}
+
+    /**
+     * Adiciona um um elemento a lista de historico de proprietario
+     *
+     */
+    public void adicionaHistProp(String email, List<Integer> l) {this.histProp.put(email, l);}
+
+    /**
+     * Adiciona um um elemento a lista de historico de veiculo
+     *
+     */
+    public void adicionaHistVeic(String matricula, List<Integer> l) {this.histVeic.put(matricula, l);}
+
+    /**
      * Adiciona um um elemento a lista de veiculos do proprietario
      *
      */
-    public void setListVeicProp(String email, List<String> l){
+    public void adicionaListVeicProp(String email, List<String> l){
         this.listVeicProp.put(email, l);
     }
 
@@ -568,27 +587,29 @@ public class UMCarroJa implements Serializable{
             System.out.println("Tipo incorreto");
         }
 
-        List<String> m = new ArrayList<String>();
+        List<Integer> m = new ArrayList<Integer>();
 
         switch (x) {
             case (1):
                 Gasolina gas = new Gasolina(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, capacidadeDeposito, prop);
                 adicionaVeiculo(gas.clone());
                 this.listVeicProp.get(prop).add(matricula);
+                adicionaHistVeic(matricula, m);
                 break;
 
             case(2):
                 Veiculo hib = new Hibrido(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, capacidadeDeposito, prop);
                 adicionaVeiculo(hib.clone());
                 this.listVeicProp.get(prop).add(matricula);
+                adicionaHistVeic(matricula, m);
                 break;
 
             case(3):
                 Eletrico ele = new Eletrico(matricula, velmedkm, precokm, consumo, classificacao, soma, contTotal, coord, autonomia, capacidadeDeposito, prop);
                 adicionaVeiculo(ele.clone());
                 this.listVeicProp.get(prop).add(matricula);
+                adicionaHistVeic(matricula, m);
                 break;
-
         }
     }
 

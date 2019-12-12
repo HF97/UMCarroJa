@@ -325,43 +325,58 @@ public class Main {
             Aluguer al = new Aluguer(id, coordI, coordF, v, LocalDate.now(), duracao, u.getEmail(), v.getProprietario(), custoTotal, classi);
             p.adicionaAluguer(al);
 
-            List<Integer> l = new ArrayList<Integer>();
-            if(p.getHistCli().get(u.getEmail()).size() == 0){
-                l.add(id);
-                p.getHistCli().put(u.getEmail(),l);
-                l.clear();
+            System.out.println("antes clie");
 
-            }
-            else{
-                p.getHistCli().get(u.getEmail()).add(id);
-            }
-            l.clear();
+            p.getHistCli().get(u.getEmail()).add(id);
+            p.getHistProp().get(v.getProprietario()).add(id);
+            p.getHistVeic().get(v.getMatricula()).add(id);
 
-            List<Integer> lp = new ArrayList<Integer>();
-            if(p.getHistProp().get(v.getProprietario()).size() == 0){
-                lp.add(id);
-                p.getHistProp().put(v.getProprietario(),lp);
-                lp.clear();
-            }
-            else {
-                p.getHistProp().get(v.getProprietario()).add(id);
-            }
-            lp.clear();
-
-            List<Integer> lv = new ArrayList<Integer>();
-            if(p.getHistVeic().get(v.getMatricula()).size() == 0){
-                System.out.println("Depois Meter historico se nao existe do veic");
-                lv.add(id);
-                p.getHistVeic().put(v.getMatricula(),lv);
-                lv.clear();
-                System.out.println("Depois Meter historico se nao existe do veic");
-            }
-            else {
-                System.out.println("Depois Meter historico se nao existe do prop");
-                p.getHistVeic().get(v.getMatricula()).add(id);
-                System.out.println("Depois Meter historico se nao existe do prop");
-            }
-            lv.clear();
+//            List<Integer> l = new ArrayList<Integer>();
+//            if(p.getHistCli().get(u.getEmail()).size() == 0){
+//                System.out.println("clie nao tem ant");
+//                l.add(id);
+//                p.getHistCli().put(u.getEmail(),l);
+//                l.clear();
+//                System.out.println("clie nao tem");
+//            }
+//            else{
+//                System.out.println("clie tem ant");
+//                p.getHistCli().get(u.getEmail()).add(id);
+//                System.out.println("clie tem");
+//            }
+//            l.clear();
+//
+//            System.out.println("Antes prop");
+//
+//            List<Integer> lp = new ArrayList<Integer>();
+//            if(p.getHistProp().get(v.getProprietario()).size() == 0){
+//                lp.add(id);
+//                p.getHistProp().put(v.getProprietario(),lp);
+//                lp.clear();
+//                System.out.println("prop nao tem");
+//            }
+//            else {
+//                p.getHistProp().get(v.getProprietario()).add(id);
+//                System.out.println("prop tem");
+//            }
+//            lp.clear();
+//
+//            System.out.println("Antes veiculo");
+//
+//            List<Integer> lv = new ArrayList<Integer>();
+//            if(p.getHistVeic().get(v.getMatricula()).size() == 0){
+//                System.out.println("Depois Meter historico se nao existe do veic");
+//                lv.add(id);
+//                p.getHistVeic().put(v.getMatricula(),lv);
+//                lv.clear();
+//                System.out.println("Depois Meter historico se nao existe do veic");
+//            }
+//            else {
+//                System.out.println("Depois Meter historico se nao existe do prop");
+//                p.getHistVeic().get(v.getMatricula()).add(id);
+//                System.out.println("Depois Meter historico se nao existe do prop");
+//            }
+//            lv.clear();
 
             v.setContTotal(v.getContTotal() + 1);
             v.setSoma(v.getSoma() + classi);
@@ -536,10 +551,10 @@ public class Main {
 
         switch(x){
             case(1):
-                System.out.println("Numero de utilizadores registados: " + p.listaUtilizadores().size() +"\n");
+                System.out.println("Numero de utilizadores registados: " + p.listaUtilizadores().size() +"\n0");
 
                 for(Utilizador u : p.listaUtilizadores()){
-                    System.out.println("\n" + u.getClass().getSimpleName() + "--------------------");
+                    System.out.println(u.getClass().getSimpleName() + "--------------------");
                     System.out.println(u.toString());
                 }
 
@@ -588,7 +603,7 @@ public class Main {
             case(4):
                 //Lista todos veiculos
                 System.out.println("Numero de veiculos registados: " + p.getVeiculos().size());
-                System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size() + "\n");
+                System.out.println("Numero de veiculos aqui mostrados: " + p.listaVeiculos().size());
 
                 for(Veiculo v : p.listaVeiculos()){
                     System.out.println("\n" + v.getClass().getSimpleName() + "--------------------");
@@ -798,11 +813,15 @@ public class Main {
             catch(Exception e){System.out.print("Data invalida. (dd-mm-yyyy)\nData de nascimento (dd-mm-yyyy): ");}
         }while(f);
 
+        List<String> l = new ArrayList<String>();
+        List<Integer> m = new ArrayList<Integer>();
+
         switch (x){
             case(1):
                 Coordenada coord = new Coordenada();
                 Cliente c = new Cliente(nome, NIF, email, password, morada, datanasc, coord);
                 p.adicionaUtilizador(c.clone());
+                p.adicionaHistCli(email, m);
                 break;
             case(2):
                 double classificacao = 0.0;
@@ -811,8 +830,8 @@ public class Main {
                 List<String> carros = new ArrayList<String>();
                 Proprietario prop = new Proprietario(nome, NIF, email, password, morada, datanasc, classificacao, numClass, total);
                 p.adicionaUtilizador(prop.clone());
-                List<String> l = new ArrayList<String>();
-                p.setListVeicProp(email, l);
+                p.adicionaListVeicProp(email, l);
+                p.adicionaHistProp(email, m);
                 break;
         }
         executa(p);
