@@ -535,9 +535,11 @@ public class UMCarroJa implements Serializable{
      * @param coordI coordenada inicial
      * @param coordF coordenada final
      */
-    public int temAutonomia(Veiculo v, Coordenada coordI, Coordenada coordF){
-        int autonomia = v.getAutonomia();
-        if(coordI.distancia(coordF) > (v.getCapacidadeDeposito() * 100) / v.getConsumo()){
+    public int temAutonomia(Cliente u, Veiculo v, Coordenada coordI, Coordenada coordF){
+        Coordenada coordV = v.getCoord();
+        double distIC = coordI.distancia(coordV);
+        double distIF = coordI.distancia(coordF);
+        if((distIC + distIF) > (v.getCapacidadeDeposito() * 100) / v.getConsumo()){
             return 0;
         }
         return 1;

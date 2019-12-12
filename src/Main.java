@@ -325,7 +325,7 @@ public class Main {
 //                break;
         }
 
-        if(p.temAutonomia(v, coordI, coordF) == 0){
+        if(p.temAutonomia(u, v, coordI, coordF) == 0){
             System.out.println("Veiculo nao tem autonomia para a viagem");
             viagem(u, p, coordF, coordI);
             return;
